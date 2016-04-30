@@ -305,7 +305,9 @@
             <h3 id="找出两个文件的差异行"><a href="#找出两个文件的差异行" class="headerlink" title="找出两个文件的差异行"></a>找出两个文件的差异行</h3><p>常用于给出了标准reference文件，你已经写出了自己的代码并且得到了属于你的答案，想要看看与标准的差别</p>
 <pre><code>cat output output.2 | sort | uniq -u
 </code></pre><p>这里output 和 output.2是两个你想要进行比较的文件</p>
-
+<h4 id="那么问题来了，有两行长一样但是显示是不同的行该怎么办"><a href="#那么问题来了，有两行长一样但是显示是不同的行该怎么办" class="headerlink" title="那么问题来了，有两行长一样但是显示是不同的行该怎么办"></a>那么问题来了，有两行长一样但是显示是不同的行该怎么办</h4><p>用</p>
+<pre><code>hexdump
+</code></pre>
           
         
       
