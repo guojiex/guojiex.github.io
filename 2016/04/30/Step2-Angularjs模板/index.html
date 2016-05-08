@@ -80,16 +80,18 @@
 
 
 
-<meta name="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+<meta name="description" content="Angularjs中的视图与模板">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Step2 Angularjs模板">
 <meta property="og:url" content="http://yoursite.com/2016/04/30/Step2-Angularjs模板/index.html">
 <meta property="og:site_name" content="节瓜的博客">
-<meta property="og:description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
-<meta property="og:updated_time" content="2016-04-30T20:58:34.000Z">
+<meta property="og:description" content="Angularjs中的视图与模板">
+<meta property="og:image" content="http://yoursite.com/media/14627231086908.jpg">
+<meta property="og:updated_time" content="2016-05-08T16:03:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step2 Angularjs模板">
-<meta name="twitter:description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+<meta name="twitter:description" content="Angularjs中的视图与模板">
+<meta name="twitter:image" content="http://yoursite.com/media/14627231086908.jpg">
 
 
 
@@ -296,7 +298,33 @@
       
 
       
-        
+        <h2 id="视图与模板"><a href="#视图与模板" class="headerlink" title="视图与模板"></a>视图与模板</h2><p>在angularjs中，视图就是对应数据模型model的html模板，也就意味着一旦数据模型model的数据发生改变，视图也会随之改变（含有数据绑定的部分） </p>
+<p>app/index.html:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;html ng-app="phonecatApp"&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;script src="bower_components/angular/angular.js"&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src="js/controllers.js"&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body ng-controller="PhoneListCtrl"&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &lt;li ng-repeat="phone in phones"&gt;</span><br><span class="line">      &lt;span&gt;&#123;&#123;phone.name&#125;&#125;&lt;/span&gt;</span><br><span class="line">      &lt;p&gt;&#123;&#123;phone.snippet&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>We replaced the hard-coded phone list with the <a href="https://docs.angularjs.org/api/ng/directive/ngRepeat" target="_blank" rel="external">ngRepeat directive</a> and two <a href="https://docs.angularjs.org/guide/expression" target="_blank" rel="external">Angular expressions</a>:</p>
+<ul>
+<li><p>The ng-repeat=”phone in phones” attribute in the <em>&lt;</em>li<em>&gt;</em> tag is an Angular repeater directive. The repeater tells Angular to create a <em>&lt;</em>li<em>&gt;</em> element for each phone in the list using the <em>&lt;</em>li<em>&gt;</em> tag as the template.</p>
+</li>
+<li><p>The expressions wrapped in curly braces ( and ) will be replaced by the value of the expressions.</p>
+</li>
+</ul>
+<p>这里我们使用angularjs的<strong><em>ngRepeat</em></strong>语句进行重复的显示： </p>
+<ul>
+<li>ng-repeat=”phone in phones”这句话就是说对于phones集合中的每一个phone个体，都会产生一个数据显示，因为是在<em>&lt;</em>li<em>&gt;</em>标签中写的，所以每一个phone个体都会生成一个对应的Li（列表项）</li>
+</ul>
+<p>We have added a new directive, called ng-controller, which attaches a PhoneListCtrl controller to the <body> tag. At this point: </body></p>
+<ul>
+<li>The expressions in curly braces ( and ) denote bindings, which are referring to our application model, which is set up in our PhoneListCtrl controller.</li>
+</ul>
+<p>这里我们提到一个新的原语<strong>ng-controller</strong>，这个原语把名为<strong>PhoneListCtrl</strong>的控制器赋给<em>&lt;</em>body<em>&gt;</em>标签，那么的这些表达式都会在这个控制器的作用域下进行运算</p>
+<p><img src="/media/14627231086908.jpg" alt=""></p>
+<p>##模型与控制器<br>数据模型被控制器PhoneListCtrl所创建，控制器其实就是一个构造函数，简单的使用了$scope作为输入参数：<br>app/js/controllers.js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> phonecatApp = angular.module(<span class="string">'phonecatApp'</span>, []);</span><br><span class="line"></span><br><span class="line">phonecatApp.controller(<span class="string">'PhoneListCtrl'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">  $scope.phones = [</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'Nexus S'</span>,</span><br><span class="line">     <span class="string">'snippet'</span>: <span class="string">'Fast just got faster with Nexus S.'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'Motorola XOOM™ with Wi-Fi'</span>,</span><br><span class="line">     <span class="string">'snippet'</span>: <span class="string">'The Next, Next Generation tablet.'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'MOTOROLA XOOM™'</span>,</span><br><span class="line">     <span class="string">'snippet'</span>: <span class="string">'The Next, Next Generation tablet.'</span>&#125;</span><br><span class="line">  ];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里我们声明了一个名叫PhoneListCtrl的控制器，而且把它注册在phonecatApp的angularjs模块中。注意我们在<em>&lt;</em>html<em>&gt;</em>标签中显式声明了ng-app=phonecatApp 作用域scope: </p>
+<blockquote>
+<p><strong><em>作用域</em></strong>是一个共享区域，提供了一个让模板，模型和控制器协同工作的区域。在作用域中的所有变化都是同步的（数据模型的变化即时反映到视图，视图的变化即时反映到数据模型）</p>
+</blockquote>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2>
       
     </div>
     
@@ -449,7 +477,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#视图与模板"><span class="nav-number">1.</span> <span class="nav-text">视图与模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a></li></ol></div>
             
           </div>
         </section>

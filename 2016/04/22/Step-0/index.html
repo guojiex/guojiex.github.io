@@ -80,31 +80,16 @@
 
 
 
-<meta name="description" content="首先是最基础的index页面：    app/index.html:
-&amp;lt;!doctype html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot; ng-app&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;My HTML File&amp;lt;/title&amp;gt;">
+<meta name="description" content="最基础的index html页面">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Step 0">
 <meta property="og:url" content="http://yoursite.com/2016/04/22/Step-0/index.html">
 <meta property="og:site_name" content="节瓜的博客">
-<meta property="og:description" content="首先是最基础的index页面：    app/index.html:
-&amp;lt;!doctype html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot; ng-app&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;My HTML File&amp;lt;/title&amp;gt;">
-<meta property="og:updated_time" content="2016-04-22T20:46:01.000Z">
+<meta property="og:description" content="最基础的index html页面">
+<meta property="og:updated_time" content="2016-05-08T15:41:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step 0">
-<meta name="twitter:description" content="首先是最基础的index页面：    app/index.html:
-&amp;lt;!doctype html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot; ng-app&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;My HTML File&amp;lt;/title&amp;gt;">
+<meta name="twitter:description" content="最基础的index html页面">
 
 
 
@@ -312,22 +297,8 @@
 
       
         <p>首先是最基础的index页面：<br>    app/index.html:</p>
-<pre><code>&lt;!doctype html&gt;
-&lt;html lang=&quot;en&quot; ng-app&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;My HTML File&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;bower_components/bootstrap/dist/css/bootstrap.css&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/app.css&quot;&gt;
-    &lt;script src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;p&gt;Nothing here {{ 'yet' + '!' }} &lt;/p&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>注意这个表达式 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">ng-app</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>My HTML File<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"bower_components/bootstrap/dist/css/bootstrap.css"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/app.css"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/angular/angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Nothing here &#123;&#123; 'yet' + '!' &#125;&#125; <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意这个表达式 </p>
 <pre><code>&lt;p&gt;Nothing here {{'yet' + '!'}}&lt;/p&gt;
 </code></pre><p>这里两个大括号里面扩住的是 绑定<br>这个数据绑定表达式的值会被angularjs自动计算，基于当前modal的作用域</p>
 <pre><code>ng-app directive:
