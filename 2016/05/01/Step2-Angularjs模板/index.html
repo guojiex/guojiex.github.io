@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="提问," />
+  <meta name="keywords" content="angularjs," />
 
 
 
@@ -80,21 +80,18 @@
 
 
 
-<meta name="description" content="你是否苦恼于提问后没人回答，是否苦恼于提问后整个群瞬间冷场？今天，我就来说说如何优雅地提问，如何提问能有更大的概率被回答。">
+<meta name="description" content="Angularjs中的视图与模板">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何优雅地提问">
-<meta property="og:url" content="http://yoursite.com/2016/05/03/如何优雅地提问/index.html">
+<meta property="og:title" content="Step2 Angularjs模板">
+<meta property="og:url" content="http://yoursite.com/2016/05/01/Step2-Angularjs模板/index.html">
 <meta property="og:site_name" content="节瓜的博客">
-<meta property="og:description" content="你是否苦恼于提问后没人回答，是否苦恼于提问后整个群瞬间冷场？今天，我就来说说如何优雅地提问，如何提问能有更大的概率被回答。">
-<meta property="og:image" content="http://yoursite.com/media/14622903471800.jpg">
-<meta property="og:image" content="http://yoursite.com/media/14622903637484.jpg">
-<meta property="og:image" content="http://yoursite.com/media/14623044008358.jpg">
-<meta property="og:image" content="http://yoursite.com/media/14623044788056.jpg">
-<meta property="og:updated_time" content="2016-05-04T15:44:47.000Z">
+<meta property="og:description" content="Angularjs中的视图与模板">
+<meta property="og:image" content="http://yoursite.com/media/14627231086908.jpg">
+<meta property="og:updated_time" content="2016-05-08T16:11:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何优雅地提问">
-<meta name="twitter:description" content="你是否苦恼于提问后没人回答，是否苦恼于提问后整个群瞬间冷场？今天，我就来说说如何优雅地提问，如何提问能有更大的概率被回答。">
-<meta name="twitter:image" content="http://yoursite.com/media/14622903471800.jpg">
+<meta name="twitter:title" content="Step2 Angularjs模板">
+<meta name="twitter:description" content="Angularjs中的视图与模板">
+<meta name="twitter:image" content="http://yoursite.com/media/14627231086908.jpg">
 
 
 
@@ -112,7 +109,7 @@
   };
 </script>
 
-  <title> 如何优雅地提问 | 节瓜的博客 </title>
+  <title> Step2 Angularjs模板 | 节瓜的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +239,7 @@
             
             
               
-                如何优雅地提问
+                Step2 Angularjs模板
               
             
           </h1>
@@ -254,8 +251,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-03T23:15:20+08:00" content="2016-05-03">
-              2016-05-03
+            <time itemprop="dateCreated" datetime="2016-04-30T16:58:17-04:00" content="2016-04-30">
+              2016-04-30
             </time>
           </span>
 
@@ -268,8 +265,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Cloud-Computing从零单排/" itemprop="url" rel="index">
-                    <span itemprop="name">Cloud Computing从零单排</span>
+                  <a href="/categories/angularjs从零单排/" itemprop="url" rel="index">
+                    <span itemprop="name">angularjs从零单排</span>
                   </a>
                 </span>
 
@@ -301,23 +298,34 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如果你是女生，提问被回答的概率绝对会大大提升。我说这个并不是说有歧视或者怎么样，而是<del>真的羡慕</del>在陈述一个事实。当然，如果你有更好的问问题的技巧，更加无往而不利，别人更容易理解你所面对的问题，也能更快地帮助你找到解决方法。</p>
-<p>为了方便大家，我先说结论：</p>
-<ol>
-<li>尽可能详尽的提供问题描述，至少要包括报错信息和错误的代码，截图或者文字都行</li>
-<li>遇到问题先google，真的找不到了再去询问别人（如果你不知道某些问题要如何google，可以来问问我）。我觉得这是礼貌问题，不要见到问题想都不想先问人，这样既养成对别人的依赖，甚至还<strong>有可能</strong>降低别人对你的友善度。</li>
-</ol>
-<h1 id="勿忘初心"><a href="#勿忘初心" class="headerlink" title="勿忘初心"></a>勿忘初心</h1><p><strong><em>首先必须明确一个观点，问问题不是为了方便自己，不是为了省时间，而是你真的想要搞明白某一个知识点，真的想学会某个东西。</em></strong></p>
-<h2 id="一个简单的问题"><a href="#一个简单的问题" class="headerlink" title="一个简单的问题"></a>一个简单的问题</h2><p>某天在群里有人问了这么一个问题：</p>
-<p><img src="/media/14622903471800.jpg" alt=""><br><img src="/media/14622903637484.jpg" alt=""></p>
-<p>以上这两句话就是唯一的问题描述，我认为这个问题描述有两点不足：</p>
-<ol>
-<li>既然你看得到Java的错误信息，那么你当然也会知道错误是在哪一行发生的，那为什么不把出现问题那一行代码也截图出来呢？不把你写的代码贴出来，我也很难猜错误到底为什么发生啊。。把发生错误的代码贴出来，既方便别人帮助你寻找问题的原因，也方便描述解决方案，何乐而不为。</li>
-<li>这个问题其实应该先自己google，google的关键词就是unknown host exception，错误信息里面都写明了具体错误。<img src="/media/14623044008358.jpg" alt=""> 我们可以看到，搜这个关键词就出来很多对应的文章，这里我们就选第二篇文章看看有没有解决方案：<img src="/media/14623044788056.jpg" alt=""> 正好这里的第二点就提到了为什么会发生这样的错误，原因就是填写hostname的时候填错了，比如说localhost写成了local，机器解析不了这个url就报错了。联合最最开始的问题描述，我们可以知道，错误的代码里面把hostname填写成了user，自然就会报错。 </li>
-</ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不要懒，遇到问题先自己先查查搜索引擎，不要把别人对你的帮助浪费在一些微小的问题上面。</p>
-<p>其次，问问题最好把问题发生的情景描述清楚，贴上问题发生的代码以及相应的报错信息，因为有些错误发生的原因很多，自然解决方法也有不同，没有代码就会提高想帮你的人所要付出的精力（本来贴代码可以避免），也可能让原本想要帮你的人望而却步。</p>
-
+        <h2 id="视图与模板"><a href="#视图与模板" class="headerlink" title="视图与模板"></a>视图与模板</h2><p>在angularjs中，视图就是对应数据模型model的html模板，也就意味着一旦数据模型model的数据发生改变，视图也会随之改变（含有数据绑定的部分） </p>
+<p>app/index.html:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;html ng-app="phonecatApp"&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;script src="bower_components/angular/angular.js"&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src="js/controllers.js"&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body ng-controller="PhoneListCtrl"&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &lt;li ng-repeat="phone in phones"&gt;</span><br><span class="line">      &lt;span&gt;&#123;&#123;phone.name&#125;&#125;&lt;/span&gt;</span><br><span class="line">      &lt;p&gt;&#123;&#123;phone.snippet&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>We replaced the hard-coded phone list with the <a href="https://docs.angularjs.org/api/ng/directive/ngRepeat" target="_blank" rel="external">ngRepeat directive</a> and two <a href="https://docs.angularjs.org/guide/expression" target="_blank" rel="external">Angular expressions</a>:</p>
+<ul>
+<li><p>The ng-repeat=”phone in phones” attribute in the <em>&lt;</em>li<em>&gt;</em> tag is an Angular repeater directive. The repeater tells Angular to create a <em>&lt;</em>li<em>&gt;</em> element for each phone in the list using the <em>&lt;</em>li<em>&gt;</em> tag as the template.</p>
+</li>
+<li><p>The expressions wrapped in curly braces ( and ) will be replaced by the value of the expressions.</p>
+</li>
+</ul>
+<p>这里我们使用angularjs的<strong><em>ngRepeat</em></strong>语句进行重复的显示： </p>
+<ul>
+<li>ng-repeat=”phone in phones”这句话就是说对于phones集合中的每一个phone个体，都会产生一个数据显示，因为是在<em>&lt;</em>li<em>&gt;</em>标签中写的，所以每一个phone个体都会生成一个对应的Li（列表项）</li>
+</ul>
+<p>We have added a new directive, called ng-controller, which attaches a PhoneListCtrl controller to the <body> tag. At this point: </body></p>
+<ul>
+<li>The expressions in curly braces ( and ) denote bindings, which are referring to our application model, which is set up in our PhoneListCtrl controller.</li>
+</ul>
+<p>这里我们提到一个新的原语<strong>ng-controller</strong>，这个原语把名为<strong>PhoneListCtrl</strong>的控制器赋给<em>&lt;</em>body<em>&gt;</em>标签，那么的这些表达式都会在这个控制器的作用域下进行运算</p>
+<p><img src="/media/14627231086908.jpg" alt=""></p>
+<p>##模型与控制器</p>
+<p>数据模型被控制器PhoneListCtrl所创建，控制器其实就是一个构造函数，简单的使用了$scope作为输入参数：<br>app/js/controllers.js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> phonecatApp = angular.module(<span class="string">'phonecatApp'</span>, []);</span><br><span class="line"></span><br><span class="line">phonecatApp.controller(<span class="string">'PhoneListCtrl'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">  $scope.phones = [</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'Nexus S'</span>,</span><br><span class="line">     <span class="string">'snippet'</span>: <span class="string">'Fast just got faster with Nexus S.'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'Motorola XOOM™ with Wi-Fi'</span>,</span><br><span class="line">     <span class="string">'snippet'</span>: <span class="string">'The Next, Next Generation tablet.'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'MOTOROLA XOOM™'</span>,</span><br><span class="line">     <span class="string">'snippet'</span>: <span class="string">'The Next, Next Generation tablet.'</span>&#125;</span><br><span class="line">  ];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里我们声明了一个名叫PhoneListCtrl的控制器，而且把它注册在phonecatApp的angularjs模块中。注意我们在<em>&lt;</em>html<em>&gt;</em>标签中显式声明了ng-app=phonecatApp 作用域scope: </p>
+<blockquote>
+<p><strong><em>作用域</em></strong>是一个共享区域，提供了一个让模板，模型和控制器协同工作的区域。在作用域中的所有变化都是同步的（数据模型的变化即时反映到视图，视图的变化即时反映到数据模型）</p>
+</blockquote>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2>
       
     </div>
     
@@ -337,7 +345,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/提问/" rel="tag">#提问</a>
+            <a href="/tags/angularjs/" rel="tag">#angularjs</a>
           
         </div>
       
@@ -346,16 +354,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/01/Step2-Angularjs模板/" rel="next" title="Step2 Angularjs模板">
-                <i class="fa fa-chevron-left"></i> Step2 Angularjs模板
+              <a href="/2016/05/01/Step-1静态模板/" rel="next" title="Step 1静态模板">
+                <i class="fa fa-chevron-left"></i> Step 1静态模板
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/15/CMU-JIE选课心得/" rel="prev" title="CMU JIE 选课心得（偏软件）">
-                CMU JIE 选课心得（偏软件） <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/03/如何优雅地提问/" rel="prev" title="如何优雅地提问">
+                如何优雅地提问 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -470,7 +478,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#勿忘初心"><span class="nav-number">2.</span> <span class="nav-text">勿忘初心</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个简单的问题"><span class="nav-number">2.1.</span> <span class="nav-text">一个简单的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#视图与模板"><span class="nav-number">1.</span> <span class="nav-text">视图与模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a></li></ol></div>
             
           </div>
         </section>
