@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/05/28/google模拟面试/index.html">
 <meta property="og:site_name" content="节瓜的博客">
 <meta property="og:description" content="以我经历过的google面试为基础改写而成的面试分析">
-<meta property="og:updated_time" content="2016-05-27T15:44:28.000Z">
+<meta property="og:updated_time" content="2016-05-27T16:25:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="google模拟面试">
 <meta name="twitter:description" content="以我经历过的google面试为基础改写而成的面试分析">
@@ -289,10 +289,10 @@
         <blockquote>
 <p>这篇文章是为了让大家对面试有所了解而写<br>以我经历过的google面试为基础改写而成（顺便锻炼下自己面试的能力，笑😊）</p>
 </blockquote>
-<p>#地下城</p>
-<h2 id="第一关：你猜"><a href="#第一关：你猜" class="headerlink" title="第一关：你猜"></a>第一关：你猜</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>系统首先产生一个secret list（就是一个列表，列表中包含很多对象），长度为length，同时提供一个API:</p>
+<h1 id="地下城"><a href="#地下城" class="headerlink" title="地下城"></a>地下城</h1><h2 id="第一关：你猜"><a href="#第一关：你猜" class="headerlink" title="第一关：你猜"></a>第一关：你猜</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>系统首先产生一个secret list（就是一个列表，列表中包含很多对象），长度为length，同时提供一个API:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">makeAGuess</span><span class="params">(List&lt;Object&gt; yourGuess)</span></span></span><br></pre></td></tr></table></figure>
-<p>这个API会返回你猜测的列表和secret list有多少个对象是共同包含的，特别的，如果你所有object都互相包含而且顺序正确，返回值为length+1,其他时候返回值不代表顺序的正确性</p>
+<p>这个API会返回你猜测的列表和secret list有多少个对象是共同包含的，特别的，如果你所有object都互相包含而且顺序正确，返回值为length+1,其他时候返回值不代表顺序的正确性。</p>
+<p>Goal: 尽可能少地调用API，而且保证你的算法最终会得到正确的结果（证明你的算法最终必有解）</p>
 
       
     </div>
@@ -448,7 +448,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一关：你猜"><span class="nav-number">1.</span> <span class="nav-text">第一关：你猜</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#地下城"><span class="nav-number">1.</span> <span class="nav-text">地下城</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一关：你猜"><span class="nav-number">1.1.</span> <span class="nav-text">第一关：你猜</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题描述</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
