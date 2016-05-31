@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="angularjs," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,16 +80,15 @@
 
 
 
-<meta name="description" content="最基础的index html页面">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Step 0">
-<meta property="og:url" content="http://yoursite.com/2016/04/23/Step-0/index.html">
+<meta name="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+<meta property="og:type" content="website">
+<meta property="og:title" content="节瓜的博客">
+<meta property="og:url" content="http://yoursite.com/tags/python/index.html">
 <meta property="og:site_name" content="节瓜的博客">
-<meta property="og:description" content="最基础的index html页面">
-<meta property="og:updated_time" content="2016-05-08T15:41:01.000Z">
+<meta property="og:description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Step 0">
-<meta name="twitter:description" content="最基础的index html页面">
+<meta name="twitter:title" content="节瓜的博客">
+<meta name="twitter:description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
 
 
 
@@ -107,7 +106,7 @@
   };
 </script>
 
-  <title> Step 0 | 节瓜的博客 </title>
+  <title> 标签: python | 节瓜的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,7 +136,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,157 +224,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Step 0
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-23T04:31:13+08:00" content="2016-04-22">
-              2016-04-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/angularjs从零单排/" itemprop="url" rel="index">
-                    <span itemprop="name">angularjs从零单排</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/23/Step-0/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/Step-0/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>首先是最基础的index页面：<br>    app/index.html:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">ng-app</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>My HTML File<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"bower_components/bootstrap/dist/css/bootstrap.css"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/app.css"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/angular/angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Nothing here &#123;&#123; 'yet' + '!' &#125;&#125; <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>注意这个表达式 </p>
-<pre><code>&lt;p&gt;Nothing here {{'yet' + '!'}}&lt;/p&gt;
-</code></pre><p>这里两个大括号里面扩住的是 绑定<br>这个数据绑定表达式的值会被angularjs自动计算，基于当前modal的作用域</p>
-<pre><code>ng-app directive:
-&lt;html ng-app&gt;
-</code></pre><p>这里的np-app标示了什么部分要被判断为angularjs应用，放在这里说明整个Html都是，但是也可以放在别的地方，那么相应的部分就是angularjs应用 </p>
-
-      
-    </div>
-    
-    <div>
-      
-        
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        python
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
-    </div>
+            <a class="post-title-link" href="/2016/06/01/如何像数据科学家那样思考第一章-程序之路/" itemprop="url">
+              
+                <span itemprop="name">如何像计算机科学家那样思考python篇</span>
+              
+            </a>
+        
+      </h1>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/angularjs/" rel="tag">#angularjs</a>
-          
-        </div>
-      
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-05-31T18:41:39-04:00"
+              content="2016-05-31" >
+          05-31
+        </time>
+      </div>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/23/美国游记/" rel="next" title="美国游记">
-                <i class="fa fa-chevron-left"></i> 美国游记
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/01/Cloud-computing中学到的linux指令/" rel="prev" title="Cloud Computing中学到的Linux指令">
-                Cloud Computing中学到的Linux指令 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
@@ -383,14 +271,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/23/Step-0/"
-           data-title="Step 0" data-url="http://yoursite.com/2016/04/23/Step-0/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -410,17 +290,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -470,17 +341,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -584,10 +444,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
