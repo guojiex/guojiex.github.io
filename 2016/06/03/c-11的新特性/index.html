@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C++,C++11," />
 
 
 
@@ -80,16 +80,16 @@
 
 
 
-<meta name="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="鉴于我工作会用到c++11，所以特地记录下c++11的一些新特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++11的新特性">
+<meta property="og:url" content="http://yoursite.com/2016/06/03/c-11的新特性/index.html">
 <meta property="og:site_name" content="节瓜的博客">
-<meta property="og:description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
-<meta property="og:updated_time" content="2016-04-22T19:58:35.000Z">
+<meta property="og:description" content="鉴于我工作会用到c++11，所以特地记录下c++11的一些新特性">
+<meta property="og:updated_time" content="2016-06-02T09:55:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
-<meta name="twitter:description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+<meta name="twitter:title" content="c++11的新特性">
+<meta name="twitter:description" content="鉴于我工作会用到c++11，所以特地记录下c++11的一些新特性">
 
 
 
@@ -107,13 +107,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    分类 | 节瓜的博客
-  
-</title>
+  <title> c++11的新特性 | 节瓜的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -233,16 +227,147 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 7 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                c++11的新特性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-03T05:43:38+08:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/深入理解C/" itemprop="url" rel="index">
+                    <span itemprop="name">深入理解C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/03/c-11的新特性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/03/c-11的新特性/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud-Computing从零单排/">Cloud Computing从零单排</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/angularjs从零单排/">angularjs从零单排</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python从零单排/">python从零单排</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常/">日常</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深入理解C/">深入理解C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/课程/">课程</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">1</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="func-预定义标识符"><a href="#func-预定义标识符" class="headerlink" title="__func__ 预定义标识符"></a><code>__func__</code> 预定义标识符</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><a href="https://book.douban.com/subject/24738301/" target="_blank" rel="external">深入理解C++11</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag">#C++</a>
+          
+            <a href="/tags/C-11/" rel="tag">#C++11</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/01/如何像数据科学家那样思考第一章-程序之路/" rel="next" title="如何像计算机科学家那样思考python篇">
+                <i class="fa fa-chevron-left"></i> 如何像计算机科学家那样思考python篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -253,8 +378,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="categories/index.html"
-           data-title="标签" data-url="http://yoursite.com/categories/index.html">
+      <div class="ds-thread" data-thread-key="2016/06/03/c-11的新特性/"
+           data-title="c++11的新特性" data-url="http://yoursite.com/2016/06/03/c-11的新特性/">
       </div>
     
   </div>
@@ -278,8 +403,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -329,6 +463,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#func-预定义标识符"><span class="nav-number">1.</span> <span class="nav-text">__func__ 预定义标识符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">2.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -432,6 +577,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
