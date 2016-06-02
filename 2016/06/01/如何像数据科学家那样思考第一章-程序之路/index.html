@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/01/如何像数据科学家那样思考第一章-程序之路/index.html">
 <meta property="og:site_name" content="节瓜的博客">
 <meta property="og:description" content="鉴于我工作会用到python2.7和python3.5，特别翻译此书加深自己对python的基本语法的理解">
-<meta property="og:updated_time" content="2016-06-01T09:34:23.000Z">
+<meta property="og:updated_time" content="2016-06-02T09:06:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何像计算机科学家那样思考python篇">
 <meta name="twitter:description" content="鉴于我工作会用到python2.7和python3.5，特别翻译此书加深自己对python的基本语法的理解">
@@ -348,6 +348,13 @@
 <p><strong>python3.5</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="number">42</span>,<span class="number">000</span>)</span><br><span class="line"><span class="number">42</span> <span class="number">0</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>编程语言其中一个重要的特性就是操作控制<strong>变量</strong>的能力。</p>
+<p><strong>赋值语句</strong>可以产生新的变量并且赋给他们值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">"What's up, Doc?"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n = <span class="number">17</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pi = <span class="number">3.14159</span></span><br></pre></td></tr></table></figure>
+<p>上面这个例子给出了三个句子。第一个把字符串<code>&quot;What&#39;s up, Doc?&quot;</code>赋值给一个叫做<code>message</code>的新变量。第二个语句把整数<code>17</code>赋值给<code>n</code>，第三个语句把浮点数<code>3.14159</code>赋给<code>pi</code>。</p>
+<p>这里注意，赋值运算符<strong>=</strong>，并不是我们平时数学意义上的等号（哪怕他们是同样的符号）。赋值运算符把等号左边称为<strong>变量名字</strong>，右边是想要付给这个变量的<strong>值</strong>，这就是为什么你输入以下代码会报错：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">17</span> = n</span><br><span class="line">File <span class="string">"&lt;interactive input&gt;"</span>, line <span class="number">1</span></span><br><span class="line">SyntaxError: can<span class="string">'t assign to literal</span></span><br></pre></td></tr></table></figure>
+<h2 id="变量名和关键词"><a href="#变量名和关键词" class="headerlink" title="变量名和关键词"></a>变量名和关键词</h2><p>通常来说，程序员会为他们的变量选择恰当的名字——他们会记录下这个变量的用途。</p>
+<p><strong>变量名</strong>可以很长。其中可以包含字母和数字，但是必须以字母开头。尽管使用大写字母是合法的，</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
 <li><a href="http://openbookproject.net/thinkcs/python/english2e/index.html" target="_blank" rel="external">How to Think Like a Computer Scientist: Learning with Python 2nd Edition</a></li>
 <li><a href="http://openbookproject.net/thinkcs/python/english3e/index.html" target="_blank" rel="external">How to Think Like a Computer Scientist: Learning with Python 3</a></li>
@@ -505,7 +512,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序之路"><span class="nav-number">2.</span> <span class="nav-text">程序之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个程序"><span class="nav-number">2.1.</span> <span class="nav-text">第一个程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量，表达式和语句"><span class="nav-number">3.</span> <span class="nav-text">变量，表达式和语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值和数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">值和数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序之路"><span class="nav-number">2.</span> <span class="nav-text">程序之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个程序"><span class="nav-number">2.1.</span> <span class="nav-text">第一个程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量，表达式和语句"><span class="nav-number">3.</span> <span class="nav-text">变量，表达式和语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值和数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">值和数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量名和关键词"><span class="nav-number">3.3.</span> <span class="nav-text">变量名和关键词</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
           </div>
         </section>
