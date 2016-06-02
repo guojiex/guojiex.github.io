@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/03/c-11的新特性/index.html">
 <meta property="og:site_name" content="节瓜的博客">
 <meta property="og:description" content="鉴于我工作会用到c++11，所以特地记录下c++11的一些新特性">
-<meta property="og:updated_time" content="2016-06-02T09:55:10.000Z">
+<meta property="og:updated_time" content="2016-06-02T10:21:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++11的新特性">
 <meta name="twitter:description" content="鉴于我工作会用到c++11，所以特地记录下c++11的一些新特性">
@@ -312,7 +312,11 @@
       
 
       
-        <h1 id="func-预定义标识符"><a href="#func-预定义标识符" class="headerlink" title="__func__ 预定义标识符"></a><code>__func__</code> 预定义标识符</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+        <h1 id="func-预定义标识符"><a href="#func-预定义标识符" class="headerlink" title="__func__ 预定义标识符"></a><code>__func__</code> 预定义标识符</h1><p><code>__func__</code> 的功能是返回所在函数的名字，如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">Hello</span><span class="params">()</span> </span>&#123;return __func__;&#125;</span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">World</span><span class="params">()</span> </span>&#123;return __func__;&#125;</span><br></pre></td></tr></table></figure>
+<p>而且<code>__func__</code>还可以被使用在类和结构体中，例如可以在类的构造函数中使用<code>__func__</code>作为初始化成员列表的参数，如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> TestClass&#123;     </span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span>* name;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        TestClass():name(__func__)&#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">getName</span><span class="params">()</span></span>&#123; return name; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
 <li><a href="https://book.douban.com/subject/24738301/" target="_blank" rel="external">深入理解C++11</a></li>
 </ul>
 
