@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -80,16 +80,19 @@
 
 
 
-<meta name="description" content="鉴于我工作会用到python2.7和python3.5，特别翻译此书加深自己对python的基本语法的理解">
+<meta name="description" content="鉴于我工作会用到Python2.7和Python3.5，特别翻译此书加深自己对Python的基本语法的理解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何像计算机科学家那样思考python篇">
+<meta property="og:title" content="如何像计算机科学家那样思考Python篇">
 <meta property="og:url" content="http://yoursite.com/2016/06/01/如何像数据科学家那样思考第一章-程序之路/index.html">
 <meta property="og:site_name" content="节瓜的博客">
-<meta property="og:description" content="鉴于我工作会用到python2.7和python3.5，特别翻译此书加深自己对python的基本语法的理解">
-<meta property="og:updated_time" content="2016-06-02T10:23:16.000Z">
+<meta property="og:description" content="鉴于我工作会用到Python2.7和Python3.5，特别翻译此书加深自己对Python的基本语法的理解">
+<meta property="og:image" content="http://yoursite.com/media/14649509422800.jpg">
+<meta property="og:image" content="http://yoursite.com/media/14649508833981.jpg">
+<meta property="og:updated_time" content="2016-06-03T10:50:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何像计算机科学家那样思考python篇">
-<meta name="twitter:description" content="鉴于我工作会用到python2.7和python3.5，特别翻译此书加深自己对python的基本语法的理解">
+<meta name="twitter:title" content="如何像计算机科学家那样思考Python篇">
+<meta name="twitter:description" content="鉴于我工作会用到Python2.7和Python3.5，特别翻译此书加深自己对Python的基本语法的理解">
+<meta name="twitter:image" content="http://yoursite.com/media/14649509422800.jpg">
 
 
 
@@ -107,7 +110,7 @@
   };
 </script>
 
-  <title> 如何像计算机科学家那样思考python篇 | 节瓜的博客 </title>
+  <title> 如何像计算机科学家那样思考Python篇 | 节瓜的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -246,7 +249,7 @@
             
             
               
-                如何像计算机科学家那样思考python篇
+                如何像计算机科学家那样思考Python篇
               
             
           </h1>
@@ -272,8 +275,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python从零单排/" itemprop="url" rel="index">
-                    <span itemprop="name">python从零单排</span>
+                  <a href="/categories/Python从零单排/" itemprop="url" rel="index">
+                    <span itemprop="name">Python从零单排</span>
                   </a>
                 </span>
 
@@ -312,13 +315,13 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇博客主要是《<a href="http://openbookproject.net/thinkcs/python/english2e/index.html" target="_blank" rel="external">如何像计算机科学家那样思考</a>》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。</p>
-<h1 id="程序之路"><a href="#程序之路" class="headerlink" title="程序之路"></a>程序之路</h1><h2 id="第一个程序"><a href="#第一个程序" class="headerlink" title="第一个程序"></a>第一个程序</h2><p>这个程序只是简单地在屏幕上显示一段文字<br><strong>python2.7</strong></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇博客主要是《<a href="http://openbookproject.net/thinkcs/Python/english2e/index.html" target="_blank" rel="external">如何像计算机科学家那样思考</a>》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。</p>
+<h1 id="程序之路"><a href="#程序之路" class="headerlink" title="程序之路"></a>程序之路</h1><h2 id="第一个程序"><a href="#第一个程序" class="headerlink" title="第一个程序"></a>第一个程序</h2><p>这个程序只是简单地在屏幕上显示一段文字<br><strong>Python2.7</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">"Hello, World!"</span></span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, World!</span><br></pre></td></tr></table></figure>
-<p><strong>python3.5</strong></p>
-<p>python3.5改变了print的语法，如果直接使用2.7的语法会报错</p>
+<p><strong>Python3.5</strong></p>
+<p>Python3.5改变了print的语法，如果直接使用2.7的语法会报错</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print &quot;Hello world&quot;</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1</span><br><span class="line">    print &quot;Hello world&quot;</span><br><span class="line">                      ^</span><br><span class="line">SyntaxError: Missing parentheses in call to &apos;print&apos;</span><br></pre></td></tr></table></figure>
 <p><strong><em>正确的写法</em></strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"Hello, World!"</span>)</span><br></pre></td></tr></table></figure>
@@ -327,25 +330,25 @@
 <h1 id="变量，表达式和语句"><a href="#变量，表达式和语句" class="headerlink" title="变量，表达式和语句"></a>变量，表达式和语句</h1><h2 id="值和数据类型"><a href="#值和数据类型" class="headerlink" title="值和数据类型"></a>值和数据类型</h2><p>值是最基础的事物之一<strong><em>（比如一个字母或者数字）</em></strong>，也是程序所操作和控制的基础事物。</p>
 <p>我们看到过的值有<code>2</code>和<code>&quot;Hello, World!&quot;</code>，它们属于不同的数据类型<code>2</code>是整数类型，<code>&quot;Hello, World!&quot;</code>是字符串类型（因为它是由一串字符组成的）。你和编译器都知道这是字符串，因为他被两个双引号包围。</p>
 <p>如果你不清楚一个值的类型是什么，那么可以使用下面的代码来得到值的类型</p>
-<p><strong>python2.7</strong></p>
+<p><strong>Python2.7</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">"Hello, World!"</span>)</span><br><span class="line">&lt;type <span class="string">'str'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">17</span>)</span><br><span class="line">&lt;type <span class="string">'int'</span>&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>python3.5</strong></p>
+<p><strong>Python3.5</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; type("Hello, World!")</span><br><span class="line">&lt;class 'str'&gt;</span><br><span class="line">&gt;&gt;&gt; type(17)</span><br><span class="line">&lt;class 'int'&gt;</span><br></pre></td></tr></table></figure>
 <hr>
 <p>显而易见的，字符串属于类型<strong><em>str</em></strong>，整数属于类型<strong><em>int</em></strong>。不过带有小数点的数字属于类型<strong><em>float</em></strong></p>
-<p><strong>python2.7</strong></p>
+<p><strong>Python2.7</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">3.2</span>)</span><br><span class="line">&lt;type <span class="string">'float'</span>&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>python3.5</strong></p>
+<p><strong>Python3.5</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">3.2</span>)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">float</span>'&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
-<p>python中的字符串可以用单引号包括或者用双引号包括。如果最外面用双引号代表字符串，那么字符串里面可以包含单引号，比如<code>&quot;Bruce&#39;s beard</code>。同样的，如果最外面使用单引号代表字符串，里面可以包含双引号，比如<code>&#39;The knights who say &quot;Ni!&quot;&#39;</code>。</p>
+<p>Python中的字符串可以用单引号包括或者用双引号包括。如果最外面用双引号代表字符串，那么字符串里面可以包含单引号，比如<code>&quot;Bruce&#39;s beard</code>。同样的，如果最外面使用单引号代表字符串，里面可以包含双引号，比如<code>&#39;The knights who say &quot;Ni!&quot;&#39;</code>。</p>
 <p>此外还有使用三个单引号进行包含的字符串，例如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'''"Oh no", she exclaimed, "Ben's bike is broken!"'''</span>)</span><br><span class="line"><span class="string">"Oh no"</span>, she exclaimed, <span class="string">"Ben's bike is broken!"</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <hr>
-<p>另外，平时针对大整数的使用逗号分割的写法在python中是不识别的（虽然不会有语法错误），例如：</p>
-<p><strong>python2.7</strong></p>
+<p>另外，平时针对大整数的使用逗号分割的写法在Python中是不识别的（虽然不会有语法错误），例如：</p>
+<p><strong>Python2.7</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span></span><br><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p><strong>python3.5</strong></p>
+<p><strong>Python3.5</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="number">42</span>,<span class="number">000</span>)</span><br><span class="line"><span class="number">42</span> <span class="number">0</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>编程语言其中一个重要的特性就是操作控制<strong>变量</strong>的能力。</p>
 <p><strong>赋值语句</strong>可以产生新的变量并且赋给他们值：</p>
@@ -356,13 +359,17 @@
 <h2 id="变量名和关键字（保留字）"><a href="#变量名和关键字（保留字）" class="headerlink" title="变量名和关键字（保留字）"></a>变量名和关键字（保留字）</h2><p>通常来说，程序员会为他们的变量选择恰当的名字——他们会记录下这个变量的用途。</p>
 <p><strong>变量名</strong>可以很长。其中可以包含字母和数字，但是必须以字母开头。尽管使用大写字母是合法的，但是传统上我们不会这样做。变量名是大小写敏感的：<code>Bruce</code>和<code>bruce</code>是不同的变量。</p>
 <p>下划线字符（_）是可以使用在变量名中的，它经常被用于变量名中用于切分多个单词的情况，比如说<code>my_name</code>或者<code>price_of_tea_in_china</code>。</p>
-<p>如果你使用了不合法的变量名，python会报错：</p>
+<p>如果你使用了不合法的变量名，Python会报错：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; 76trombones = "big parade"</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">&gt;&gt;&gt; more$ = 1000000</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line">&gt;&gt;&gt; class = "Computer Science 101"</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
 <p><code>76trombones</code>是不合法的，因为他没有使用字母开头。<code>more$</code>是不合法的，因为它里面包含了一个不合法的美元符号<code>$</code>。但是<code>class</code>这个变量名哪里错了呢？</p>
-<p>这其实是因为<code>class</code>是python语言定义的<strong>关键字</strong>之一。关键字定义了编程语言的语法规则和结构，他们不能被当做变量名使用</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
-<li><a href="http://openbookproject.net/thinkcs/python/english2e/index.html" target="_blank" rel="external">How to Think Like a Computer Scientist: Learning with Python 2nd Edition</a></li>
-<li><a href="http://openbookproject.net/thinkcs/python/english3e/index.html" target="_blank" rel="external">How to Think Like a Computer Scientist: Learning with Python 3</a></li>
+<p>这其实是因为<code>class</code>是Python语言定义的<strong>关键字</strong>之一。关键字定义了编程语言的语法规则和结构，他们不能被当做变量名使用。</p>
+<p><strong><em>Python 关键字</em></strong></p>
+<p><strong>Python2.7</strong><br><img src="/media/14649509422800.jpg" alt=""></p>
+<p><strong>Python3.5</strong><br><img src="/media/14649508833981.jpg" alt=""></p>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><ul>
+<li><a href="https://github.com/guojiex/leetcodeThing/tree/master/pythonExercise" target="_blank" rel="external">My Github</a><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1></li>
+<li><a href="http://openbookproject.net/thinkcs/Python/english2e/index.html" target="_blank" rel="external">How to Think Like a Computer Scientist: Learning with Python 2nd Edition</a></li>
+<li><a href="http://openbookproject.net/thinkcs/Python/english3e/index.html" target="_blank" rel="external">How to Think Like a Computer Scientist: Learning with Python 3</a></li>
 </ul>
 
       
@@ -384,7 +391,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/Python/" rel="tag">#Python</a>
           
         </div>
       
@@ -430,7 +437,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/06/01/如何像数据科学家那样思考第一章-程序之路/"
-           data-title="如何像计算机科学家那样思考python篇" data-url="http://yoursite.com/2016/06/01/如何像数据科学家那样思考第一章-程序之路/">
+           data-title="如何像计算机科学家那样思考Python篇" data-url="http://yoursite.com/2016/06/01/如何像数据科学家那样思考第一章-程序之路/">
       </div>
     
   </div>
@@ -483,7 +490,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -492,7 +499,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -521,7 +528,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序之路"><span class="nav-number">2.</span> <span class="nav-text">程序之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个程序"><span class="nav-number">2.1.</span> <span class="nav-text">第一个程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量，表达式和语句"><span class="nav-number">3.</span> <span class="nav-text">变量，表达式和语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值和数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">值和数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量名和关键字（保留字）"><span class="nav-number">3.3.</span> <span class="nav-text">变量名和关键字（保留字）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序之路"><span class="nav-number">2.</span> <span class="nav-text">程序之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个程序"><span class="nav-number">2.1.</span> <span class="nav-text">第一个程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量，表达式和语句"><span class="nav-number">3.</span> <span class="nav-text">变量，表达式和语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值和数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">值和数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量名和关键字（保留字）"><span class="nav-number">3.3.</span> <span class="nav-text">变量名和关键字（保留字）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考代码"><span class="nav-number">4.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
           </div>
         </section>
