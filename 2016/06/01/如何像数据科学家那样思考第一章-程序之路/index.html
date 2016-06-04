@@ -88,7 +88,7 @@
 <meta property="og:description" content="鉴于我工作会用到Python2.7和Python3.5，特别翻译此书加深自己对Python的基本语法的理解">
 <meta property="og:image" content="http://yoursite.com/media/14649509422800.jpg">
 <meta property="og:image" content="http://yoursite.com/media/14649508833981.jpg">
-<meta property="og:updated_time" content="2016-06-03T10:50:25.000Z">
+<meta property="og:updated_time" content="2016-06-04T01:48:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何像计算机科学家那样思考Python篇">
 <meta name="twitter:description" content="鉴于我工作会用到Python2.7和Python3.5，特别翻译此书加深自己对Python的基本语法的理解">
@@ -366,6 +366,14 @@
 <p><strong><em>Python 关键字</em></strong></p>
 <p><strong>Python2.7</strong><br><img src="/media/14649509422800.jpg" alt=""></p>
 <p><strong>Python3.5</strong><br><img src="/media/14649508833981.jpg" alt=""></p>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>一个<strong>语句</strong>就是一条Python解释器能够执行的指令。我们现在看到了两种语句：print和赋值语句。</p>
+<p>当你在命令行中输入一个语句，Python会执行并且把结果显示出来（如果有结果的话）。print语句的结果是一个值，赋值语句不会产生结果。</p>
+<p>一个脚本通常包含一序列的语句，如果有多于一个的语句的话，结果会按照脚本中语句执行的顺序来显示，例如脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="number">1</span></span><br><span class="line">x = <span class="number">2</span></span><br><span class="line"><span class="keyword">print</span> x</span><br></pre></td></tr></table></figure>
+<p>会产生输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h2><p>一个表达式是值，变量，运算符的组合。如果你在命令行中输入一个表达式，解释器会计算并且把表达式的结果显示出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> + <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><ul>
 <li><a href="https://github.com/guojiex/leetcodeThing/tree/master/pythonExercise" target="_blank" rel="external">My Github</a><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1></li>
 <li><a href="http://openbookproject.net/thinkcs/Python/english2e/index.html" target="_blank" rel="external">How to Think Like a Computer Scientist: Learning with Python 2nd Edition</a></li>
@@ -528,7 +536,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序之路"><span class="nav-number">2.</span> <span class="nav-text">程序之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个程序"><span class="nav-number">2.1.</span> <span class="nav-text">第一个程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量，表达式和语句"><span class="nav-number">3.</span> <span class="nav-text">变量，表达式和语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值和数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">值和数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量名和关键字（保留字）"><span class="nav-number">3.3.</span> <span class="nav-text">变量名和关键字（保留字）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考代码"><span class="nav-number">4.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序之路"><span class="nav-number">2.</span> <span class="nav-text">程序之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个程序"><span class="nav-number">2.1.</span> <span class="nav-text">第一个程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量，表达式和语句"><span class="nav-number">3.</span> <span class="nav-text">变量，表达式和语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值和数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">值和数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量名和关键字（保留字）"><span class="nav-number">3.3.</span> <span class="nav-text">变量名和关键字（保留字）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句"><span class="nav-number">3.4.</span> <span class="nav-text">语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式求值"><span class="nav-number">3.5.</span> <span class="nav-text">表达式求值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考代码"><span class="nav-number">4.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
           </div>
         </section>
