@@ -88,7 +88,7 @@
 <meta property="og:description" content="本文是对《如何像计算机科学家那样思考》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。">
 <meta property="og:image" content="http://guojiex.github.io/media/14649509422800.jpg">
 <meta property="og:image" content="http://guojiex.github.io/media/14649508833981.jpg">
-<meta property="og:updated_time" content="2016-06-07T09:33:33.000Z">
+<meta property="og:updated_time" content="2016-06-07T09:55:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何像计算机科学家那样思考Python篇（第一、二章）">
 <meta name="twitter:description" content="本文是对《如何像计算机科学家那样思考》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。">
@@ -381,6 +381,10 @@
 <h2 id="操作数和操作符"><a href="#操作数和操作符" class="headerlink" title="操作数和操作符"></a>操作数和操作符</h2><p><strong>操作符</strong>是特别的符号，用来代表计算类型，比如加号和乘号。被<strong>操作符</strong>使用到的值，称为<strong>操作数</strong>。</p>
 <p>以下是一些合法的Python表达式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">20</span>+<span class="number">32</span>   hour<span class="number">-1</span>   hour*<span class="number">60</span>+minute   minute/<span class="number">60</span>   <span class="number">5</span>**<span class="number">2</span>   (<span class="number">5</span>+<span class="number">9</span>)*(<span class="number">15</span><span class="number">-7</span>)</span><br></pre></td></tr></table></figure>
+<p>符号<code>+</code>,<code>-</code>和<code>*</code>，以及用来进行优先级分组的小括号，在Python中和数学中有着相同的用法。<code>*</code>是乘法的符号，<code>**</code>是幂次运算的符号：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> ** <span class="number">3</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span> ** <span class="number">2</span></span><br><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
+<p>在Python3中，除法符号<code>/</code>总是会按照浮点数的除法运算方法进行计算（在Python2.7中是整除的意思）。当我们想要使用整除的时候，可以使用<code>//</code>，也被叫做<strong>向下取整除法</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">7</span> / <span class="number">4</span></span><br><span class="line"><span class="number">1.75</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">7</span> // <span class="number">4</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>minutes = <span class="number">645</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hours = minutes // <span class="number">60</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hours</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><ul>
 <li><a href="https://github.com/guojiex/leetcodeThing/tree/master/pythonExercise" target="_blank" rel="external">My Github</a></li>
