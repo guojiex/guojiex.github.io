@@ -4,7 +4,7 @@ const xml2js = require('xml2js')
 
 var urls = []
 const parser = new xml2js.Parser()
-fs.readFile('./public/baidusitemap.xml', 'utf-8', (error, data) => {//先读取文件
+fs.readFile('./public/sitemap.xml', 'utf-8', (error, data) => {//先读取文件
     if (error) {
         console.log(error)
     } else {
