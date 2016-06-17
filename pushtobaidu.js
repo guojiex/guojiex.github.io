@@ -13,7 +13,7 @@ fs.readFile('./public/baidusitemap.xml', 'utf-8', (error, data) => {//先读取�
             const reqData = urls.join('\n')//用换行符把所有url连成字符串
             const postOptions = {
                 host: 'data.zz.baidu.com',
-                path: '/urls?site=www.kuangzen.com&token=XXXXXX',//这里填写你从百度拿到的token
+                path: '/urls?site=guojiex.github.io&token=562hgUR3GCcVMVhu',//这里填写你从百度拿到的token
                 port: '80',
                 method: 'POST',
                 headers: {
