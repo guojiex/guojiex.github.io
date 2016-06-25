@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="leetcode,algorithm," />
+  <meta name="keywords" content="leetcode,algorithm,OO design," />
 
 
 
@@ -80,19 +80,16 @@
 
 
 
-<meta name="description" content="ProblemDesign a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user’s news feed. 
-Your design should suppor">
+<meta name="description" content="Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user&apos;s news feed.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Design Twitter - Medium">
+<meta property="og:title" content="Design Twitter - Medium - OOD">
 <meta property="og:url" content="http://guojiex.github.io/2016/06/26/DesignTwitter-Medium/index.html">
 <meta property="og:site_name" content="节瓜的博客">
-<meta property="og:description" content="ProblemDesign a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user’s news feed. 
-Your design should suppor">
-<meta property="og:updated_time" content="2016-06-25T14:19:15.000Z">
+<meta property="og:description" content="Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user&apos;s news feed.">
+<meta property="og:updated_time" content="2016-06-25T14:23:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Design Twitter - Medium">
-<meta name="twitter:description" content="ProblemDesign a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user’s news feed. 
-Your design should suppor">
+<meta name="twitter:title" content="Design Twitter - Medium - OOD">
+<meta name="twitter:description" content="Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user&apos;s news feed.">
 
 
 
@@ -110,7 +107,7 @@ Your design should suppor">
   };
 </script>
 
-  <title> Design Twitter - Medium | 节瓜的博客 </title>
+  <title> Design Twitter - Medium - OOD | 节瓜的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +266,7 @@ Your design should suppor">
             
             
               
-                Design Twitter - Medium
+                Design Twitter - Medium - OOD
               
             
           </h1>
@@ -345,7 +342,7 @@ Your design should suppor">
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Twitter twitter = <span class="keyword">new</span> Twitter();</span><br><span class="line"></span><br><span class="line"><span class="comment">// User 1 posts a new tweet (id = 5).</span></span><br><span class="line">twitter.postTweet(<span class="number">1</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// User 1's news feed should return a list with 1 tweet id -&gt; [5].</span></span><br><span class="line">twitter.getNewsFeed(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// User 1 follows user 2.</span></span><br><span class="line">twitter.follow(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// User 2 posts a new tweet (id = 6).</span></span><br><span class="line">twitter.postTweet(<span class="number">2</span>, <span class="number">6</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// User 1's news feed should return a list with 2 tweet ids -&gt; [6, 5].</span></span><br><span class="line"><span class="comment">// Tweet id 6 should precede tweet id 5 because it is posted after tweet id 5.</span></span><br><span class="line">twitter.getNewsFeed(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// User 1 unfollows user 2.</span></span><br><span class="line">twitter.unfollow(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// User 1's news feed should return a list with 1 tweet id -&gt; [5],</span></span><br><span class="line"><span class="comment">// since user 1 is no longer following user 2.</span></span><br><span class="line">twitter.getNewsFeed(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 <p>Original code:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Twitter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Twitter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Compose a new tweet. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postTweet</span><span class="params">(<span class="keyword">int</span> userId, <span class="keyword">int</span> tweetId)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getNewsFeed</span><span class="params">(<span class="keyword">int</span> userId)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Follower follows a followee. If the operation is invalid, it should be a no-op. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">follow</span><span class="params">(<span class="keyword">int</span> followerId, <span class="keyword">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Follower unfollows a followee. If the operation is invalid, it should be a no-op. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unfollow</span><span class="params">(<span class="keyword">int</span> followerId, <span class="keyword">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Your Twitter object will be instantiated and called as such:</span><br><span class="line"> * Twitter obj = new Twitter();</span><br><span class="line"> * obj.postTweet(userId,tweetId);</span><br><span class="line"> * List&lt;Integer&gt; param_2 = obj.getNewsFeed(userId);</span><br><span class="line"> * obj.follow(followerId,followeeId);</span><br><span class="line"> * obj.unfollow(followerId,followeeId);</span><br><span class="line"> */</span></span><br></pre></td></tr></table></figure>
-
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1>
       
     </div>
     
@@ -368,6 +365,8 @@ Your design should suppor">
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
             <a href="/tags/algorithm/" rel="tag">#algorithm</a>
+          
+            <a href="/tags/OO-design/" rel="tag">#OO design</a>
           
         </div>
       
@@ -409,7 +408,7 @@ Your design should suppor">
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/06/26/DesignTwitter-Medium/"
-           data-title="Design Twitter - Medium" data-url="http://guojiex.github.io/2016/06/26/DesignTwitter-Medium/">
+           data-title="Design Twitter - Medium - OOD" data-url="http://guojiex.github.io/2016/06/26/DesignTwitter-Medium/">
       </div>
     
   </div>
@@ -471,7 +470,7 @@ Your design should suppor">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -500,7 +499,7 @@ Your design should suppor">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li></ol></div>
             
           </div>
         </section>
