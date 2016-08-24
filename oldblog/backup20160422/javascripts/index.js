@@ -1,1 +1,0 @@
-$("#profileIcon").tooltip();
