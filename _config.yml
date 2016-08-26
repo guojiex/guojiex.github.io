@@ -57,7 +57,7 @@ date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
 index_generator:
-    per_page: 5
+  per_page: 5
 
 archive_generator:
   per_page: 5  //为0时表示不分页全展示
@@ -65,7 +65,7 @@ archive_generator:
   monthly: true //按月生成归档
 
 tag_generator:
-    per_page: 10
+  per_page: 10
 
 # Pagination
 ## Set per_page to 0 to disable pagination
