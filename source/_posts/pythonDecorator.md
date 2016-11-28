@@ -8,11 +8,29 @@ tags:
 ---
 
 # 装饰器
-## 应用场景
+# 应用场景
 一般来说，我们如果想在某些函数前后添加一些log语句，或者像unit test中每一个test之前之后都会自动执行的setUp或者tearDown函数，最笨的办法是手动在每个函数前后添加你要做的操作。但是这样做代码会很臃肿，而且万一忘了在某些函数前后添加语句，会很麻烦。别人看你的代码也会看得一头雾水。这个时候，python的装饰器语法就很有用。
 
+废话少说，接下来我将会写一些代码来展示装饰器用法
 
+# 函数装饰器
+```Python
+def WithPreAndPostFunction(origin_function):
+    def WrappedFunction(cls):
+        print('before')
+        function = origin_function(cls)
+        print('after')
+        return function
+    return WrappedFunction
 
+class Base:
+    def OriginFunction(self):
+        print('origin function')
+        
+    @WithPreAndPostFunction
+    def OriginFunctionWrapped(self):
+        self.OriginFunction()
+```
 
 
 # 参考代码
