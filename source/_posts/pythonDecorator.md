@@ -23,15 +23,58 @@ def WithPreAndPostFunction(origin_function):
         return function
     return WrappedFunction
 
+def WithAllTestFunctionWrapped(cls):
+    for attr_name in dir(cls):
+        attr_value = getattr(cls, attr_name)
+        if hasattr(attr_value, '__call__') and attr_value.__name__.startswith('test'):
+            setattr(cls, attr_name, WithPreAndPostFunction(attr_value))
+    return cls
+```
+
+# 实用装饰器的类
+```Python
+@WithAllTestFunctionWrapped
 class Base:
     def OriginFunction(self):
         print('origin function')
-        
+
     @WithPreAndPostFunction
     def OriginFunctionWrapped(self):
         self.OriginFunction()
+
+    def testOriginFunction(self):
+        self.OriginFunction()
 ```
 
+这里的Base基类使用了WithAllTestFunctionWrapped装饰器，也就是这个类的所有以test为方法名开头的方法都被WithPreAndPostFunction方法包装。
+
+OriginFunctionWrapped函数原本并不会被包装，但是他被加上了WithPreAndPostFunction的装饰器，所以也被包装。
+
+
+# 主程序代码
+```Python
+if __name__ == '__main__':
+    base = Base()
+    base.OriginFunction()
+    print('===')
+    base.OriginFunctionWrapped()
+    print('===')
+    base.testOriginFunction()
+    print('===')
+```
+
+```
+origin function
+===
+before
+origin function
+after
+===
+before
+origin function
+after
+===
+```
 
 # 参考代码
 * [My Github](https://github.com/guojiex/leetcodeThing/blob/master/pythonExercise/decorator/base.py)
