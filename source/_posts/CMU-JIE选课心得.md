@@ -1,6 +1,6 @@
 ---
 title: CMU JIE 选课心得（偏软件）
-date: 2016-05-27 16:02:09
+date: 2018-01-2 16:02:09
 description: 我是中大卡内基梅隆联合工程学院第一届的一名学生，在此记录下自己选课的一些思考和对某些课程的评价，希望能对大家有所帮助
 categories: 课程
 tags:
@@ -10,7 +10,8 @@ tags:
 ---
 
 # update:
-最后更新于2016-05-14,更新了转码套餐，专门针对从别的专业转向编程的同学进行推荐
+1. 2016-05-14,更新了转码套餐，专门针对从别的专业转向编程的同学进行推荐。
+2. 2018-01-23,更新了18660相关。
 
 # 前言
 
@@ -26,12 +27,10 @@ tags:
 
 我对workload的评分是按照cloud computing五星来算的，仅做参考
 
-***有什么课程方面的问题或者觉得这份心得有什么地方讲得不够，可以来联系我或者问我，我的email是<1036479561@qq.com>***
-
 
 # 基本原理
 
-我们学院是属于ECE department的，关于ECE的毕业学分要求可以看 [这里](http://www.ece.cmu.edu/programs-admissions/masters/ms-requirements.html)。简单来说就是总共修96学分，其中60学分的核心课程（来自ece学院18600以上或者cs学院15700以上），剩下36学分中，24分可以修其他学院的研究生课程，12学分可以修其他学院的本科课程。
+我们学院属于ECE department，关于ECE的毕业学分要求可以看 [这里](http://www.ece.cmu.edu/programs-admissions/masters/ms-requirements.html)。简单来说就是总共修96学分，其中60学分的核心课程（来自ece学院18600以上或者cs学院15700以上），剩下36学分中，24分可以修其他学院的研究生课程，12学分可以修其他学院的本科课程。
 
 按照我们项目的正常设定，在国内的一年每一个学期修1门cmu课，来到美国，每个学期3门cmu课，就可以毕业了。
 
@@ -54,7 +53,7 @@ Java入门课，从Java基础语法一直讲到多线程、swing、异常处理�
 ### 08-722 Data Structures for Application Programmers 
 对应国内的数据结构与算法，全程使用Java。主要就是如何花式实现各种数据结构，linked list,array list,hash map,Binary Search Tree等，对于没有系统的上过数据结构的同学会很有帮助。
 
-这门课就是一周一个作业加一个lab,还有一个quiz，事情比较多显得麻烦，而且作业里面会有很多corn case，intresting😯.
+这门课就是一周一个作业加一个lab,还有一个quiz，事情比较多显得麻烦，而且作业里面会有很多corn case，interesting😯.
 
 ### 11-601 Coding Boot Camp
 这门课基本上就是纯粹的刷题课，强迫刷题。老师讲的一般（甚至一般都不到）。但是因为这门课是cs学院的必修课之一，所以在这里你能认识不少cs学院的同学，也是一个选择。
@@ -67,7 +66,7 @@ Java入门课，从Java基础语法一直讲到多线程、swing、异常处理�
 
 ### 18-660 Numerical Methods for Engineering Design and Optimization
 
-***没有你想象中的那么水***
+***更新：这门课在18 spring换了老师，已经不再是水课，名字也改成了optimization，下面的介绍看看就好。***
 
 很多人都说这门课是水课，但其实只是给分比较松，学到的东西其实还是蛮有用的（如果你想继续在这个方面研究的话），workload不大
 
