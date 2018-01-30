@@ -46,7 +46,7 @@ tags:
 
 我们上课的课程在[Code.org](https://studio.code.org/home)上，课程是[Computer Science Principles](https://studio.code.org/courses/csp)，所有的课程作业，内容，教学计划全都在网站上，所以其实每天的教学就是按照网站上的教学计划教一遍。有某些章节我会附加一些课外的内容（虽然大家好像没什么感觉），比如说在讲路由的章节我会额外讲解[Ping的使用方法](https://docs.google.com/document/d/1WqNFVTgPaaX8Et5wJsY5r_wLZTsqso-KH5CdFETmsyc/edit?usp=sharing)，又或者在讲网络安全的章节黑一下[SSN泄露](https://www.uscreditcardguide.com/equifax-data-breach/)。
 
-每年的三四月份是高中生参加全国AP CS课考试的时间，每个参加的学生都要自己写一个APP，以及一份研究报告（论文），那个时候我们就不用去学校了。
+每年的三四月是高中生参加全国AP CS课考试的时间，每个参加的学生都要自己写一个APP，以及一份研究报告（论文），那个时候我们就不用去学校了。
 
 ## 总结一下
 
@@ -60,7 +60,7 @@ tags:
 
 TEALS (Technology Education and Literacy in Schools) 帮助美国各地的高中建立和发展计算机科学。TEALS将来自科技行业的计算机科学专业人员与课堂教师配对，共同教授计算机科学。TEALS于2009年由微软员工Kevin Wang开创，他在业余时间开发和运行该项目，并得到微软慈善机构的支持。
 
-TEALS目前在全美29个州，348所学校中进行教学，可以看这里。
+TEALS目前在全美29个州，348所学校中进行教学，可以看[这里](https://www.tealsk12.org/about/)。
 
 以下内容摘自[常见问题](https://www.tealsk12.org/volunteers/faq/)。
 
@@ -78,4 +78,10 @@ TEALS目前在全美29个州，348所学校中进行教学，可以看这里。
 
 一个TEALS合作教学团队包括3-4个志愿者加上教师。在任何一天里，至少一位志愿者回合老师一起出现在课堂中，所以你会上整个学年至少一般的课。有的学校每天都要上CS课，有的学校只会在每周的特定几天上CS课。
 
-（未完待续）
+### Lab Support Model
+
+Lab Support Model平均来说花费的时间比合作教学模式少，一般来说每周要上一到两次课，以及在课堂之外花费几个小时和老师一起合作交流。
+
+### Classroom Enrichment Model
+
+这个模式对时间花费要求最低，你只需要经常和教师进行交流支持就可以了，不一定需要到场上课。
