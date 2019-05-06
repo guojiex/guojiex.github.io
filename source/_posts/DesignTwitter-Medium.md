@@ -9,6 +9,7 @@ tags:
 - OO design
 ---
 # Problem
+
 Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user's news feed. 
 
 Your design should support the following methods:
@@ -88,9 +89,8 @@ public class Twitter {
 ```
 
 # 分析
-首先，观察题目，我们可以看到有Twitter这个比较大的系统，应该独立成为一个类，然后我们想想，可以和Twitter互动的东西是什么？我首先想到的就是User，一个Twitter系统，其实就是用户的管理系统。再继续我们还能看到有Tweet，但是这个Tweet应该被User持有。
 
-然后为了获得最新的10条Tweet，在twitter类中我们需要
+首先，观察题目，我们可以看到有Twitter这个比较大的系统，应该独立成为一个类，然后我们想想，可以和Twitter互动的东西是什么？我首先想到的就是User，一个Twitter系统，其实就是用户的管理系统。再继续我们还能看到有Tweet，但是这个Tweet应该被User持有。
 
 # 实战
 
