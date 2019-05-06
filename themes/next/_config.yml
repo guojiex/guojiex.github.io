@@ -206,7 +206,7 @@ social:
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
-  #YouTube: https://youtube.com/yourname || youtube
+  YouTube: https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber || youtube
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
 
@@ -230,7 +230,7 @@ avatar:
   # You can also use other linking images.
   url: https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg
   # If true, the avatar would be dispalyed in circle.
-  rounded: false
+  rounded: true
   # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.
   opacity: 1
   # If true, the avatar would be rotated with the cursor.
@@ -374,7 +374,7 @@ related_posts:
   title: # custom header, leave empty to use the default one
   display_in_home: false
   params:
-    maxCount: 5
+    #maxCount: 5
     #PPMixingRate: 0.0
     #isDate: false
     #isImage: false
