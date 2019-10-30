@@ -6,7 +6,8 @@ date: 2016-06-22 10:36:09
 本人男，92年生金牛座。
 本科就读中山大学信科院，
 研究生就读[中山大学—卡内基梅隆大学联合工程学院](http://jie.sysu.edu.cn)，
-毕业后现在在[匹兹堡谷歌](https://www.google.com/about/locations/pittsburgh/)工作。
+曾在[匹兹堡谷歌](https://about.google/locations/?region=north-america&office=pittsburgh)工作3年。
+现在在[柯克兰谷歌](https://about.google/locations/?region=north-america&office=kirkland)工作
 
 ***
 
