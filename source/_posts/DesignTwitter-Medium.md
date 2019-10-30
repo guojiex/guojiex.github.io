@@ -2,7 +2,7 @@
 title: Design Twitter - Medium - OOD
 date: 2016-06-25 22:13:38
 description: Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user's news feed.
-categories: 刷题集锦
+categories: leetcode
 tags:
 - leetcode
 - algorithm
