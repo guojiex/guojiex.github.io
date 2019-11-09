@@ -1,8 +1,0 @@
-Hi,I am a student now in cmu's ECE department,who will graduate in next May.
-My website is http://guojiex.github.io,it shows some graphs of my previous work(mostly data visualization),
-and also some projects that I have done.
-My linkedin file is in https://www.linkedin.com/in/guojiex.
-
-I learned programming from middle school, started from Pascal and a competition called NOIP(National Olympiad in Informatics in Provinces). After that I learn vb in high school.After I went to college, I learned a lot more languages like:c++,java,python,html,javascript,sql,matlab. I can start to use a new language within a short period of time because each time when I have to start a new project, it requires me to use some new language. Recently I am 
-
-I think in the rest of my life I will continue to do technical things because I am good at it and I have spent lot of time on it. 
