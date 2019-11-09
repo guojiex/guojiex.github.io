@@ -1,5 +1,5 @@
 ---
-title: Two Sum
+title: 1. Two Sum
 date: 2019-10-29 22:34:37
 description: Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 categories: leetcode
