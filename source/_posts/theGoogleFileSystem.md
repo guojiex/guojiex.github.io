@@ -1,7 +1,7 @@
 ---
 title: The Google File System 谷歌文件系统 笔记(TBD)
 date: 2020-01-16 22:01:25
-description: The Google File System(GFS) 是Google 
+description: The Google File System(GFS) 是Google 2003 年公布的分布式存储文件系统。 
 categories: 学习笔记
 tags:
 - Google
