@@ -10,7 +10,7 @@ tags:
 - Google File System
 ---
 
-# [The Google File System](https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/gfs-sosp2003.pdf)
+[The Google File System](https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/gfs-sosp2003.pdf)
 
 # 介绍
 
