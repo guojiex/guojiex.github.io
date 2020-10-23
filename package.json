@@ -9,6 +9,7 @@
     "hexo": "^4.2.1",
     "hexo-admin": "^2.3.0",
     "hexo-deployer-git": "^2.1.0",
+    "hexo-filter-mermaid-diagrams": "^1.0.5",
     "hexo-fontawesome": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
@@ -18,6 +19,7 @@
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-marked": "^3.0.0",
     "hexo-renderer-stylus": "^1.1.0",
-    "hexo-server": "^1.0.0"
+    "hexo-server": "^1.0.0",
+    "yarn": "^1.22.10"
   }
 }
