@@ -4,3 +4,4 @@ public
 db.json
 node_modules/*
 .DS_Store
+source/.DS_Store
