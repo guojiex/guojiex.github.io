@@ -56,3 +56,44 @@ Record append 允许多个client对同一个文件并行追加数据。同时保
 * client可以和master进行对元数据的操作，但是所有对数据的操作直接和chunksserver交流。
 
 * client或者chunkserver都不会缓存文件数据。chunkserver自动获得缓存，因为文件是储存在本地linux文件的。
+
+### 单点master
+
+简化设计，方便master基于全局共识做复杂的chunk和复制逻辑。
+尽量减少读写，保证单点master不是瓶颈。
+客户端不会直接从master读取写入文件数据。
+客户端通过master问出具体应该联系哪个chunkserver
+
+### Chunk Size 块大小
+
+我们选择64MB作为chunk size。每一个chunk replica被当作普通的linux文件存放在chunk server上。
+大chunk size 有以下优点：
+*   减少客户端和master的联系。对同一块的读写只需要向master发送一个初始请求，以获得chunk位置信息。对我们的workload来说，这种减少更为重要，因为应用一般顺序读写大文件。就算是小随机读，客户端也可以轻松缓存所有chunk位置信息。
+*   对于一个大chunk，客户端更加倾向于对一个chunk做很多操作。这样可以减少向chunkserver保持持续TCP链接的网络开销。
+*   减少master上存放的metadata元数据的小。这样可以保证我们能在内存中保存metadata。
+
+但是大chunk size也有缺点。小文件只会有很少的chunk，甚至只有一个chunk。存放这些chunk的chunkserver会变成hotspot热点，如果有很多用户一起访问同一个文件。
+
+如果真的出现这种情况，可以提高replication factor，复制更多副本，流量就可以被分散。
+
+### 元数据Metadata
+
+master保存三种主要metadata：
+
+1.  文件和块chunk的命名空间namespace
+2.  从文件到块chunk的mapping映射
+3.  各个块chunk的replicas副本位置
+
+前两种metadata是通过logging mutation来保证可靠性的。也就是通过操作日志operation log来更新master状态。
+master不会持续存储chunk块位置，而是在服务启动或者chunkserver加入时询问每一个chunkserver。
+
+#### 内存数据类型 In-Memory Data Structures
+
+#### 块位置 Chunk Locations
+
+master 通过心跳信息 来控制所有块位置和监视chunkserver状态。
+持续地保持块位置信息会使得master难以与chunkserver同步。因为chunkserver会频繁的加入或者离开集群，更名，失败，重启，等等操作。
+
+另外就是所有chunk的groundtruth都被存在chunkserver上。在master上保持这些信息同步并无必要。
+
+#### 操作日志 Operation Log
