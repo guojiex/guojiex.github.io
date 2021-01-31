@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="WLOb_rW9OMZrR5YqGG9DEpQ9Jix2ZUGg1N44neW47ts">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="我在美国参加了一个教高中生CS课程的志愿者活动，教课也教了半年多了，在这里介绍一下，希望能给大家一点帮助。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在美国教高中生CS课程">
+<meta property="og:url" content="http://guojiex.github.io/2018/01/28/%E5%A6%82%E4%BD%95%E5%9C%A8%E7%BE%8E%E5%9B%BD%E6%95%99%E9%AB%98%E4%B8%AD%E7%94%9FCS%E8%AF%BE%E7%A8%8B/index.html">
+<meta property="og:site_name" content="节瓜的博客">
+<meta property="og:description" content="我在美国参加了一个教高中生CS课程的志愿者活动，教课也教了半年多了，在这里介绍一下，希望能给大家一点帮助。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-29T03:44:55.000Z">
+<meta property="article:modified_time" content="2021-01-26T02:59:46.068Z">
+<meta property="article:author" content="Jiexin Guo">
+<meta property="article:tag" content="美国">
+<meta property="article:tag" content="高中生">
+<meta property="article:tag" content="支教">
+<meta property="article:tag" content="志愿者">
+<meta property="article:tag" content="CS课程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://guojiex.github.io/2018/01/28/%E5%A6%82%E4%BD%95%E5%9C%A8%E7%BE%8E%E5%9B%BD%E6%95%99%E9%AB%98%E4%B8%AD%E7%94%9FCS%E8%AF%BE%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>如何在美国教高中生CS课程 | 节瓜的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">节瓜的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2018/01/28/%E5%A6%82%E4%BD%95%E5%9C%A8%E7%BE%8E%E5%9B%BD%E6%95%99%E9%AB%98%E4%B8%AD%E7%94%9FCS%E8%AF%BE%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+      <meta itemprop="name" content="Jiexin Guo">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何在美国教高中生CS课程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-28 22:44:55" itemprop="dateCreated datePublished" datetime="2018-01-28T22:44:55-05:00">2018-01-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-25 21:59:46" itemprop="dateModified" datetime="2021-01-25T21:59:46-05:00">2021-01-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%97%A5%E5%B8%B8/" itemprop="url" rel="index"><span itemprop="name">日常</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我在美国参加了一个教高中生CS课程的志愿者活动，教课也教了半年多了，在这里介绍一下，希望能给大家一点帮助。</p>
+<a id="more"></a>
+
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>17年夏天的时候，公司内部邮件组有人分享了参加<a href="https://www.tealsk12.org/" target="_blank" rel="noopener">TEALS志愿者项目</a>的链接，我想看看美国的公立高中教育水平（为以后做打算？），顺便帮助一下，就报名参加了这个志愿者项目。</p>
+<h1 id="我的经历"><a href="#我的经历" class="headerlink" title="我的经历"></a>我的经历</h1><h2 id="报名面试"><a href="#报名面试" class="headerlink" title="报名面试"></a>报名面试</h2><p>看到同事的邮件之后，去<a href="https://www.tealsk12.org/contact/" target="_blank" rel="noopener">TEALS官网</a>提交了申请，一般来说每年的七八月份是申请的时候，因为秋季学期马上要开始。提交申请之后，匹兹堡地区的经理邮件联系我并且视频面试了我一次（面试会如果你碰到学生有不会的问题你会怎么处理blabla）。面试通过之后基本上就算拿到offer了。</p>
+<h2 id="培训"><a href="#培训" class="headerlink" title="培训"></a>培训</h2><p>开学前会有一两次培训课，就是讲一些如何评分，学术不端如何处理，提问技巧，课堂计划设计之类的项目。这些看得出来都是教育心理学相关的内容（可惜我上完就基本忘了）。</p>
+<h2 id="资格审查"><a href="#资格审查" class="headerlink" title="资格审查"></a>资格审查</h2><p>在你正式参加教学之前，会让你交三份clearances：</p>
+<ol>
+<li>Child Abuse Clearance: 证明你没有儿童虐待的情况，宾州的可以在<a href="https://www.compass.state.pa.us/cwis/public/home" target="_blank" rel="noopener">这里</a>申请，这个报告对志愿者是免费的。</li>
+<li>State Criminal History Report: 州犯罪历史记录报告，宾州的在<a href="https://epatch.state.pa.us/" target="_blank" rel="noopener">这里</a>申请，对志愿者来说也是免费的。</li>
+<li>Federal Criminal History Report: 联邦犯罪记录报告（是来自FBI的报告哦），宾州的在<a href="http://www.pa.cogentid.com/index.htm" target="_blank" rel="noopener">这里</a>申请，需要到指定的地点获取指纹才能获得。</li>
+</ol>
+<p>到时候会有邮件告诉你这几份报告的申请细节，不用担心。</p>
+<h2 id="开课！"><a href="#开课！" class="headerlink" title="开课！"></a>开课！</h2><h3 id="上课时间"><a href="#上课时间" class="headerlink" title="上课时间"></a>上课时间</h3><p>我和另外一个Uber的项目经理一起担任Pittsburgh Carrick High School 的AP CS课程的助教。</p>
+<p>因为我们支教的高中的CS课是每天早上的第一节课，我每天早上6.10起床，出门之后开半小时到学校（因为我申请的比较晚，所以分配到了比较远的学校）。课程早上7.30开始，8.20结束，然后开车回公司，9.00到公司上班。因为我们两个人轮换，所以一个人上一周，下一周这个人休息，换另一个人上一周课。</p>
+<h3 id="上课内容"><a href="#上课内容" class="headerlink" title="上课内容"></a>上课内容</h3><p>我们上课的课程在<a href="https://studio.code.org/home" target="_blank" rel="noopener">Code.org</a>上，课程是<a href="https://studio.code.org/courses/csp" target="_blank" rel="noopener">Computer Science Principles</a>，所有的课程作业，内容，教学计划全都在网站上，所以其实每天的教学就是按照网站上的教学计划教一遍。这门课程主要内容其实是计算机导论 + Javascript 拖拽编程（根据要求编一些APP）。</p>
+<p>有某些章节我会附加一些课外的内容（虽然大家好像没什么感觉），比如说在讲路由的章节我会额外讲解<a href="https://docs.google.com/document/d/1WqNFVTgPaaX8Et5wJsY5r_wLZTsqso-KH5CdFETmsyc/edit?usp=sharing" target="_blank" rel="noopener">Ping的使用方法</a>，又或者在讲网络安全的章节黑一下<a href="https://www.uscreditcardguide.com/equifax-data-breach/" target="_blank" rel="noopener">SSN泄露</a>。</p>
+<p>每年的三四月是高中生参加全国AP CS课考试的时间，每个参加的学生都要自己写一个APP，以及一份研究报告（论文），那个时候我们就不用去学校了。</p>
+<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>我一路学CS走过来没人带领，走了不少弯路，有这样的机会可以帮助一下有志向学习CS的学生，感觉还是挺好的。而且课程内容其实都很详细的写在了教学计划中，不需要花额外的力气去计划，不会太影响日常工作，十分的赞。</p>
+<p>课程里面的高中生也有很强的（动手能力）：我教的班里面有个高中生用乐高和自己买的传感器，自己编程，做了一个感应式的喂猫的盒子，他还打算给家里的每只猫做个感应式的芯片，到时候给每一个猫做一个专属的喂猫盒（他家有一只猫有点问题，吃的东西不能和别的猫混着）。</p>
+<p>唯一的缺点就是课程时间太早了。。一周时间每天都那么早起很难受。 以及匹兹堡的冬天早上起来可能要热车半个钟才能出门，下大雪的话路况也会比较差（不过实在太危险可以请假）。</p>
+<h1 id="TEALSK12介绍"><a href="#TEALSK12介绍" class="headerlink" title="TEALSK12介绍"></a><a href="https://www.tealsk12.org/" target="_blank" rel="noopener">TEALSK12介绍</a></h1><p>TEALS (Technology Education and Literacy in Schools) 帮助美国各地的高中建立和发展计算机科学。TEALS将来自科技行业的计算机科学专业人员与课堂教师配对，共同教授计算机科学。TEALS于2009年由微软员工Kevin Wang开创，他在业余时间开发和运行该项目，并得到微软慈善机构的支持。</p>
+<p>TEALS目前在全美29个州，348所学校中进行教学，可以看<a href="https://www.tealsk12.org/about/" target="_blank" rel="noopener">这里</a>。</p>
+<p>以下内容摘自<a href="https://www.tealsk12.org/volunteers/faq/" target="_blank" rel="noopener">常见问题</a>。</p>
+<h2 id="谁可以成为志愿者"><a href="#谁可以成为志愿者" class="headerlink" title="谁可以成为志愿者"></a>谁可以成为志愿者</h2><p>任何一个有计算机科学学位，或者同等工业界经验， 而且想要通过教高中CS课的人都可以申请。</p>
+<p>如果你是大三或者大四正在学习计算机科学的学生，你也可以申请助教职位。</p>
+<h2 id="教学的时间计划？"><a href="#教学的时间计划？" class="headerlink" title="教学的时间计划？"></a>教学的时间计划？</h2><p>根据学校的不同需求， TEALS会有三种不同的参与模型：</p>
+<h3 id="合作教学模式（Co-Teaching-Model）"><a href="#合作教学模式（Co-Teaching-Model）" class="headerlink" title="合作教学模式（Co-Teaching Model）"></a>合作教学模式（Co-Teaching Model）</h3><p>一个TEALS合作教学团队包括3-4个志愿者加上教师。在任何一天里，至少一位志愿者回合老师一起出现在课堂中，所以你会上整个学年至少一般的课。有的学校每天都要上CS课，有的学校只会在每周的特定几天上CS课。</p>
+<h3 id="Lab-Support-Model"><a href="#Lab-Support-Model" class="headerlink" title="Lab Support Model"></a>Lab Support Model</h3><p>Lab Support Model平均来说花费的时间比合作教学模式少，一般来说每周要上一到两次课，以及在课堂之外花费几个小时和老师一起合作交流。</p>
+<h3 id="Classroom-Enrichment-Model"><a href="#Classroom-Enrichment-Model" class="headerlink" title="Classroom Enrichment Model"></a>Classroom Enrichment Model</h3><p>这个模式对时间花费要求最低，你只需要经常和教师进行交流支持就可以了，不一定需要到场上课。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BE%8E%E5%9B%BD/" rel="tag"># 美国</a>
+              <a href="/tags/%E9%AB%98%E4%B8%AD%E7%94%9F/" rel="tag"># 高中生</a>
+              <a href="/tags/%E6%94%AF%E6%95%99/" rel="tag"># 支教</a>
+              <a href="/tags/%E5%BF%97%E6%84%BF%E8%80%85/" rel="tag"># 志愿者</a>
+              <a href="/tags/CS%E8%AF%BE%E7%A8%8B/" rel="tag"># CS课程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/01/02/CMU-JIE%E9%80%89%E8%AF%BE%E5%BF%83%E5%BE%97/" rel="prev" title="CMU JIE 选课心得（偏软件）">
+      <i class="fa fa-chevron-left"></i> CMU JIE 选课心得（偏软件）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/08/19/F1%E7%AD%BE%E8%AF%81%E7%94%B3%E8%AF%B7%E7%91%9E%E5%A3%AB%E7%AD%BE%E8%AF%81/" rel="next" title="在美国用F1签证申请瑞士商务签证">
+      在美国用F1签证申请瑞士商务签证 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我的经历"><span class="nav-number">2.</span> <span class="nav-text">我的经历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#报名面试"><span class="nav-number">2.1.</span> <span class="nav-text">报名面试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#培训"><span class="nav-number">2.2.</span> <span class="nav-text">培训</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资格审查"><span class="nav-number">2.3.</span> <span class="nav-text">资格审查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开课！"><span class="nav-number">2.4.</span> <span class="nav-text">开课！</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上课时间"><span class="nav-number">2.4.1.</span> <span class="nav-text">上课时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上课内容"><span class="nav-number">2.4.2.</span> <span class="nav-text">上课内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结一下"><span class="nav-number">2.5.</span> <span class="nav-text">总结一下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TEALSK12介绍"><span class="nav-number">3.</span> <span class="nav-text">TEALSK12介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#谁可以成为志愿者"><span class="nav-number">3.1.</span> <span class="nav-text">谁可以成为志愿者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教学的时间计划？"><span class="nav-number">3.2.</span> <span class="nav-text">教学的时间计划？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#合作教学模式（Co-Teaching-Model）"><span class="nav-number">3.2.1.</span> <span class="nav-text">合作教学模式（Co-Teaching Model）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lab-Support-Model"><span class="nav-number">3.2.2.</span> <span class="nav-text">Lab Support Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Classroom-Enrichment-Model"><span class="nav-number">3.2.3.</span> <span class="nav-text">Classroom Enrichment Model</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
+      src="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
+  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
