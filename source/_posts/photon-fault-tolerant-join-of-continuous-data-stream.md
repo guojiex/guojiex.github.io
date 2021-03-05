@@ -36,4 +36,4 @@ Photon保证joined output在任何时间点（连接结果）没有重复（dupl
 *   高扩展性
 *   低延时：涉及到客户根据点击统计，实时调整广告计划
 *   乱序流：主事件流（query搜索）基本上是根据时间排序的。但是外键流（foreign stream），比如说点击事件，则基本上不是根据query搜索的时间戳进行排序的。所以window join算法无法使用。
-*   主事件流延迟（delayed primary stream）：只有当对应主事件存在的时候，一个点击事件才能被join。但是因为分布式系统的原因，
+*   主事件流延迟（delayed primary stream）：只有当对应主事件存在的时候，一个点击事件才能被join。但是因为分布式系统的原因，以及各种日志是独立被送到服务器的。所以query log相对click log迟到是很常见的事情。Photon必须有能力join日志，当日志准备好的时候。
