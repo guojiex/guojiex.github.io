@@ -21,24 +21,20 @@
     var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="因为工作原因需要申请申根签证，在这里记录一下如何申请。">
+  <meta name="description" content="简述谷歌代码开发流程，以及对应的测试技术。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在美国用F1签证申请瑞士商务签证">
-<meta property="og:url" content="http://guojiex.github.io/2018/08/19/F1%E7%AD%BE%E8%AF%81%E7%94%B3%E8%AF%B7%E7%91%9E%E5%A3%AB%E7%AD%BE%E8%AF%81/index.html">
+<meta property="og:title" content="谷歌测试环境综述">
+<meta property="og:url" content="http://guojiex.github.io/2021/03/13/testing/%E8%B0%B7%E6%AD%8C%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E7%AE%80%E8%BF%B0/index.html">
 <meta property="og:site_name" content="节瓜的博客">
-<meta property="og:description" content="因为工作原因需要申请申根签证，在这里记录一下如何申请。">
+<meta property="og:description" content="简述谷歌代码开发流程，以及对应的测试技术。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2018-08-19T22:34:27.000Z">
-<meta property="article:modified_time" content="2021-01-26T02:59:46.032Z">
+<meta property="article:published_time" content="2021-03-14T02:35:59.000Z">
+<meta property="article:modified_time" content="2021-03-15T05:12:03.406Z">
 <meta property="article:author" content="Jiexin Guo">
-<meta property="article:tag" content="美国">
-<meta property="article:tag" content="申根签证">
-<meta property="article:tag" content="2018">
-<meta property="article:tag" content="瑞士">
-<meta property="article:tag" content="纽约">
+<meta property="article:tag" content="Testing">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://guojiex.github.io/2018/08/19/F1%E7%AD%BE%E8%AF%81%E7%94%B3%E8%AF%B7%E7%91%9E%E5%A3%AB%E7%AD%BE%E8%AF%81/">
+<link rel="canonical" href="http://guojiex.github.io/2021/03/13/testing/%E8%B0%B7%E6%AD%8C%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E7%AE%80%E8%BF%B0/">
 
 
 <script id="page-configurations">
@@ -51,7 +47,7 @@
   };
 </script>
 
-  <title>在美国用F1签证申请瑞士商务签证 | 节瓜的博客</title>
+  <title>谷歌测试环境综述 | 节瓜的博客</title>
   
 
 
@@ -177,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2018/08/19/F1%E7%AD%BE%E8%AF%81%E7%94%B3%E8%AF%B7%E7%91%9E%E5%A3%AB%E7%AD%BE%E8%AF%81/">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2021/03/13/testing/%E8%B0%B7%E6%AD%8C%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E7%AE%80%E8%BF%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
@@ -190,7 +186,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在美国用F1签证申请瑞士商务签证
+          谷歌测试环境综述
         </h1>
 
         <div class="post-meta">
@@ -200,14 +196,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-08-19 18:34:27" itemprop="dateCreated datePublished" datetime="2018-08-19T18:34:27-04:00">2018-08-19</time>
+              <time title="创建时间：2021-03-13 21:35:59" itemprop="dateCreated datePublished" datetime="2021-03-13T21:35:59-05:00">2021-03-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-25 21:59:46" itemprop="dateModified" datetime="2021-01-25T21:59:46-05:00">2021-01-25</time>
+                <time title="修改时间：2021-03-15 01:12:03" itemprop="dateModified" datetime="2021-03-15T01:12:03-04:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,12 +211,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%97%A5%E5%B8%B8/" itemprop="url" rel="index"><span itemprop="name">日常</span></a>
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/" itemprop="url" rel="index"><span itemprop="name">测试之道</span></a>
                 </span>
             </span>
 
           
-            <div class="post-description">因为工作原因需要申请申根签证，在这里记录一下如何申请。</div>
+            <div class="post-description">简述谷歌代码开发流程，以及对应的测试技术。</div>
 
         </div>
       </header>
@@ -231,35 +227,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>因为工作原因，要去瑞士苏黎世开会，所以在这里记录一下怎么样在美国用F1签证身份申请瑞士的申根签证（商务签证）。</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="签证类型"><a href="#签证类型" class="headerlink" title="签证类型"></a>签证类型</h2><p>根据个人情况不同，申请不同的<a href="https://www.eda.admin.ch/countries/usa/en/home/visa/entry-ch.html" target="_blank" rel="noopener">签证类型</a>。 这一次我申请的是<a href="https://www.eda.admin.ch/countries/usa/en/home/visa/entry-ch/up-90-days.html" target="_blank" rel="noopener">这种签证</a>。</p>
-<h2 id="大使馆选择"><a href="#大使馆选择" class="headerlink" title="大使馆选择"></a>大使馆选择</h2><p>根据你所在的州，选择不同的<a href="https://www.eda.admin.ch/countries/usa/en/home/visa/entry-ch/up-90-days/where-to-apply-schengen.html" target="_blank" rel="noopener">大使馆</a>。我因为在宾夕法尼亚州，必须去<a href="https://www.eda.admin.ch/countries/usa/en/home/visa/entry-ch/up-90-days/where-to-apply-schengen/new-york.html" target="_blank" rel="noopener">瑞士驻纽约大使馆</a>面签(<a href="https://goo.gl/maps/fxFMSdwkMzA2" target="_blank" rel="noopener">地址</a>)。</p>
-<h2 id="预约时间"><a href="#预约时间" class="headerlink" title="预约时间"></a>预约时间</h2><p>瑞士申根签证和美国签证不同，不需要把所有表格填好才能预约面签，所以请第一时间上面签网站预约时间。</p>
-<p>在<a href="https://www.swiss-visa.ch/register/i210_select_country_view.action" target="_blank" rel="noopener">这里</a>预约面签。</p>
-<h2 id="商务签证申请材料"><a href="#商务签证申请材料" class="headerlink" title="商务签证申请材料"></a><a href="https://www.eda.admin.ch/dam/countries/countries-content/united-states-of-america/en/chancery/131.30_Merkblatt_Visa_for_business.pdf" target="_blank" rel="noopener">商务签证申请材料</a></h2><ol>
-<li> 打印好的申根签证申请表格,请上网填写，地址在<a href="https://www.swiss-visa.ch/register/i210_select_country_view.action" target="_blank" rel="noopener">这里</a>。</li>
-<li> 两张最近的护照规格照片。</li>
-<li> 护照和旅行文件的原本。</li>
-<li> 护照和旅行文件的复印件（只用复印有照片或者签名的页面）。</li>
-<li> 在美国合法停留的证明文件复印件，比如说：绿卡，H1B签证 + I-797， F1签证 + I-20。</li>
-<li> 过去五年之内申根签证的复印件，如果有的话。</li>
-<li> 飞机行程单的复印件</li>
-<li> 瑞士公司的邀请函，请直接发e-mail或者传真到瑞士大使馆，请把你的护照里面写的名字写在主题栏。瑞士大使馆的e-mail是<a href="mailto:&#x6e;&#x79;&#99;&#x2e;&#x76;&#x69;&#115;&#97;&#64;&#101;&#100;&#x61;&#46;&#97;&#x64;&#x6d;&#105;&#x6e;&#x2e;&#99;&#104;">&#x6e;&#x79;&#99;&#x2e;&#x76;&#x69;&#115;&#97;&#64;&#101;&#100;&#x61;&#46;&#97;&#x64;&#x6d;&#105;&#x6e;&#x2e;&#99;&#104;</a>，传真是 +1 212 599 4266。</li>
-<li> 你的雇主开出的薪水和职位证明信，同时写明你在瑞士逗留期间的花费都由公司负责（如果没有的话我猜你要打印最近三个月的银行流水证明自己的财务情况）。如果你是自己雇佣自己（你是老板），请准备你的商业许可，税务证明和银行流水的复印件。</li>
-<li>如果有需要的话，一份你离开申根区域后要去的国家的有效签证。</li>
-<li>你的保险公司的信和你的保险卡，证明以下每一项都有40000美元的国际保险覆盖：<ul>
-<li>  紧急医疗花费</li>
-<li>  紧急医院治疗花费</li>
-<li>  因医疗原因运送回国的花费<br>（就买一份AXA Switzerland的保险好了）</li>
-</ul>
-</li>
-<li>一个预付的，用于把护照寄回给你的信封，如果你不想再去大使馆一趟拿护照的话。</li>
-<li>签证费，现场可以刷卡。</li>
+        <h1 id="代码提交之前"><a href="#代码提交之前" class="headerlink" title="代码提交之前"></a>代码提交之前</h1><h2 id="写代码"><a href="#写代码" class="headerlink" title="写代码"></a>写代码</h2><p>谷歌的代码基本上全都在一个中心化的代码库中，这个代码库技术叫做<a href="https://opensource.google/docs/glossary/#piper" target="_blank" rel="noopener">Piper</a>。在本地写好代码之后，可以生成pull request，内部叫做<a href="https://opensource.google/docs/glossary/#changelist" target="_blank" rel="noopener">Changelist</a>。</p>
+<h2 id="代码编译"><a href="#代码编译" class="headerlink" title="代码编译"></a>代码编译</h2><p>谷歌内部有一套分布式编译平台，叫做blaze，可以用来编译构建程序，以及跑单元测试(blaze本身不是拿来跑测试的，但提供了一个很方便的命令帮你去跑)。开源版本为<a href="https://bazel.build/" target="_blank" rel="noopener">bazel</a>。</p>
+<h2 id="容器镜像打包"><a href="#容器镜像打包" class="headerlink" title="容器镜像打包"></a>容器镜像打包</h2><p>内部有一个将代码或者数据打包的技术，叫做mpm（Midas Package Manager），参考<a href="https://www.usenix.org/sites/default/files/conference/protected-files/lisa_2014_talk.pdf" target="_blank" rel="noopener">这里</a>。这个大概可以理解成外部的docker image，但并不完全等同。</p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试被提交到一个叫做forge的分布式系统上运行。</p>
+<h2 id="代码评审与presubmit-test"><a href="#代码评审与presubmit-test" class="headerlink" title="代码评审与presubmit test"></a>代码评审与presubmit test</h2><p>谷歌使用内部的代码评审工具/UI叫做<a href="https://opensource.google/docs/glossary/#critique" target="_blank" rel="noopener">Critique</a>。<br>当Changelist被发送之后，会自动触发所有受影响项目的单元测试。分析决定要执行哪些测试的这个系统叫做TAP。</p>
+<h2 id="测试结果聚合平台"><a href="#测试结果聚合平台" class="headerlink" title="测试结果聚合平台"></a>测试结果聚合平台</h2><p>谷歌内部使用一个叫做Sponge的平台存储和检索各种测试运行结果/报告。</p>
+<h1 id="代码提交之后"><a href="#代码提交之后" class="headerlink" title="代码提交之后"></a>代码提交之后</h1><h2 id="Integration-Tests-整合测试"><a href="#Integration-Tests-整合测试" class="headerlink" title="Integration Tests 整合测试"></a>Integration Tests 整合测试</h2><p>我们内部使用名叫Guitar的系统进行整合测试的触发与执行。大约等同于外部的<a href="https://www.jenkins.io/" target="_blank" rel="noopener">Jenkins</a>。<br>可以通过各种各样的设置，自动在提交以后触发Post-submit Tests</p>
+<h2 id="Tap-greenness"><a href="#Tap-greenness" class="headerlink" title="Tap greenness"></a>Tap greenness</h2><p>代码提交以后（并入代码库之后），TAP会自动根据在新的代码库版本之上触发执行单元测试。并且持续报告结果</p>
+<h1 id="持续部署"><a href="#持续部署" class="headerlink" title="持续部署"></a>持续部署</h1><p>谷歌使用名叫Rapid的系统进行<a href="https://www.usenix.org/sites/default/files/conference/protected-files/lisa15_slides_mcnutt.pdf" target="_blank" rel="noopener">自动发布部署</a>。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://www.itpmchina.com/devops/81.html" target="_blank" rel="noopener">谷歌归来：DevOps理念与集群管理实践</a></li>
+<li><a href="https://opensource.google/docs/glossary/" target="_blank" rel="noopener">Google Open Source Glossary 谷歌开源技术名词表</a></li>
+<li><a href="https://mike-bland.com/2012/10/01/tools.html" target="_blank" rel="noopener">The specific tools the Testing Grouplet, Testing Tech, Build Tools and others developed to improve testing development and efficiency at Google</a></li>
+<li><a href="https://research.google/pubs/pub46593/" target="_blank" rel="noopener">Advances in Continuous Integration Testing at Google</a></li>
+<li><a href="https://www.usenix.org/sites/default/files/conference/protected-files/lisa_2014_talk.pdf" target="_blank" rel="noopener">Distributing Software in a Massively Parallel Environment</a></li>
+<li><a href="https://queue.acm.org/detail.cfm?id=2898444" target="_blank" rel="noopener">Borg, Omega, and Kubernetes</a></li>
+<li><a href="https://www.usenix.org/sites/default/files/conference/protected-files/lisa15_slides_mcnutt.pdf" target="_blank" rel="noopener">Release Engineering Best Practices at Google</a></li>
 </ol>
-<h1 id="面签"><a href="#面签" class="headerlink" title="面签"></a>面签</h1><h2 id="纽约"><a href="#纽约" class="headerlink" title="纽约"></a>纽约</h2><p>出了纽约机场，请打Uber或者Lyft，不要相信任何走出来揽客的出租车司机，不要上任何长得不像出租车的出租车，不要问我为什么知道。</p>
-<p>到了预约的时间，去到<a href="https://goo.gl/maps/fxFMSdwkMzA2" target="_blank" rel="noopener">瑞士驻纽约大使馆</a>。在1楼登记之后上到30楼，check in之后等叫号。</p>
-<p>瑞士申根签证面签其实很简单，只要你的材料都准备到位了就万事大吉，不像美国签证可能以任何理由拒签。</p>
-<p>面签完会给你一份回执，然后回家等护照就好了。</p>
 
     </div>
 
@@ -284,11 +269,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%BE%8E%E5%9B%BD/" rel="tag"># 美国</a>
-              <a href="/tags/%E7%94%B3%E6%A0%B9%E7%AD%BE%E8%AF%81/" rel="tag"># 申根签证</a>
-              <a href="/tags/2018/" rel="tag"># 2018</a>
-              <a href="/tags/%E7%91%9E%E5%A3%AB/" rel="tag"># 瑞士</a>
-              <a href="/tags/%E7%BA%BD%E7%BA%A6/" rel="tag"># 纽约</a>
+              <a href="/tags/Testing/" rel="tag"># Testing</a>
           </div>
 
         
@@ -297,13 +278,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/01/28/%E5%A6%82%E4%BD%95%E5%9C%A8%E7%BE%8E%E5%9B%BD%E6%95%99%E9%AB%98%E4%B8%AD%E7%94%9FCS%E8%AF%BE%E7%A8%8B/" rel="prev" title="如何在美国教高中生CS课程">
-      <i class="fa fa-chevron-left"></i> 如何在美国教高中生CS课程
+    <a href="/2021/03/09/leetcode/add_two_number/" rel="prev" title="leetcode康复训练 2. Add Two Numbers">
+      <i class="fa fa-chevron-left"></i> leetcode康复训练 2. Add Two Numbers
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2019/10/29/leetcode/twosum/" rel="next" title="1. Two Sum">
-      1. Two Sum <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -362,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#签证类型"><span class="nav-number">1.1.</span> <span class="nav-text">签证类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大使馆选择"><span class="nav-number">1.2.</span> <span class="nav-text">大使馆选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预约时间"><span class="nav-number">1.3.</span> <span class="nav-text">预约时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#商务签证申请材料"><span class="nav-number">1.4.</span> <span class="nav-text">商务签证申请材料</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面签"><span class="nav-number">2.</span> <span class="nav-text">面签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#纽约"><span class="nav-number">2.1.</span> <span class="nav-text">纽约</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#代码提交之前"><span class="nav-number">1.</span> <span class="nav-text">代码提交之前</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#写代码"><span class="nav-number">1.1.</span> <span class="nav-text">写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码编译"><span class="nav-number">1.2.</span> <span class="nav-text">代码编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器镜像打包"><span class="nav-number">1.3.</span> <span class="nav-text">容器镜像打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">1.4.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码评审与presubmit-test"><span class="nav-number">1.5.</span> <span class="nav-text">代码评审与presubmit test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试结果聚合平台"><span class="nav-number">1.6.</span> <span class="nav-text">测试结果聚合平台</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码提交之后"><span class="nav-number">2.</span> <span class="nav-text">代码提交之后</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Integration-Tests-整合测试"><span class="nav-number">2.1.</span> <span class="nav-text">Integration Tests 整合测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tap-greenness"><span class="nav-number">2.2.</span> <span class="nav-text">Tap greenness</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持续部署"><span class="nav-number">3.</span> <span class="nav-text">持续部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
