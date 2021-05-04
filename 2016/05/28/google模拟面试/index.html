@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="WLOb_rW9OMZrR5YqGG9DEpQ9Jix2ZUGg1N44neW47ts">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="以我经历过的面试为基础改写而成的面试分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模拟面试">
+<meta property="og:url" content="http://guojiex.github.io/2016/05/28/google%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="节瓜的博客">
+<meta property="og:description" content="以我经历过的面试为基础改写而成的面试分析">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-05-28T01:45:41.000Z">
+<meta property="article:modified_time" content="2021-01-26T02:59:46.033Z">
+<meta property="article:author" content="Jiexin Guo">
+<meta property="article:tag" content="Google">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://guojiex.github.io/2016/05/28/google%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>模拟面试 | 节瓜的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">节瓜的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2016/05/28/google%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+      <meta itemprop="name" content="Jiexin Guo">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          模拟面试
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-05-27 21:45:41" itemprop="dateCreated datePublished" datetime="2016-05-27T21:45:41-04:00">2016-05-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-25 21:59:46" itemprop="dateModified" datetime="2021-01-25T21:59:46-05:00">2021-01-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">以我经历过的面试为基础改写而成的面试分析</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>面试一定要自信，自信，自信！重要的事情说三遍！<br>这篇文章是为了让大家对面试有所了解而写<br>以我经历过的google面试为基础改写而成（顺便锻炼下自己面试的能力，笑😊）</p>
+</blockquote>
+<h1 id="面试求职要点"><a href="#面试求职要点" class="headerlink" title="面试求职要点"></a>面试求职要点</h1><p>为了方便大家，我首先把需要注意的点列在这里</p>
+<ol>
+<li>内推比网投实用多了，特别是FLAG这样的大公司</li>
+<li>听完问题，先向面试官提问直到弄清楚问题中所有描述不清楚的点</li>
+<li>向面试官要样例输入输出</li>
+<li>思考一两分钟差不多就应该有大概的思路，然后向面试官阐述你的算法，得到肯定就可以开始编码</li>
+<li>如果一时之间想不到解决方法，不要傻站在那里，可以问面试官要提示（会降低你的评价，但总好过没答出来）</li>
+<li>写完代码先自己在心里跑一遍，可以发现自己代码中的bug（理论上也可以增加评价，或者不会给自己扣分）</li>
+<li>不要上来就写出最优解法，特别是你已经见过题目的情况下。最好的做法是先写一个中等的解法，然后尽量和面试官讨论慢慢改进</li>
+</ol>
+<h1 id="地下城"><a href="#地下城" class="headerlink" title="地下城"></a>地下城</h1><h2 id="第一关：你猜（这里展示的并不是原题，只是提供大概思路与原理）"><a href="#第一关：你猜（这里展示的并不是原题，只是提供大概思路与原理）" class="headerlink" title="第一关：你猜（这里展示的并不是原题，只是提供大概思路与原理）"></a>第一关：你猜（这里展示的并不是原题，只是提供大概思路与原理）</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>系统产生一个secret object,同时系统提供给你一个API，这个API会返回你猜的object和系统产生的secret object的相似度</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>尽可能少地调用API，而且保证你的算法最终会得到正确的结果（证明你的算法最终必有解），正确的结果就是系统产生的那个secret object</p>
+<h3 id="面试实战"><a href="#面试实战" class="headerlink" title="面试实战"></a>面试实战</h3><ol>
+<li>首先最重要的一点就是向面试官确认题目描述中任何不清楚的点。这一步可以在面试过程中的任何一个时间点进行，目的除了理清题目的要求，还有一点是向面试官展示你思维的全面性（你是否考虑到了问题的方方面面）；比如，我就是问了面试官，才知道最终的目标必然存在于词典中。</li>
+<li>向面试官请求一个输入输出的样例，这一点也是非常重要的。因为有可能面试官故意不在问题描述的时候给出例子，然后你又一头扎进问题里面忘了问例子，最终钻牛角尖或者对问题理解偏差。</li>
+<li>先向面试官讲解你的解题思路（最好画图），确定没有问题才能开始写。</li>
+<li>写完代码，最好自己把样例输入带入代码，亲自运行一遍，可以自己发现代码中的小bug,也是面试中加分点之一。</li>
+</ol>
+<h2 id="第二关：井字过三关"><a href="#第二关：井字过三关" class="headerlink" title="第二关：井字过三关"></a>第二关：井字过三关</h2><h3 id="隐藏的坑（follow-up）"><a href="#隐藏的坑（follow-up）" class="headerlink" title="隐藏的坑（follow up）"></a>隐藏的坑（follow up）</h3><ol>
+<li>棋盘的大小</li>
+<li>参加的玩家数量</li>
+</ol>
+<h3 id="Testcase"><a href="#Testcase" class="headerlink" title="Testcase"></a>Testcase</h3><p>当你写完了代码，面试官有可能要你自己准备一些test case用以测试你程序的正确性，以及看你对测试的理解是否足够。</p>
+<p>在这里我给出一个思路，把二维棋盘拉成一维，标上坐标，然后产生随机数模拟每个游戏玩家下子的过程。</p>
+<p>一般来说**<em>单元测试**</em>要测试正常输入，exception，以及尽量保证代码100%覆盖。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Google/" rel="tag"># Google</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/05/03/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E6%8F%90%E9%97%AE/" rel="prev" title="如何优雅地提问">
+      <i class="fa fa-chevron-left"></i> 如何优雅地提问
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/06/01/%E5%A6%82%E4%BD%95%E5%83%8F%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%E9%82%A3%E6%A0%B7%E6%80%9D%E8%80%83%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%B7%AF/" rel="next" title="如何像计算机科学家那样思考Python篇（第一、二章）">
+      如何像计算机科学家那样思考Python篇（第一、二章） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面试求职要点"><span class="nav-number">1.</span> <span class="nav-text">面试求职要点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#地下城"><span class="nav-number">2.</span> <span class="nav-text">地下城</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一关：你猜（这里展示的并不是原题，只是提供大概思路与原理）"><span class="nav-number">2.1.</span> <span class="nav-text">第一关：你猜（这里展示的并不是原题，只是提供大概思路与原理）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.1.2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试实战"><span class="nav-number">2.1.3.</span> <span class="nav-text">面试实战</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二关：井字过三关"><span class="nav-number">2.2.</span> <span class="nav-text">第二关：井字过三关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏的坑（follow-up）"><span class="nav-number">2.2.1.</span> <span class="nav-text">隐藏的坑（follow up）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Testcase"><span class="nav-number">2.2.2.</span> <span class="nav-text">Testcase</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
+      src="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
+  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
