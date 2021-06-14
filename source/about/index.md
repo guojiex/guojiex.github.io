@@ -5,17 +5,26 @@ date: 2016-06-22 10:36:09
 
 # 关于我
 
-*目前单身，欢迎西雅图的妹子找我玩。*
+*目前单身，欢迎广州的妹子找我玩。*
 
 本人男，92年生金牛座。
-本科就读中山大学信科院，
-研究生就读[中山大学—卡内基梅隆大学联合工程学院](http://jie.sysu.edu.cn)，
-曾在[匹兹堡谷歌](https://about.google/locations/?region=north-america&office=pittsburgh)工作。
-现在在[柯克兰谷歌](https://about.google/locations/?region=north-america&office=kirkland)工作。
+*   本科就读中山大学信科院，
+*   研究生就读[中山大学—卡内基梅隆大学联合工程学院](http://jie.sysu.edu.cn)，
+*   曾在[匹兹堡谷歌](https://about.google/locations/?region=north-america&office=pittsburgh)工作3年。
+*   曾在[柯克兰谷歌](https://about.google/locations/?region=north-america&office=kirkland)工作2年。
+*   现在在广州工作。
 
 # 工作经历
 
-## 2019.5 至今
+## 2021.5 - 至今
+
+*   在某新心数科互联网金融公司对联邦学习平台进行测试开发
+    *    领导搭建前端selenium driver浏览器自动化测试
+    *    整合Gitlab CI/CD流程
+    *    部署allure测试报告服务器
+    *    探索k8s环境部署   
+
+## 2019.5 - 2021.4
 
 在柯克兰谷歌负责Evenflow(超大规模广告日志处理系统)的测试框架
 
