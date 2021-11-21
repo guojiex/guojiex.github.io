@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "4.2.1"
+    "version": "5.4.0"
   },
   "dependencies": {
-    "hexo": "^4.2.1",
+    "hexo": "^5.0.0",
     "hexo-admin": "^2.3.0",
     "hexo-deployer-git": "^2.1.0",
     "hexo-filter-mermaid-diagrams": "^1.0.5",
@@ -20,6 +20,7 @@
     "hexo-renderer-marked": "^3.3.0",
     "hexo-renderer-stylus": "^1.1.0",
     "hexo-server": "^1.0.0",
+    "hexo-theme-next": "^8.8.1",
     "yarn": "^1.22.10"
   }
 }
