@@ -1,10 +1,12 @@
 ---
 title: selenium小贴士
 date: 2022-01-12 10:14:44
-description: 一些前端自动化测试的小技巧。
+description: 对Vue页面，一些前端自动化测试的小技巧。
 categories: 测试之道
 tags: 
 - Testing
+- Selenium
+- Vue
 ---
 
 # Vue
