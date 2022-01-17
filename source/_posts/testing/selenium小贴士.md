@@ -36,3 +36,40 @@ web_element.get_attribute('value')
 ```python
 web_element.get_attribute('textContent').strip().replace(' ','').replace('\n','')
 ```
+
+# Selenium疑难杂症FAQ
+
+## Invalid Session Id
+
+有段时间我们在gitlab-ci上面的使用selenium chrome docker 镜像的流水线一直报Invalid Session Id错误。
+
+日志中有一句
+
+```
+unknown error: session deleted because of page crash
+```
+
+然后才明白是因为浏览器崩溃了，导致的invalid session
+
+回想起selenium docker image文档里面提到要适当配置shm_size=2g,也就是共享内存大小，我怀疑是因为内存不足导致的程序崩溃。
+
+### 解决方案
+
+#### 编辑config.toml配置
+
+```bash
+vi /etc/gitlab-runner/config.toml
+```
+
+#### 修改shm_size
+
+```bash
+[runners.docker]
+    shm_size = 2000000000
+```
+
+#### 重启runner
+
+```bash
+gitlab-runner restart
+```
