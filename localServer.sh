@@ -1,1 +1,1 @@
-hexo s --debug -p 4096
+hexo s --drafts --debug -p 4096
