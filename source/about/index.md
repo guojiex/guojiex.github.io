@@ -5,24 +5,30 @@ date: 2016-06-22 10:36:09
 
 # 关于我
 
-*目前单身，欢迎广州的妹子找我玩。*
+*目前单身，欢迎深圳的妹子找我玩。*
 
 本人男，92年生金牛座。
 *   本科就读中山大学信科院信息安全，
 *   研究生就读[中山大学—卡内基梅隆大学联合工程学院](http://jie.sysu.edu.cn)，
 *   曾在[匹兹堡谷歌](https://about.google/locations/?region=north-america&office=pittsburgh)工作3年。
 *   曾在[柯克兰谷歌](https://about.google/locations/?region=north-america&office=kirkland)工作2年。
-*   现在在广州工作。
+*   现在在深圳工作。
 
 # 工作经历
 
-## 2021.5 - 至今
+## 2022.2 - 至今
 
-*   在珠江新城某互联网金融公司对联邦学习平台进行测试开发
+*   shopee深圳
+
+## 2021.5 - 2022.1
+
+*   在新心数科负责联邦学习平台的测试开发
     *    领导搭建前端selenium driver浏览器自动化测试
+    *    完善开发测试全流程规范
     *    整合Gitlab CI/CD流程
     *    部署allure测试报告服务器
-    *    全平台k8s化部署   
+    *    全平台k8s化部署
+    *    运维管理配置中心开发（beego）
 
 ## 2019.5 - 2021.4
 
