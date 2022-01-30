@@ -48,7 +48,7 @@ brew install coreutils
 alias timeout=gtimeout
 ```
 
-## 在macos zsh上 wait: -n: invalid option
+## 在macos上 wait: -n: invalid option
 
 ```bash
 test-mr.sh: line 202: wait: -n: invalid option
@@ -65,10 +65,10 @@ which -a bash
 /bin/bash
 ```
 
-更改test-mr.sh第一行
+调用新bash执行脚本
 
 ```bash
-#!/opt/homebrew/bin/bash
+/opt/homebrew/bin/bash test-mr.sh
 ```
 
 # 系统设计
@@ -140,6 +140,67 @@ type Coordinator struct {
 	// reduceNumber 一共有几个reduce task
 	reduceNumber  int
 	currentTaskId int
+}
+```
+
+### Rpc handlers
+
+```go
+// GetTask 处理rpc GetTask请求
+func (c *Coordinator) GetTask(request *GetTaskRequest,
+	response *GetTaskResponse) error {
+	if c.Done() {
+		response.Status = AllDone
+		return nil
+	}
+	currentState := c.getState()
+	switch currentState {
+	case MapStage:
+		c.emitTask(c.MapperTasks, response)
+	case ReduceStage:
+		c.emitTask(c.ReducerTasks, response)
+	}
+	return nil
+}
+
+// FinishTask 处理rpc FinishTask请求，把task从RunningTaskMap删除
+func (c *Coordinator) FinishTask(request *FinishTaskRequest,
+	reply *FinishTaskResponse) error {
+	c.runningTaskMapMutex.Lock()
+	delete(c.RunningTaskMap, request.TaskId)
+	c.runningTaskMapMutex.Unlock()
+	return nil
+}
+
+// emitTask 根据channel是否有返回，决定是让worker wait或者派发任务
+func (c *Coordinator) emitTask(taskChannel chan *MrTask, response *GetTaskResponse) {
+	timeout := time.After(channelGetTaskTimeout)
+	select {
+	case task := <-taskChannel:
+		c.runningTaskMapMutex.Lock()
+		c.RunningTaskMap[task.Id] = task
+		c.runningTaskMapMutex.Unlock()
+		c.timerCheckTaskTimeout(taskChannel, task)
+		response.Task = *task
+		response.Status = Run
+	case <-timeout:
+		response.Status = Wait
+		log.Println("Coordinator return task as wait")
+	}
+}
+
+// timerCheckTaskTimeout 超时回调函数。如果task超过时间没有完成，就把task从RunningTaskMap移除，重新发送回taskChannel
+func (c *Coordinator) timerCheckTaskTimeout(taskChannel chan *MrTask, task *MrTask) {
+	timer := time.AfterFunc(checkTaskTimeout, func() {
+		c.runningTaskMapMutex.Lock()
+		if _, ok := c.RunningTaskMap[task.Id]; ok {
+			fmt.Printf("[WARNING] task timeout %v", *task)
+			delete(c.RunningTaskMap, task.Id)
+			taskChannel <- task
+		}
+		c.runningTaskMapMutex.Unlock()
+	})
+	defer timer.Stop()
 }
 ```
 
@@ -267,3 +328,158 @@ type FinishTaskResponse struct{}
 ## worker.go
 
 用于执行mapreduce中的mapper和reducer任务
+
+### 主轮询函数Worker and Task related
+
+根据Coordinator返回决定是退出循环，还是wait。
+如果接收到任务，根据任务类型决定发放到map还是reduce。
+
+```go
+func Worker(mapf func(string, string) []KeyValue,
+	reducef func(string, []string) string) {
+
+	for {
+		response, callSuccess := GetTask()
+		task := response.Task
+		// 联系不上Coordinator也算是成功
+		if response.Status == AllDone || !callSuccess {
+			log.Println("Worker finished.")
+			return
+		}
+		if response.Status == Wait {
+			time.Sleep(time.Duration(time.Second * 2))
+			log.Println("Worker sleep for 2s.")
+			continue
+		}
+		var err error
+		if response.Task.TaskType == MapTask {
+			err = ProcessMapperTask(mapf, &task)
+		} else {
+			err = ProcessReducerTask(reducef, &task)
+		}
+		if err == nil {
+			FinishTask(&task)
+		} else {
+			fmt.Println(err.Error())
+		}
+
+	}
+}
+
+func GetTask() (GetTaskResponse, bool) {
+	request := GetTaskRequest{}
+	response := GetTaskResponse{}
+
+	// send the RPC request, wait for the reply.
+	callSuccess := call("Coordinator.GetTask", &request, &response)
+	return response, callSuccess
+}
+
+func FinishTask(task *MrTask) {
+	request := FinishTaskRequest{TaskId: task.Id}
+	response := FinishTaskResponse{}
+	call("Coordinator.FinishTask", &request, &response)
+}
+```
+
+### Mapper 
+
+```go
+// ReadFileContent 读取文件内容
+func ReadFileContent(filename string) ([]byte, error) {
+	//打开文件
+	file, err := os.Open(filename)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	//读取文件的内容
+	info, err := file.Stat()
+	if err != nil {
+		return nil, err
+	}
+	buf := make([]byte, info.Size())
+	file.Read(buf)
+	return buf, nil
+}
+
+func ProcessMapperTask(mapf func(string, string) []KeyValue,
+	mapperTask *MrTask) error {
+	intermediate := []KeyValue{}
+	for _, inputFilename := range mapperTask.MapperInputFilenames {
+		buf, err := ReadFileContent(inputFilename)
+		if err != nil {
+			log.Printf("ERROR: %s", err)
+			return err
+		}
+		kva := mapf(inputFilename, string(buf))
+		intermediate = append(intermediate, kva...)
+	}
+
+	intermediateMatrix := make([][]KeyValue, mapperTask.ReducerNumber)
+	for _, kv := range intermediate {
+		idx := ihash(kv.Key) % mapperTask.ReducerNumber
+		intermediateMatrix[idx] = append(intermediateMatrix[idx], kv)
+	}
+
+	for reducerId := 0; reducerId < mapperTask.ReducerNumber; reducerId++ {
+		intermediateFileName := fmt.Sprintf("mr-%d-%d", mapperTask.Id, reducerId)
+		file, err := os.Create(intermediateFileName)
+		defer file.Close()
+		if err != nil {
+			log.Printf("ERROR: %s", err)
+			return err
+		}
+
+		data, _ := json.Marshal(intermediateMatrix[reducerId])
+		_, err = file.Write(data)
+		if err != nil {
+			log.Printf("ERROR: %s", err)
+			return err
+		}
+	}
+	return nil
+}
+```
+
+### Reducer
+
+```go
+
+func ProcessReducerTask(reducef func(string, []string) string,
+	reducerTask *MrTask) error {
+	kvsReduce := make(map[string][]string)
+	for idx := 0; idx < reducerTask.MapperNumber; idx++ {
+		filename := fmt.Sprintf("mr-%d-%d", idx, reducerTask.ReduceTaskId)
+		file, err := os.Open(filename)
+		defer file.Close()
+		if err != nil {
+			log.Printf("ERROR: %s", err)
+			return err
+		}
+		content, err := ioutil.ReadAll(file)
+		kvs := make([]KeyValue, 0)
+		err = json.Unmarshal(content, &kvs)
+		for _, kv := range kvs {
+			_, ok := kvsReduce[kv.Key]
+			if !ok {
+				kvsReduce[kv.Key] = make([]string, 0)
+			}
+			kvsReduce[kv.Key] = append(kvsReduce[kv.Key], kv.Value)
+		}
+	}
+	ReduceResult := make([]string, 0)
+	for key, val := range kvsReduce {
+		ReduceResult = append(ReduceResult,
+			fmt.Sprintf("%v %v\n", key, reducef(key, val)))
+	}
+	outFileName := fmt.Sprintf("mr-out-%d", reducerTask.ReduceTaskId)
+	err := ioutil.WriteFile(outFileName, []byte(strings.Join(ReduceResult, "")), 0644)
+	if err != nil {
+		log.Printf("ERROR: %s", err)
+		return err
+	}
+	return nil
+}
+```
