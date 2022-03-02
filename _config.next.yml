@@ -885,7 +885,8 @@ vendors:
 
   # Internal version: 3.1.0
   # anime: //cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js
-  anime:
+  anime: /lib/animejs/3.2.1/anime.min.js
+  animate_css: /lib/anime.css/4.1.1/anime.min.css
 
   # Internal version: 5.13.0
   # fontawesome: //cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css
