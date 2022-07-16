@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://guojiex.github.io/media/testing/selenium/seleniumdocker.png">
 <meta property="article:published_time" content="2021-07-17T00:38:32.000Z">
-<meta property="article:modified_time" content="2022-07-05T07:55:08.938Z">
+<meta property="article:modified_time" content="2022-07-16T08:02:54.971Z">
 <meta property="article:author" content="Jiexin Guo">
 <meta property="article:tag" content="Testing">
 <meta name="twitter:card" content="summary">
@@ -239,7 +239,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-07-05 03:55:08" itemprop="dateModified" datetime="2022-07-05T03:55:08-04:00">2022-07-05</time>
+      <time title="修改时间：2022-07-16 04:02:54" itemprop="dateModified" datetime="2022-07-16T04:02:54-04:00">2022-07-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -278,6 +278,9 @@
 <p>使用docker的优势是不需要自己下载webdriver和更新webdriver对应版本。</p>
 <p>推荐在企业级CI/CD中使用docker selenium，方便环境隔离和启动。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 4444:4444 -p 7900:7900 --shm-size=<span class="string">&quot;2g&quot;</span> --env VNC_NO_PASSWORD=1 selenium/standalone-chrome:latest</span><br></pre></td></tr></table></figure>
+
+<p>默认并发session只有1个，以下命令支持五个并发</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 4444:4444 -p 7900:7900 --shm-size=<span class="string">&quot;2g&quot;</span> --env VNC_NO_PASSWORD=1 --env SE_NODE_MAX_SESSIONS=5 --env SE_NODE_OVERRIDE_MAX_SESSIONS=<span class="literal">true</span> selenium/standalone-chrome:latest</span><br></pre></td></tr></table></figure>
 
 <p>通过预定义的docker镜像，创建一个支持chrome浏览器的selenium测试环境。</p>
 <p>本地暴露7900端口作为观看测试的页面</p>
