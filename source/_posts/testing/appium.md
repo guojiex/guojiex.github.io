@@ -129,3 +129,11 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/plat
 ```
 
 然后重新启动appium服务器，重新执行测试
+
+### install app
+
+可以执行install_app方法安装apk
+
+```python3
+self.driver.install_app('/绝对路径或者相对路径')
+```
