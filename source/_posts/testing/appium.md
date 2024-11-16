@@ -76,22 +76,7 @@ adb devices
 pip install Appium-Python-Client
 ```
 
-然后直接执行测试报错
-
-```bash
-selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Neither ANDROID_HOME nor ANDROID_SDK_ROOT environment variable was exported. Read https://developer.android.com/studio/command-line/variables for more details
-```
-
-点击对应链接，查看解决方案将对应环境变量设置进你的系统
-
-```bash
-export ANDROID_HOME=~/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
-```
-
-然后重新启动appium服务器，重新执行测试
-
-### Battery!
+### Battery test!
 
 ```python3
 import unittest
@@ -128,3 +113,19 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
+#### 环境变量设置
+
+然后直接执行battery测试报错
+
+```bash
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Neither ANDROID_HOME nor ANDROID_SDK_ROOT environment variable was exported. Read https://developer.android.com/studio/command-line/variables for more details
+```
+
+点击对应链接，查看解决方案将对应环境变量设置进你的系统
+
+```bash
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+```
+
+然后重新启动appium服务器，重新执行测试
