@@ -78,7 +78,7 @@ pip install Appium-Python-Client
 
 ### Battery test!
 
-```python3
+```python
 import unittest
 
 from appium import webdriver
@@ -89,8 +89,8 @@ capabilities = dict(
     platformName='Android',
     automationName='uiautomator2',
     deviceName='Android',
-    appPackage='com.android.settings',
-    appActivity='.Settings',
+    # appPackage='com.android.settings',
+    # appActivity='.Settings',
     language='en',
     locale='US'
 )
@@ -105,9 +105,10 @@ class TestAppium(unittest.TestCase):
         if self.driver:
             self.driver.quit()
 
-    def test_find_battery(self) -> None:
-        el = self.driver.find_element(by=AppiumBy.XPATH, value='//*[@text="Battery"]')
-        el.click()
+    def test_install_app(self) -> None:
+        # self.driver.remove_app('com.instagram.android')
+        # self.driver.install_app('/Users/guo/dev/appium/instagram-357-1-0-52-100.apk')
+        self.driver.install_app('/Users/guo/dev/appium/instagram-356-0-0-41-101.apk')
 
 if __name__ == '__main__':
     unittest.main()
@@ -144,6 +145,8 @@ self.driver.install_app('/绝对路径或者相对路径')
 self.driver.remove_app('com.instagram.android')
 ```
 
-## 安装ui界面检测
+# appium-inspector 可视化页面分析器
 
 [appium-inspector](https://github.com/appium/appium-inspector/releases)
+
+![appium-inspector](appium_inspector.png)
