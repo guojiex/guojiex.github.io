@@ -66,3 +66,65 @@ adb devices
 看到有手机显示就代表连接成功
 
 ![adb success](adb_success.png)
+
+## [Python start!](https://appium.io/docs/zh/latest/quickstart/test-py/)
+
+
+先安装appium python client
+
+```bash
+pip install Appium-Python-Client
+```
+
+然后直接执行测试报错
+
+```bash
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Neither ANDROID_HOME nor ANDROID_SDK_ROOT environment variable was exported. Read https://developer.android.com/studio/command-line/variables for more details
+```
+
+点击对应链接，查看解决方案将对应环境变量设置进你的系统
+
+```bash
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+```
+
+然后重新启动appium服务器，重新执行测试
+
+### Battery!
+
+```python3
+import unittest
+
+from appium import webdriver
+from appium.options.android import UiAutomator2Options
+from appium.webdriver.common.appiumby import AppiumBy
+
+capabilities = dict(
+    platformName='Android',
+    automationName='uiautomator2',
+    deviceName='Android',
+    appPackage='com.android.settings',
+    appActivity='.Settings',
+    language='en',
+    locale='US'
+)
+
+appium_server_url = 'http://localhost:4723'
+
+class TestAppium(unittest.TestCase):
+    def setUp(self) -> None:
+        self.driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(capabilities))
+
+    def tearDown(self) -> None:
+        if self.driver:
+            self.driver.quit()
+
+    def test_find_battery(self) -> None:
+        el = self.driver.find_element(by=AppiumBy.XPATH, value='//*[@text="Battery"]')
+        el.click()
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
