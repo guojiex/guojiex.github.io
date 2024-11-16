@@ -137,3 +137,9 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/plat
 ```python3
 self.driver.install_app('/绝对路径或者相对路径')
 ```
+
+### remove app
+
+```python3
+self.driver.remove_app('com.instagram.android')
+```
