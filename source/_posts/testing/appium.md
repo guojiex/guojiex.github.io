@@ -143,3 +143,7 @@ self.driver.install_app('/绝对路径或者相对路径')
 ```python3
 self.driver.remove_app('com.instagram.android')
 ```
+
+## 安装ui界面检测
+
+[appium-inspector](https://github.com/appium/appium-inspector/releases)
