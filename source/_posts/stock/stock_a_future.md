@@ -9,13 +9,19 @@ tags:
 - api
 - prediction
 - technical-analysis
+- echarts
+- k-line
+- macd
+- rsi
 ---
 
 > [Stock-A-Future GitHub Repository](https://github.com/guojiex/stock-a-future)
 
 # Stock-A-Future 项目介绍
 
-Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统，支持多种数据源（Tushare、AKTools），提供技术指标计算和买卖点预测功能。
+![股票查询](/images/stock-a-future/股票查询.png)
+
+Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统，支持多种数据源（Tushare、AKTools），提供技术指标计算和买卖点预测功能。该项目采用现代化的技术栈，提供专业的K线图显示、智能搜索、股票收藏等丰富功能。
 
 ## 项目特性
 
@@ -27,6 +33,9 @@ Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统�
 - **深交所数据**：使用本地Excel文件（`data/A股列表.xlsx`）提供完整深交所股票数据
 
 ### 📈 技术指标计算
+
+![技术指标](/images/stock-a-future/技术指标.png)
+
 - **MACD** - 指数平滑异同平均线，识别趋势转折
 - **RSI** - 相对强弱指数，判断超买超卖
 - **布林带** - 价格波动区间分析
@@ -46,6 +55,9 @@ Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统�
 - 详细的错误处理和日志记录
 
 ### 🌐 Web界面
+
+![日K线信息](/images/stock-a-future/日k线信息.png)
+
 - **专业K线图**: 使用ECharts显示完整的OHLC数据
 - **技术指标叠加**: MA5/MA10/MA20移动平均线
 - **成交量副图**: 底部显示成交量柱状图，颜色与K线联动
@@ -61,11 +73,12 @@ Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统�
 ## 技术架构
 
 ### 后端技术栈
-- **Go 1.23+**: 使用最新版本的Go语言
+- **Go 1.22+**: 使用最新版本的Go语言
 - **标准库**: 主要使用`net/http`包构建RESTful API
 - **数据源集成**: 支持Tushare和AKTools两种数据源
 - **Excel处理**: 使用`excelize`库处理股票列表数据
 - **配置管理**: 使用`godotenv`管理环境变量
+- **数值计算**: 使用`shopspring/decimal`确保金融计算精度
 
 ### 前端技术栈
 - **原生JavaScript**: 无框架依赖，轻量级实现
@@ -77,19 +90,25 @@ Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统�
 ```
 stock-a-future/
 ├── cmd/                    # 命令行工具
-│   ├── server/            # 主服务器
+│   ├── server/            # 主应用程序入口
 │   ├── curl/              # 内置curl工具
-│   └── stocklist/         # 股票列表获取工具
+│   ├── stocklist/         # 股票列表获取工具
+│   └── aktools-test/      # AKTools测试工具
 ├── internal/               # 内部包
-│   ├── client/            # 数据源客户端
+│   ├── client/            # API客户端（Tushare + 交易所）
 │   ├── handler/           # HTTP处理器
-│   ├── service/           # 业务逻辑服务
-│   └── models/            # 数据模型
-├── web/                   # Web界面
-│   └── static/            # 静态资源
+│   ├── indicators/        # 技术指标计算
+│   ├── models/            # 数据模型
+│   └── service/           # 业务逻辑服务
+├── web/                   # Web资源
+│   └── static/            # 静态文件（HTML、CSS、JS）
 ├── config/                # 配置管理
 ├── data/                  # 数据文件
-└── docs/                  # 项目文档
+│   └── A股列表.xlsx        # 深交所股票列表（Excel格式）
+├── docs/                  # 项目文档
+├── scripts/               # 构建和启动脚本
+├── Makefile              # 构建脚本
+└── README.md             # 项目文档
 ```
 
 ## 数据源对比
@@ -151,6 +170,8 @@ stock-a-future/
    # 获取所有股票列表（上交所在线获取 + 深交所Excel文件）
    make fetch-stocks
    ```
+   
+   > **注意**：深交所股票数据已包含在 `data/A股列表.xlsx` 文件中，无需在线获取。
 
 5. **启动服务**
    ```bash
@@ -161,6 +182,22 @@ stock-a-future/
    make build
    make run
    ```
+
+6. **编译Curl工具（可选）**
+   ```bash
+   # 使用批处理文件（推荐Windows用户）
+   build-curl.bat
+   
+   # 或使用PowerShell脚本
+   .\build-curl.ps1
+   
+   # 或手动编译
+   go build -o curl.exe ./cmd/curl
+   ```
+   
+   > **注意**：curl工具特别适合在Windows环境下调试API接口，无需安装额外的curl工具。
+
+服务将在 `http://localhost:8081` 启动。
 
 ### 🚀 AKTools快速启动指南
 
@@ -198,6 +235,63 @@ curl http://localhost:8081/api/v1/health
 
 #### 4. 访问Web界面
 在浏览器中打开：http://localhost:8081
+
+> **提示**: 使用项目提供的启动脚本可以自动处理端口配置和依赖检查，推荐新手使用。
+
+### 🔧 服务器管理
+
+新增的Make命令让服务器管理更加便捷：
+
+```bash
+# 检查服务器状态（显示进程和端口占用）
+make status
+
+# 优雅停止服务器
+make stop
+
+# 强制停止（包括端口清理）
+make kill
+
+# 一键重启
+make restart
+```
+
+## 功能展示
+
+### 🖥️ Web界面特性
+
+#### K线图升级
+
+![日K线信息](/images/stock-a-future/日k线信息.png)
+
+- **从简单折线图到专业K线图**: 显示完整的开盘、最高、最低、收盘价
+- **红绿涨跌色彩**: 红色阳线表示上涨，绿色阴线表示下跌
+- **成交量联动**: 底部成交量柱状图，颜色与K线保持一致
+- **技术指标叠加**: 自动计算并显示MA5、MA10、MA20移动平均线
+
+#### 智能搜索功能
+
+![搜索功能视图](/images/stock-a-future/搜索功能视图.png)
+
+- **实时搜索**: 输入股票名称或代码，300ms防抖搜索
+- **模糊匹配**: 支持部分匹配，如输入"平安"可找到"平安银行"、"中国平安"
+- **键盘导航**: 支持上下箭头键选择，回车确认
+- **自动填充**: 选择搜索结果后自动填入股票代码框
+- **股票代码缓存**: 自动保存用户选择的股票，下次访问时自动恢复，提升用户体验
+
+#### 股票收藏功能
+
+![股票收藏](/images/stock-a-future/股票收藏.png)
+
+- **收藏管理**: 支持添加和删除股票收藏，便于快速访问常关注的股票
+- **分组管理**: 支持将收藏的股票按不同分组进行管理
+- **快速切换**: 一键切换至收藏的股票进行查看和分析
+
+#### 交互体验
+- **图表缩放**: 鼠标滚轮缩放，拖拽平移
+- **数据提示**: 鼠标悬停显示详细的OHLC数据、成交量、涨跌幅
+- **响应式设计**: 自适应不同屏幕尺寸
+- **数据摘要**: 显示8个关键指标（收盘价、成交量、振幅等）
 
 ## 核心功能详解
 
@@ -265,13 +359,19 @@ curl http://localhost:8081/api/v1/health
 
 ## 贡献指南
 
-欢迎贡献代码、报告问题或提出建议！请查看项目的贡献指南了解详情。
+1. Fork 本项目
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
 
 ## 许可证
 
 本项目采用MIT许可证，详见LICENSE文件。
 
 ---
+
+**免责声明**: 本项目仅用于技术学习和研究目的，不构成任何投资建议。使用者应当自行承担投资风险。
 
 *Stock-A-Future - 让股票投资更智能，让技术分析更简单*
 
