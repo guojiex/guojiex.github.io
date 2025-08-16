@@ -27,15 +27,26 @@
 <meta property="og:site_name" content="节瓜的生活经验">
 <meta property="og:description" content="基于Go语言开发的A股股票买卖点预测系统，支持多种数据源，提供技术指标计算和智能预测功能">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://guojiex.github.io/images/stock-a-future/%E8%82%A1%E7%A5%A8%E6%9F%A5%E8%AF%A2.png">
+<meta property="og:image" content="http://guojiex.github.io/images/stock-a-future/%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87.png">
+<meta property="og:image" content="http://guojiex.github.io/images/stock-a-future/%E6%97%A5k%E7%BA%BF%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="http://guojiex.github.io/images/stock-a-future/%E6%97%A5k%E7%BA%BF%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="http://guojiex.github.io/images/stock-a-future/%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E8%A7%86%E5%9B%BE.png">
+<meta property="og:image" content="http://guojiex.github.io/images/stock-a-future/%E8%82%A1%E7%A5%A8%E6%94%B6%E8%97%8F.png">
 <meta property="article:published_time" content="2025-01-09T03:34:37.000Z">
-<meta property="article:modified_time" content="2025-08-16T12:41:03.803Z">
+<meta property="article:modified_time" content="2025-08-16T13:47:46.713Z">
 <meta property="article:author" content="Jiexin Guo">
 <meta property="article:tag" content="golang">
 <meta property="article:tag" content="stock">
 <meta property="article:tag" content="api">
 <meta property="article:tag" content="prediction">
 <meta property="article:tag" content="technical-analysis">
+<meta property="article:tag" content="echarts">
+<meta property="article:tag" content="k-line">
+<meta property="article:tag" content="macd">
+<meta property="article:tag" content="rsi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://guojiex.github.io/images/stock-a-future/%E8%82%A1%E7%A5%A8%E6%9F%A5%E8%AF%A2.png">
 
 
 <link rel="canonical" href="http://guojiex.github.io/2025/01/09/stock/stock_a_future/">
@@ -118,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stock-A-Future-%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Stock-A-Future 项目介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">项目特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8A-%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">📊 数据获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%88-%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">📈 技术指标计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8E%AF-%E6%99%BA%E8%83%BD%E9%A2%84%E6%B5%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">🎯 智能预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-RESTful-API"><span class="nav-number">1.1.4.</span> <span class="nav-text">🚀 RESTful API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8C%90-Web%E7%95%8C%E9%9D%A2"><span class="nav-number">1.1.5.</span> <span class="nav-text">🌐 Web界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.6.</span> <span class="nav-text">🛠️ 开发工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">技术架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.2.1.</span> <span class="nav-text">后端技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.2.2.</span> <span class="nav-text">前端技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.3.</span> <span class="nav-text">项目结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">数据源对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">1.4.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="nav-number">1.4.1.</span> <span class="nav-text">环境要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-AKTools%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E6%8C%87%E5%8D%97"><span class="nav-number">1.4.3.</span> <span class="nav-text">🚀 AKTools快速启动指南</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%80%E9%94%AE%E5%90%AF%E5%8A%A8AKTools%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">1. 一键启动AKTools服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%90%AF%E5%8A%A8Stock-A-Future-API"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">2. 启动Stock-A-Future API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">3. 验证服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%AE%BF%E9%97%AEWeb%E7%95%8C%E9%9D%A2"><span class="nav-number">1.4.3.4.</span> <span class="nav-text">4. 访问Web界面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.5.</span> <span class="nav-text">核心功能详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%97%8F%E8%82%A1%E7%A5%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.1.</span> <span class="nav-text">收藏股票功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.5.2.</span> <span class="nav-text">API接口设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.3.</span> <span class="nav-text">技术指标算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.6.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E6%8A%95%E8%B5%84%E8%80%85"><span class="nav-number">1.6.1.</span> <span class="nav-text">个人投资者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6"><span class="nav-number">1.6.2.</span> <span class="nav-text">量化研究</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6"><span class="nav-number">1.6.3.</span> <span class="nav-text">学习研究</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8A%BF"><span class="nav-number">1.7.</span> <span class="nav-text">项目优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E8%A7%84%E5%88%92"><span class="nav-number">1.8.</span> <span class="nav-text">未来规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97"><span class="nav-number">1.9.</span> <span class="nav-text">贡献指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="nav-number">1.10.</span> <span class="nav-text">许可证</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stock-A-Future-%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Stock-A-Future 项目介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">项目特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8A-%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">📊 数据获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%88-%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">📈 技术指标计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8E%AF-%E6%99%BA%E8%83%BD%E9%A2%84%E6%B5%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">🎯 智能预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-RESTful-API"><span class="nav-number">1.1.4.</span> <span class="nav-text">🚀 RESTful API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8C%90-Web%E7%95%8C%E9%9D%A2"><span class="nav-number">1.1.5.</span> <span class="nav-text">🌐 Web界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.6.</span> <span class="nav-text">🛠️ 开发工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">技术架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.2.1.</span> <span class="nav-text">后端技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.2.2.</span> <span class="nav-text">前端技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.3.</span> <span class="nav-text">项目结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">数据源对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">1.4.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="nav-number">1.4.1.</span> <span class="nav-text">环境要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-AKTools%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E6%8C%87%E5%8D%97"><span class="nav-number">1.4.3.</span> <span class="nav-text">🚀 AKTools快速启动指南</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%80%E9%94%AE%E5%90%AF%E5%8A%A8AKTools%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">1. 一键启动AKTools服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%90%AF%E5%8A%A8Stock-A-Future-API"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">2. 启动Stock-A-Future API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">3. 验证服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%AE%BF%E9%97%AEWeb%E7%95%8C%E9%9D%A2"><span class="nav-number">1.4.3.4.</span> <span class="nav-text">4. 访问Web界面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%A7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.4.</span> <span class="nav-text">🔧 服务器管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%B1%95%E7%A4%BA"><span class="nav-number">1.5.</span> <span class="nav-text">功能展示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%96%A5%EF%B8%8F-Web%E7%95%8C%E9%9D%A2%E7%89%B9%E6%80%A7"><span class="nav-number">1.5.1.</span> <span class="nav-text">🖥️ Web界面特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#K%E7%BA%BF%E5%9B%BE%E5%8D%87%E7%BA%A7"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">K线图升级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">智能搜索功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%82%A1%E7%A5%A8%E6%94%B6%E8%97%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">股票收藏功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E4%BD%93%E9%AA%8C"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">交互体验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.6.</span> <span class="nav-text">核心功能详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%97%8F%E8%82%A1%E7%A5%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">1.6.1.</span> <span class="nav-text">收藏股票功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.6.2.</span> <span class="nav-text">API接口设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.3.</span> <span class="nav-text">技术指标算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.7.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E6%8A%95%E8%B5%84%E8%80%85"><span class="nav-number">1.7.1.</span> <span class="nav-text">个人投资者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6"><span class="nav-number">1.7.2.</span> <span class="nav-text">量化研究</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6"><span class="nav-number">1.7.3.</span> <span class="nav-text">学习研究</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8A%BF"><span class="nav-number">1.8.</span> <span class="nav-text">项目优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E8%A7%84%E5%88%92"><span class="nav-number">1.9.</span> <span class="nav-text">未来规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97"><span class="nav-number">1.10.</span> <span class="nav-text">贡献指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="nav-number">1.11.</span> <span class="nav-text">许可证</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -144,7 +155,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">68</span>
+        <span class="site-state-item-count">72</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -224,7 +235,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-16 08:41:03" itemprop="dateModified" datetime="2025-08-16T08:41:03-04:00">2025-08-16</time>
+      <time title="修改时间：2025-08-16 09:47:46" itemprop="dateModified" datetime="2025-08-16T09:47:46-04:00">2025-08-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -249,7 +260,8 @@
     <div class="post-body" itemprop="articleBody"><blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/guojiex/stock-a-future">Stock-A-Future GitHub Repository</a></p>
 </blockquote>
-<h1 id="Stock-A-Future-项目介绍"><a href="#Stock-A-Future-项目介绍" class="headerlink" title="Stock-A-Future 项目介绍"></a>Stock-A-Future 项目介绍</h1><p>Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统，支持多种数据源（Tushare、AKTools），提供技术指标计算和买卖点预测功能。</p>
+<h1 id="Stock-A-Future-项目介绍"><a href="#Stock-A-Future-项目介绍" class="headerlink" title="Stock-A-Future 项目介绍"></a>Stock-A-Future 项目介绍</h1><p><img src="/images/stock-a-future/%E8%82%A1%E7%A5%A8%E6%9F%A5%E8%AF%A2.png" alt="股票查询"></p>
+<p>Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统，支持多种数据源（Tushare、AKTools），提供技术指标计算和买卖点预测功能。该项目采用现代化的技术栈，提供专业的K线图显示、智能搜索、股票收藏等丰富功能。</p>
 <h2 id="项目特性"><a href="#项目特性" class="headerlink" title="项目特性"></a>项目特性</h2><h3 id="📊-数据获取"><a href="#📊-数据获取" class="headerlink" title="📊 数据获取"></a>📊 数据获取</h3><ul>
 <li><strong>多数据源支持</strong>：集成Tushare API和AKTools（基于AKShare的免费开源数据源）</li>
 <li>支持股票日线数据查询</li>
@@ -257,7 +269,8 @@
 <li><strong>股票列表工具</strong>：支持从上交所在线获取最新股票列表</li>
 <li><strong>深交所数据</strong>：使用本地Excel文件（<code>data/A股列表.xlsx</code>）提供完整深交所股票数据</li>
 </ul>
-<h3 id="📈-技术指标计算"><a href="#📈-技术指标计算" class="headerlink" title="📈 技术指标计算"></a>📈 技术指标计算</h3><ul>
+<h3 id="📈-技术指标计算"><a href="#📈-技术指标计算" class="headerlink" title="📈 技术指标计算"></a>📈 技术指标计算</h3><p><img src="/images/stock-a-future/%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87.png" alt="技术指标"></p>
+<ul>
 <li><strong>MACD</strong> - 指数平滑异同平均线，识别趋势转折</li>
 <li><strong>RSI</strong> - 相对强弱指数，判断超买超卖</li>
 <li><strong>布林带</strong> - 价格波动区间分析</li>
@@ -276,7 +289,8 @@
 <li>CORS支持，便于前端集成</li>
 <li>详细的错误处理和日志记录</li>
 </ul>
-<h3 id="🌐-Web界面"><a href="#🌐-Web界面" class="headerlink" title="🌐 Web界面"></a>🌐 Web界面</h3><ul>
+<h3 id="🌐-Web界面"><a href="#🌐-Web界面" class="headerlink" title="🌐 Web界面"></a>🌐 Web界面</h3><p><img src="/images/stock-a-future/%E6%97%A5k%E7%BA%BF%E4%BF%A1%E6%81%AF.png" alt="日K线信息"></p>
+<ul>
 <li><strong>专业K线图</strong>: 使用ECharts显示完整的OHLC数据</li>
 <li><strong>技术指标叠加</strong>: MA5/MA10/MA20移动平均线</li>
 <li><strong>成交量副图</strong>: 底部显示成交量柱状图，颜色与K线联动</li>
@@ -290,11 +304,12 @@
 <li><strong>多平台支持</strong>: 提供批处理和PowerShell脚本，简化编译和测试流程</li>
 </ul>
 <h2 id="技术架构"><a href="#技术架构" class="headerlink" title="技术架构"></a>技术架构</h2><h3 id="后端技术栈"><a href="#后端技术栈" class="headerlink" title="后端技术栈"></a>后端技术栈</h3><ul>
-<li><strong>Go 1.23+</strong>: 使用最新版本的Go语言</li>
+<li><strong>Go 1.22+</strong>: 使用最新版本的Go语言</li>
 <li><strong>标准库</strong>: 主要使用<code>net/http</code>包构建RESTful API</li>
 <li><strong>数据源集成</strong>: 支持Tushare和AKTools两种数据源</li>
 <li><strong>Excel处理</strong>: 使用<code>excelize</code>库处理股票列表数据</li>
 <li><strong>配置管理</strong>: 使用<code>godotenv</code>管理环境变量</li>
+<li><strong>数值计算</strong>: 使用<code>shopspring/decimal</code>确保金融计算精度</li>
 </ul>
 <h3 id="前端技术栈"><a href="#前端技术栈" class="headerlink" title="前端技术栈"></a>前端技术栈</h3><ul>
 <li><strong>原生JavaScript</strong>: 无框架依赖，轻量级实现</li>
@@ -302,7 +317,7 @@
 <li><strong>响应式CSS</strong>: 支持多设备访问</li>
 <li><strong>模块化设计</strong>: 清晰的代码组织结构</li>
 </ul>
-<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">stock-a-future/</span><br><span class="line">├── cmd/                    # 命令行工具</span><br><span class="line">│   ├── server/            # 主服务器</span><br><span class="line">│   ├── curl/              # 内置curl工具</span><br><span class="line">│   └── stocklist/         # 股票列表获取工具</span><br><span class="line">├── internal/               # 内部包</span><br><span class="line">│   ├── client/            # 数据源客户端</span><br><span class="line">│   ├── handler/           # HTTP处理器</span><br><span class="line">│   ├── service/           # 业务逻辑服务</span><br><span class="line">│   └── models/            # 数据模型</span><br><span class="line">├── web/                   # Web界面</span><br><span class="line">│   └── static/            # 静态资源</span><br><span class="line">├── config/                # 配置管理</span><br><span class="line">├── data/                  # 数据文件</span><br><span class="line">└── docs/                  # 项目文档</span><br></pre></td></tr></table></figure>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">stock-a-future/</span><br><span class="line">├── cmd/                    # 命令行工具</span><br><span class="line">│   ├── server/            # 主应用程序入口</span><br><span class="line">│   ├── curl/              # 内置curl工具</span><br><span class="line">│   ├── stocklist/         # 股票列表获取工具</span><br><span class="line">│   └── aktools-test/      # AKTools测试工具</span><br><span class="line">├── internal/               # 内部包</span><br><span class="line">│   ├── client/            # API客户端（Tushare + 交易所）</span><br><span class="line">│   ├── handler/           # HTTP处理器</span><br><span class="line">│   ├── indicators/        # 技术指标计算</span><br><span class="line">│   ├── models/            # 数据模型</span><br><span class="line">│   └── service/           # 业务逻辑服务</span><br><span class="line">├── web/                   # Web资源</span><br><span class="line">│   └── static/            # 静态文件（HTML、CSS、JS）</span><br><span class="line">├── config/                # 配置管理</span><br><span class="line">├── data/                  # 数据文件</span><br><span class="line">│   └── A股列表.xlsx        # 深交所股票列表（Excel格式）</span><br><span class="line">├── docs/                  # 项目文档</span><br><span class="line">├── scripts/               # 构建和启动脚本</span><br><span class="line">├── Makefile              # 构建脚本</span><br><span class="line">└── README.md             # 项目文档</span><br></pre></td></tr></table></figure>
 
 <h2 id="数据源对比"><a href="#数据源对比" class="headerlink" title="数据源对比"></a>数据源对比</h2><table>
 <thead>
@@ -366,10 +381,23 @@
 <li><p><strong>配置环境变量</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">make <span class="built_in">env</span></span><br><span class="line"><span class="comment"># 编辑.env文件，选择数据源并配置相应参数</span></span><br><span class="line">vim .<span class="built_in">env</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Tushare数据源</span></span><br><span class="line">DATA_SOURCE_TYPE=tushare</span><br><span class="line">TUSHARE_TOKEN=your_tushare_token_here</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用AKTools数据源（免费）</span></span><br><span class="line">DATA_SOURCE_TYPE=aktools</span><br><span class="line">AKTOOLS_BASE_URL=http://127.0.0.1:8080</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>获取股票列表（可选）</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取上交所股票列表</span></span><br><span class="line">make fetch-sse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取所有股票列表（上交所在线获取 + 深交所Excel文件）</span></span><br><span class="line">make fetch-stocks</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取上交所股票列表</span></span><br><span class="line">make fetch-sse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取所有股票列表（上交所在线获取 + 深交所Excel文件）</span></span><br><span class="line">make fetch-stocks</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>：深交所股票数据已包含在 <code>data/A股列表.xlsx</code> 文件中，无需在线获取。</p>
+</blockquote>
+</li>
 <li><p><strong>启动服务</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发模式</span></span><br><span class="line">make dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者构建后运行</span></span><br><span class="line">make build</span><br><span class="line">make run</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>编译Curl工具（可选）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用批处理文件（推荐Windows用户）</span></span><br><span class="line">build-curl.bat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用PowerShell脚本</span></span><br><span class="line">.\build-curl.ps1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或手动编译</span></span><br><span class="line">go build -o curl.exe ./cmd/curl</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>：curl工具特别适合在Windows环境下调试API接口，无需安装额外的curl工具。</p>
+</blockquote>
+</li>
 </ol>
+<p>服务将在 <code>http://localhost:8081</code> 启动。</p>
 <h3 id="🚀-AKTools快速启动指南"><a href="#🚀-AKTools快速启动指南" class="headerlink" title="🚀 AKTools快速启动指南"></a>🚀 AKTools快速启动指南</h3><p>如果您想快速体验系统功能，推荐使用AKTools数据源（完全免费）：</p>
 <h4 id="1-一键启动AKTools服务"><a href="#1-一键启动AKTools服务" class="headerlink" title="1. 一键启动AKTools服务"></a>1. 一键启动AKTools服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows用户（推荐）</span></span><br><span class="line">start-aktools-server.bat</span><br><span class="line"></span><br><span class="line"><span class="comment"># PowerShell用户</span></span><br><span class="line">.\start-aktools-server.ps1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动启动</span></span><br><span class="line">python -m aktools</span><br></pre></td></tr></table></figure>
 
@@ -378,6 +406,39 @@
 <h4 id="3-验证服务"><a href="#3-验证服务" class="headerlink" title="3. 验证服务"></a>3. 验证服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试AKTools连接</span></span><br><span class="line">curl http://127.0.0.1:8080/api/public/stock_zh_a_info?symbol=000001</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试Stock-A-Future API</span></span><br><span class="line">curl http://localhost:8081/api/v1/health</span><br></pre></td></tr></table></figure>
 
 <h4 id="4-访问Web界面"><a href="#4-访问Web界面" class="headerlink" title="4. 访问Web界面"></a>4. 访问Web界面</h4><p>在浏览器中打开：<a target="_blank" rel="noopener" href="http://localhost:8081/">http://localhost:8081</a></p>
+<blockquote>
+<p><strong>提示</strong>: 使用项目提供的启动脚本可以自动处理端口配置和依赖检查，推荐新手使用。</p>
+</blockquote>
+<h3 id="🔧-服务器管理"><a href="#🔧-服务器管理" class="headerlink" title="🔧 服务器管理"></a>🔧 服务器管理</h3><p>新增的Make命令让服务器管理更加便捷：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查服务器状态（显示进程和端口占用）</span></span><br><span class="line">make status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 优雅停止服务器</span></span><br><span class="line">make stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制停止（包括端口清理）</span></span><br><span class="line">make <span class="built_in">kill</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一键重启</span></span><br><span class="line">make restart</span><br></pre></td></tr></table></figure>
+
+<h2 id="功能展示"><a href="#功能展示" class="headerlink" title="功能展示"></a>功能展示</h2><h3 id="🖥️-Web界面特性"><a href="#🖥️-Web界面特性" class="headerlink" title="🖥️ Web界面特性"></a>🖥️ Web界面特性</h3><h4 id="K线图升级"><a href="#K线图升级" class="headerlink" title="K线图升级"></a>K线图升级</h4><p><img src="/images/stock-a-future/%E6%97%A5k%E7%BA%BF%E4%BF%A1%E6%81%AF.png" alt="日K线信息"></p>
+<ul>
+<li><strong>从简单折线图到专业K线图</strong>: 显示完整的开盘、最高、最低、收盘价</li>
+<li><strong>红绿涨跌色彩</strong>: 红色阳线表示上涨，绿色阴线表示下跌</li>
+<li><strong>成交量联动</strong>: 底部成交量柱状图，颜色与K线保持一致</li>
+<li><strong>技术指标叠加</strong>: 自动计算并显示MA5、MA10、MA20移动平均线</li>
+</ul>
+<h4 id="智能搜索功能"><a href="#智能搜索功能" class="headerlink" title="智能搜索功能"></a>智能搜索功能</h4><p><img src="/images/stock-a-future/%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E8%A7%86%E5%9B%BE.png" alt="搜索功能视图"></p>
+<ul>
+<li><strong>实时搜索</strong>: 输入股票名称或代码，300ms防抖搜索</li>
+<li><strong>模糊匹配</strong>: 支持部分匹配，如输入”平安”可找到”平安银行”、”中国平安”</li>
+<li><strong>键盘导航</strong>: 支持上下箭头键选择，回车确认</li>
+<li><strong>自动填充</strong>: 选择搜索结果后自动填入股票代码框</li>
+<li><strong>股票代码缓存</strong>: 自动保存用户选择的股票，下次访问时自动恢复，提升用户体验</li>
+</ul>
+<h4 id="股票收藏功能"><a href="#股票收藏功能" class="headerlink" title="股票收藏功能"></a>股票收藏功能</h4><p><img src="/images/stock-a-future/%E8%82%A1%E7%A5%A8%E6%94%B6%E8%97%8F.png" alt="股票收藏"></p>
+<ul>
+<li><strong>收藏管理</strong>: 支持添加和删除股票收藏，便于快速访问常关注的股票</li>
+<li><strong>分组管理</strong>: 支持将收藏的股票按不同分组进行管理</li>
+<li><strong>快速切换</strong>: 一键切换至收藏的股票进行查看和分析</li>
+</ul>
+<h4 id="交互体验"><a href="#交互体验" class="headerlink" title="交互体验"></a>交互体验</h4><ul>
+<li><strong>图表缩放</strong>: 鼠标滚轮缩放，拖拽平移</li>
+<li><strong>数据提示</strong>: 鼠标悬停显示详细的OHLC数据、成交量、涨跌幅</li>
+<li><strong>响应式设计</strong>: 自适应不同屏幕尺寸</li>
+<li><strong>数据摘要</strong>: 显示8个关键指标（收盘价、成交量、振幅等）</li>
+</ul>
 <h2 id="核心功能详解"><a href="#核心功能详解" class="headerlink" title="核心功能详解"></a>核心功能详解</h2><h3 id="收藏股票功能"><a href="#收藏股票功能" class="headerlink" title="收藏股票功能"></a>收藏股票功能</h3><p>收藏股票功能允许用户将感兴趣的股票及其对应的时间范围保存下来，方便快速访问和查看历史数据。</p>
 <p><strong>主要特性</strong>：</p>
 <ul>
@@ -433,9 +494,16 @@
 <li><input disabled="" type="checkbox"> 增加回测功能</li>
 <li><input disabled="" type="checkbox"> 支持期货和期权数据</li>
 </ul>
-<h2 id="贡献指南"><a href="#贡献指南" class="headerlink" title="贡献指南"></a>贡献指南</h2><p>欢迎贡献代码、报告问题或提出建议！请查看项目的贡献指南了解详情。</p>
+<h2 id="贡献指南"><a href="#贡献指南" class="headerlink" title="贡献指南"></a>贡献指南</h2><ol>
+<li>Fork 本项目</li>
+<li>创建功能分支 (<code>git checkout -b feature/AmazingFeature</code>)</li>
+<li>提交更改 (<code>git commit -m &#39;Add some AmazingFeature&#39;</code>)</li>
+<li>推送到分支 (<code>git push origin feature/AmazingFeature</code>)</li>
+<li>开启 Pull Request</li>
+</ol>
 <h2 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h2><p>本项目采用MIT许可证，详见LICENSE文件。</p>
 <hr>
+<p><strong>免责声明</strong>: 本项目仅用于技术学习和研究目的，不构成任何投资建议。使用者应当自行承担投资风险。</p>
 <p><em>Stock-A-Future - 让股票投资更智能，让技术分析更简单</em></p>
 
     </div>
@@ -465,6 +533,10 @@
               <a href="/tags/api/" rel="tag"># api</a>
               <a href="/tags/prediction/" rel="tag"># prediction</a>
               <a href="/tags/technical-analysis/" rel="tag"># technical-analysis</a>
+              <a href="/tags/echarts/" rel="tag"># echarts</a>
+              <a href="/tags/k-line/" rel="tag"># k-line</a>
+              <a href="/tags/macd/" rel="tag"># macd</a>
+              <a href="/tags/rsi/" rel="tag"># rsi</a>
           </div>
 
         
