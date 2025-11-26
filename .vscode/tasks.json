@@ -1,0 +1,68 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Hexo: 新建文章",
+            "type": "shell",
+            "command": "hexo new ${input:postTitle}",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Hexo: 本地部署",
+            "type": "shell",
+            "command": "hexo clean && hexo generate && hexo server",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Hexo: 生成静态文件",
+            "type": "shell",
+            "command": "hexo clean && hexo generate",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Hexo: 启动本地服务器",
+            "type": "shell",
+            "command": "hexo server",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Hexo: 部署到GitHub",
+            "type": "shell",
+            "command": "hexo clean && hexo generate && hexo deploy",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "postTitle",
+            "description": "请输入文章标题",
+            "default": "新文章"
+        }
+    ]
+}

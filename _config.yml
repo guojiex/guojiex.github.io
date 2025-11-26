@@ -91,5 +91,14 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true
 
+# MathJax Support
+mathjax:
+  tags: none # or 'ams' or 'all'
+  single_dollars: true # 允许单个$符号包裹行内公式
+  cjk_width: 0.9 # 调整中文字符与公式的间距
+  normal_width: 0.6 # 调整英文字符与公式的间距
+  append_css: true # 自动添加MathJax所需的CSS
+  every_page: true # 为所有页面启用MathJax
+
 include:
   - "_lib/**/*"

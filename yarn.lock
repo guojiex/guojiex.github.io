@@ -7,6 +7,11 @@
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-1.1.2.tgz"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
+"@xmldom/xmldom@0.9.8":
+  version "0.9.8"
+  resolved "https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.8.tgz"
+  integrity sha512-p96FSY54r+WJ50FIOsCOjyj/wavs8921hG5+kVMmZgKcvIKxMXHTrjNJvRgWa/zuX3B6t2lijLNFaOyuxUH+2A==
+
 a-sync-waterfall@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/a-sync-waterfall/-/a-sync-waterfall-1.0.1.tgz"
@@ -764,6 +769,11 @@ commander@^5.1.0:
   resolved "https://registry.npmjs.org/commander/-/commander-5.1.0.tgz"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
+commander@13.1.0:
+  version "13.1.0"
+  resolved "https://registry.npmjs.org/commander/-/commander-13.1.0.tgz"
+  integrity sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==
+
 commondir@0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/commondir/-/commondir-0.0.1.tgz"
@@ -1305,6 +1315,11 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
+esm@^3.2.25:
+  version "3.2.25"
+  resolved "https://registry.npmjs.org/esm/-/esm-3.2.25.tgz"
+  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
+
 esprima@^4.0.0, esprima@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz"
@@ -1799,6 +1814,13 @@ hexo-deployer-git@^3.0.0:
     hexo-util "^2.1.0"
     moment "^2.18.0"
     nunjucks "^3.2.1"
+
+hexo-filter-mathjax@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.npmjs.org/hexo-filter-mathjax/-/hexo-filter-mathjax-0.9.1.tgz"
+  integrity sha512-N7EgxILRH/pITVcirDKfR9Sb5BCV26+o72+PXMTHnZ9ityWFy5euigO8nVsN0FLDNkHiGrepCbtn1kpb7lGWZw==
+  dependencies:
+    mathjax-full "3.2.2"
 
 hexo-filter-mermaid-diagrams@^1.0.5:
   version "1.0.5"
@@ -2638,6 +2660,16 @@ math-random@^1.0.1:
   resolved "https://registry.npmjs.org/math-random/-/math-random-1.0.4.tgz"
   integrity sha512-rUxjysqif/BZQH2yhd5Aaq7vXMSx9NdEsQcyA07uEzIvxgI7zIr33gGsh+RU0/XjmQpCW7RsVof1vlkvQVCK5A==
 
+mathjax-full@3.2.2:
+  version "3.2.2"
+  resolved "https://registry.npmjs.org/mathjax-full/-/mathjax-full-3.2.2.tgz"
+  integrity sha512-+LfG9Fik+OuI8SLwsiR02IVdjcnRCy5MufYLi0C3TdMT56L/pjB0alMVGgoWJF8pN9Rc7FESycZB9BMNWIid5w==
+  dependencies:
+    esm "^3.2.25"
+    mhchemparser "^4.1.0"
+    mj-context-menu "^0.6.1"
+    speech-rule-engine "^4.0.6"
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.npmjs.org/md5.js/-/md5.js-1.3.5.tgz"
@@ -2651,6 +2683,11 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz"
   integrity sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==
+
+mhchemparser@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.npmjs.org/mhchemparser/-/mhchemparser-4.2.1.tgz"
+  integrity sha512-kYmyrCirqJf3zZ9t/0wGgRZ4/ZJw//VwaRVGA75C4nhE60vtnIzhl9J9ndkX/h6hxSN7pjg/cE0VxbnNM+bnDQ==
 
 micro-memoize@^4.1.2:
   version "4.1.2"
@@ -2798,6 +2835,11 @@ mixin-deep@^1.2.0:
   dependencies:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
+
+mj-context-menu@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.npmjs.org/mj-context-menu/-/mj-context-menu-0.6.1.tgz"
+  integrity sha512-7NO5s6n10TIV96d4g2uDpG7ZDpIhMh0QNfGdJw/W47JswFcosz457wqz/b5sAKvl12sxINGFCn80NZHKwxQEXA==
 
 mkdirp@^0.5.0:
   version "0.5.6"
@@ -3771,6 +3813,15 @@ source-map@~0.6.1:
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+speech-rule-engine@^4.0.6:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/speech-rule-engine/-/speech-rule-engine-4.1.2.tgz"
+  integrity sha512-S6ji+flMEga+1QU79NDbwZ8Ivf0S/MpupQQiIC0rTpU/ZTKgcajijJJb1OcByBQDjrXCN1/DJtGz4ZJeBMPGJw==
+  dependencies:
+    "@xmldom/xmldom" "0.9.8"
+    commander "13.1.0"
+    wicked-good-xpath "1.3.0"
+
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.npmjs.org/split-string/-/split-string-3.1.0.tgz"
@@ -4284,6 +4335,11 @@ which@^2.0.1:
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
   dependencies:
     isexe "^2.0.0"
+
+wicked-good-xpath@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/wicked-good-xpath/-/wicked-good-xpath-1.3.0.tgz"
+  integrity sha512-Gd9+TUn5nXdwj/hFsPVx5cuHHiF5Bwuc30jZ4+ronF1qHK5O7HD0sgmXWSEgwKquT3ClLoKPVbO6qGwVwLzvAw==
 
 wrappy@1:
   version "1.0.2"
