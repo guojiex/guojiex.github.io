@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="WLOb_rW9OMZrR5YqGG9DEpQ9Jix2ZUGg1N44neW47ts">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="/lib/anime.css/4.1.1/anime.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"guojiex.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"default","show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="中小型企业最有性价比的测试、持续集成交付指南。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始的自动化测试">
+<meta property="og:url" content="http://guojiex.github.io/2021/07/17/testing/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="节瓜的生活经验">
+<meta property="og:description" content="中小型企业最有性价比的测试、持续集成交付指南。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://guojiex.github.io/media/testing/selenium/seleniumdocker.png">
+<meta property="article:published_time" content="2021-07-17T00:38:32.000Z">
+<meta property="article:modified_time" content="2025-06-22T14:02:41.403Z">
+<meta property="article:author" content="Jiexin Guo">
+<meta property="article:tag" content="Testing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://guojiex.github.io/media/testing/selenium/seleniumdocker.png">
+
+
+<link rel="canonical" href="http://guojiex.github.io/2021/07/17/testing/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://guojiex.github.io/2021/07/17/testing/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/","path":"2021/07/17/testing/从零开始的自动化测试/","title":"从零开始的自动化测试"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>从零开始的自动化测试 | 节瓜的生活经验</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">节瓜的生活经验</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Selenium-%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">Selenium 环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F-webdriver"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器驱动程序 webdriver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mac-chromedriver"><span class="nav-number">1.1.1.</span> <span class="nav-text">mac chromedriver</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Selenium-Docker%E7%8E%AF%E5%A2%83"><span class="nav-number">1.2.</span> <span class="nav-text">Selenium Docker环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.</span> <span class="nav-text">Python虚拟环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建虚拟环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.2.</span> <span class="nav-text">进入虚拟环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%BA%93"><span class="nav-number">1.3.3.</span> <span class="nav-text">安装依赖库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.4.</span> <span class="nav-text">退出虚拟环境</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B"><span class="nav-number">2.</span> <span class="nav-text">从零开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6"><span class="nav-number">2.1.</span> <span class="nav-text">本地浏览器打开百度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%88docker%E7%AD%89%EF%BC%89%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6"><span class="nav-number">2.2.</span> <span class="nav-text">远程浏览器（docker等）打开百度</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
+  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener me" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener me" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener me" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2021/07/17/testing/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jiexin Guo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的生活经验">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="从零开始的自动化测试 | 节瓜的生活经验">
+      <meta itemprop="description" content="中小型企业最有性价比的测试、持续集成交付指南。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零开始的自动化测试
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-16 20:38:32" itemprop="dateCreated datePublished" datetime="2021-07-16T20:38:32-04:00">2021-07-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/" itemprop="url" rel="index"><span itemprop="name">测试之道</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">中小型企业最有性价比的测试、持续集成交付指南。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Selenium-环境"><a href="#Selenium-环境" class="headerlink" title="Selenium 环境"></a><a target="_blank" rel="noopener" href="https://selenium.dev/documentation/">Selenium</a> 环境</h1><p>Selenium是一个通过控制浏览器，实现基于浏览器的网页自动化测试框架，支持Python、Java等语言操作脚本。</p>
+<h2 id="浏览器驱动程序-webdriver"><a href="#浏览器驱动程序-webdriver" class="headerlink" title="浏览器驱动程序 webdriver"></a>浏览器驱动程序 webdriver</h2><p>为了控制浏览器，你需要为不同类型的浏览器安装对应的驱动程序（<a target="_blank" rel="noopener" href="https://www.selenium.dev/documentation/en/selenium_installation/installing_webdriver_binaries/">webdriver</a>）</p>
+<p>或者在这个<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/chromedriver/">镜像</a>下载你的chrome对应版本chromedriver。</p>
+<p>下载后把chromedriver放入环境变量PATH中。</p>
+<h3 id="mac-chromedriver"><a href="#mac-chromedriver" class="headerlink" title="mac chromedriver"></a>mac chromedriver</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> chromedriver /usr/local/bin</span><br><span class="line"><span class="built_in">which</span> chromedriver</span><br><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
+
+<p>最新版的mac可能会出现打不开的情况，这时候你在finder找到chromedriver这个文件，点击出现菜单，按着command键点击菜单第一项”打开”。然后弹出来的确认一路点是，只要能这样打开一次，之后就都能打开了</p>
+<p>之后正常打开应该显示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Starting ChromeDriver 92.0.4515.43 (8c61b7e2989f2990d42f859cac71319137787cce-refs/branch-heads/4515@&#123;<span class="comment">#306&#125;) on port 9515</span></span><br><span class="line">Only <span class="built_in">local</span> connections are allowed.</span><br><span class="line">Please see https://chromedriver.chromium.org/security-considerations <span class="keyword">for</span> suggestions on keeping ChromeDriver safe.</span><br><span class="line">ChromeDriver was started successfully.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Selenium-Docker环境"><a href="#Selenium-Docker环境" class="headerlink" title="Selenium Docker环境"></a><a target="_blank" rel="noopener" href="https://github.com/SeleniumHQ/docker-selenium">Selenium Docker环境</a></h2><blockquote>
+<p>⚠️ 这个docker里面的chrome不支持apple m1环境</p>
+</blockquote>
+<p>使用docker的优势是不需要自己下载webdriver和更新webdriver对应版本。</p>
+<p>推荐在企业级CI/CD中使用docker selenium，方便环境隔离和启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 4444:4444 -p 7900:7900 --shm-size=<span class="string">&quot;2g&quot;</span> --<span class="built_in">env</span> VNC_NO_PASSWORD=1 selenium/standalone-chrome:latest</span><br></pre></td></tr></table></figure>
+
+<p>默认并发session只有1个，以下命令支持五个并发</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 4444:4444 -p 7900:7900 --shm-size=<span class="string">&quot;2g&quot;</span> --<span class="built_in">env</span> VNC_NO_PASSWORD=1 --<span class="built_in">env</span> SE_NODE_MAX_SESSIONS=5 --<span class="built_in">env</span> SE_NODE_OVERRIDE_MAX_SESSIONS=<span class="literal">true</span> selenium/standalone-chrome:latest</span><br></pre></td></tr></table></figure>
+
+<p>通过预定义的docker镜像，创建一个支持chrome浏览器的selenium测试环境。</p>
+<p>本地暴露7900端口作为观看测试的页面</p>
+<p><img src="/media/testing/selenium/seleniumdocker.png" alt="selenium docker grid"></p>
+<h2 id="Python虚拟环境"><a href="#Python虚拟环境" class="headerlink" title="Python虚拟环境"></a><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/venv.html#module-venv">Python虚拟环境</a></h2><h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/venv.html#creating-virtual-environments">创建虚拟环境</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m venv webdriver</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入虚拟环境"><a href="#进入虚拟环境" class="headerlink" title="进入虚拟环境"></a>进入虚拟环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> webdriver/bin/activate</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># selenium 依赖库</span></span><br><span class="line">pip install selenium</span><br><span class="line"><span class="comment"># pytest 测试框架</span></span><br><span class="line">pip install pytest</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> webdriver/bin/deactivate</span><br></pre></td></tr></table></figure>
+
+<h1 id="从零开始"><a href="#从零开始" class="headerlink" title="从零开始"></a>从零开始</h1><h2 id="本地浏览器打开百度"><a href="#本地浏览器打开百度" class="headerlink" title="本地浏览器打开百度"></a>本地浏览器打开百度</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="远程浏览器（docker等）打开百度"><a href="#远程浏览器（docker等）打开百度" class="headerlink" title="远程浏览器（docker等）打开百度"></a>远程浏览器（docker等）打开百度</h2><p>如果端口是4444的话</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Remote(</span><br><span class="line">    command_executor=<span class="string">&#x27;http://localhost:4444&#x27;</span>,</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Testing/" rel="tag"># Testing</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/15/life/%E7%BE%8E%E5%9B%BD%E5%B7%A5%E4%BD%9C%E5%90%8E%E5%9B%9E%E5%9B%BD%E6%8C%87%E5%8D%97/" rel="prev" title="美国工作后回国指南">
+                  <i class="fa fa-angle-left"></i> 美国工作后回国指南
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/24/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/" rel="next" title="产品也能懂的网页测试">
+                  产品也能懂的网页测试 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2022007474号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

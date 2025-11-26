@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="WLOb_rW9OMZrR5YqGG9DEpQ9Jix2ZUGg1N44neW47ts">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="/lib/anime.css/4.1.1/anime.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"guojiex.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"default","show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文是对《如何像计算机科学家那样思考》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何像计算机科学家那样思考Python篇（第一、二章）">
+<meta property="og:url" content="http://guojiex.github.io/2016/06/01/coding/%E5%A6%82%E4%BD%95%E5%83%8F%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%E9%82%A3%E6%A0%B7%E6%80%9D%E8%80%83%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%B7%AF/index.html">
+<meta property="og:site_name" content="节瓜的生活经验">
+<meta property="og:description" content="本文是对《如何像计算机科学家那样思考》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://guojiex.github.io/media/14649509422800.jpg">
+<meta property="og:image" content="http://guojiex.github.io/media/14649508833981.jpg">
+<meta property="article:published_time" content="2016-05-31T22:41:39.000Z">
+<meta property="article:modified_time" content="2025-06-22T14:02:41.394Z">
+<meta property="article:author" content="Jiexin Guo">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://guojiex.github.io/media/14649509422800.jpg">
+
+
+<link rel="canonical" href="http://guojiex.github.io/2016/06/01/coding/%E5%A6%82%E4%BD%95%E5%83%8F%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%E9%82%A3%E6%A0%B7%E6%80%9D%E8%80%83%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%B7%AF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://guojiex.github.io/2016/06/01/coding/%E5%A6%82%E4%BD%95%E5%83%8F%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%E9%82%A3%E6%A0%B7%E6%80%9D%E8%80%83%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%B7%AF/","path":"2016/06/01/coding/如何像数据科学家那样思考第一章-程序之路/","title":"如何像计算机科学家那样思考Python篇（第一、二章）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>如何像计算机科学家那样思考Python篇（第一、二章） | 节瓜的生活经验</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">节瓜的生活经验</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">程序之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.</span> <span class="nav-text">第一个程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%EF%BC%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.</span> <span class="nav-text">变量，表达式和语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%BC%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">值和数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E5%92%8C%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88%E4%BF%9D%E7%95%99%E5%AD%97%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">变量名和关键字（保留字）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.4.</span> <span class="nav-text">语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="nav-number">2.5.</span> <span class="nav-text">表达式求值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E5%92%8C%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.6.</span> <span class="nav-text">操作数和操作符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
+  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener me" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener me" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener me" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2016/06/01/coding/%E5%A6%82%E4%BD%95%E5%83%8F%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%E9%82%A3%E6%A0%B7%E6%80%9D%E8%80%83%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%B7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jiexin Guo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的生活经验">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="如何像计算机科学家那样思考Python篇（第一、二章） | 节瓜的生活经验">
+      <meta itemprop="description" content="本文是对《如何像计算机科学家那样思考》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何像计算机科学家那样思考Python篇（第一、二章）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-05-31 18:41:39" itemprop="dateCreated datePublished" datetime="2016-05-31T18:41:39-04:00">2016-05-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python%E4%BB%8E%E9%9B%B6%E5%8D%95%E6%8E%92/" itemprop="url" rel="index"><span itemprop="name">python从零单排</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">本文是对《如何像计算机科学家那样思考》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>这篇博客主要是《<a target="_blank" rel="noopener" href="http://openbookproject.net/thinkcs/Python/english2e/index.html">如何像计算机科学家那样思考</a>》此书的翻译，主要是对代码的记录，并不是对全书的全面翻译。</p>
+<h1 id="程序之路"><a href="#程序之路" class="headerlink" title="程序之路"></a>程序之路</h1><h2 id="第一个程序"><a href="#第一个程序" class="headerlink" title="第一个程序"></a>第一个程序</h2><p>这个程序只是简单地在屏幕上显示一段文字<br><strong>Python2.7</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&quot;Hello, World!&quot;</span></span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, World!</span><br></pre></td></tr></table></figure>
+<p><strong>Python3.5</strong></p>
+<p>Python3.5改变了print的语法，如果直接使用2.7的语法会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print &quot;Hello world&quot;</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1</span><br><span class="line">    print &quot;Hello world&quot;</span><br><span class="line">                      ^</span><br><span class="line">SyntaxError: Missing parentheses in call to &#x27;print&#x27;</span><br></pre></td></tr></table></figure>
+<p><em><strong>正确的写法</strong></em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello, World!&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, World!</span><br></pre></td></tr></table></figure>
+
+<h1 id="变量，表达式和语句"><a href="#变量，表达式和语句" class="headerlink" title="变量，表达式和语句"></a>变量，表达式和语句</h1><h2 id="值和数据类型"><a href="#值和数据类型" class="headerlink" title="值和数据类型"></a>值和数据类型</h2><p>值是最基础的事物之一<em><strong>（比如一个字母或者数字）</strong></em>，也是程序所操作和控制的基础事物。</p>
+<p>我们看到过的值有<code>2</code>和<code>&quot;Hello, World!&quot;</code>，它们属于不同的数据类型<code>2</code>是整数类型，<code>&quot;Hello, World!&quot;</code>是字符串类型（因为它是由一串字符组成的）。你和编译器都知道这是字符串，因为他被两个双引号包围。</p>
+<p>如果你不清楚一个值的类型是什么，那么可以使用下面的代码来得到值的类型</p>
+<p><strong>Python2.7</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;str&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(<span class="number">17</span>)</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;int&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>Python3.5</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;str&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(<span class="number">17</span>)</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;int&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>显而易见的，字符串属于类型<em><strong>str</strong></em>，整数属于类型<em><strong>int</strong></em>。不过带有小数点的数字属于类型<em><strong>float</strong></em></p>
+<p><strong>Python2.7</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(<span class="number">3.2</span>)</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;float&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>Python3.5</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(<span class="number">3.2</span>)</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;float&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Python中的字符串可以用单引号包括或者用双引号包括。如果最外面用双引号代表字符串，那么字符串里面可以包含单引号，比如<code>&quot;Bruce&#39;s beard</code>。同样的，如果最外面使用单引号代表字符串，里面可以包含双引号，比如<code>&#39;The knights who say &quot;Ni!&quot;&#39;</code>。</p>
+<p>此外还有使用三个单引号进行包含的字符串，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#x27;&#x27;&quot;Oh no&quot;, she exclaimed, &quot;Ben&#x27;s bike is broken!&quot;&#x27;&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&quot;Oh no&quot;</span>, she exclaimed, <span class="string">&quot;Ben&#x27;s bike is broken!&quot;</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>另外，平时针对大整数的使用逗号分割的写法在Python中是不识别的（虽然不会有语法错误），例如：</p>
+<p><strong>Python2.7</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span></span><br><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Python3.5</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="number">42</span>,<span class="number">000</span>)</span><br><span class="line"><span class="number">42</span> <span class="number">0</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>编程语言其中一个重要的特性就是操作控制<strong>变量</strong>的能力。</p>
+<p><strong>赋值语句</strong>可以产生新的变量并且赋给他们值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">&quot;What&#x27;s up, Doc?&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n = <span class="number">17</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pi = <span class="number">3.14159</span></span><br></pre></td></tr></table></figure>
+<p>上面这个例子给出了三个句子。第一个把字符串<code>&quot;What&#39;s up, Doc?&quot;</code>赋值给一个叫做<code>message</code>的新变量。第二个语句把整数<code>17</code>赋值给<code>n</code>，第三个语句把浮点数<code>3.14159</code>赋给<code>pi</code>。</p>
+<p>这里注意，赋值运算符**=<strong>，并不是我们平时数学意义上的等号（哪怕他们是同样的符号）。赋值运算符把等号左边称为</strong>变量名字<strong>，右边是想要付给这个变量的</strong>值**，这就是为什么你输入以下代码会报错：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">17</span> = n</span><br><span class="line">File <span class="string">&quot;&lt;interactive input&gt;&quot;</span>, line <span class="number">1</span></span><br><span class="line">SyntaxError: can<span class="string">&#x27;t assign to literal</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="变量名和关键字（保留字）"><a href="#变量名和关键字（保留字）" class="headerlink" title="变量名和关键字（保留字）"></a>变量名和关键字（保留字）</h2><p>通常来说，程序员会为他们的变量选择恰当的名字——他们会记录下这个变量的用途。</p>
+<p><strong>变量名</strong>可以很长。其中可以包含字母和数字，但是必须以字母开头。尽管使用大写字母是合法的，但是传统上我们不会这样做。变量名是大小写敏感的：<code>Bruce</code>和<code>bruce</code>是不同的变量。</p>
+<p>下划线字符（_）是可以使用在变量名中的，它经常被用于变量名中用于切分多个单词的情况，比如说<code>my_name</code>或者<code>price_of_tea_in_china</code>。</p>
+<p>如果你使用了不合法的变量名，Python会报错：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>76trombones = <span class="string">&quot;big parade&quot;</span></span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>more$ = <span class="number">1000000</span></span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> = <span class="string">&quot;Computer Science 101&quot;</span></span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+
+<p><code>76trombones</code>是不合法的，因为他没有使用字母开头。<code>more$</code>是不合法的，因为它里面包含了一个不合法的美元符号<code>$</code>。但是<code>class</code>这个变量名哪里错了呢？</p>
+<p>这其实是因为<code>class</code>是Python语言定义的<strong>关键字</strong>之一。关键字定义了编程语言的语法规则和结构，他们不能被当做变量名使用。</p>
+<p><em><strong>Python 关键字</strong></em></p>
+<p><strong>Python2.7</strong><br><img src="/media/14649509422800.jpg"></p>
+<p><strong>Python3.5</strong><br><img src="/media/14649508833981.jpg"></p>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>一个<strong>语句</strong>就是一条Python解释器能够执行的指令。我们现在看到了两种语句：print和赋值语句。</p>
+<p>当你在命令行中输入一个语句，Python会执行并且把结果显示出来（如果有结果的话）。print语句的结果是一个值，赋值语句不会产生结果。</p>
+<p>一个脚本通常包含一序列的语句，如果有多于一个的语句的话，结果会按照脚本中语句执行的顺序来显示，例如脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="number">1</span></span><br><span class="line">x = <span class="number">2</span></span><br><span class="line"><span class="built_in">print</span> x</span><br></pre></td></tr></table></figure>
+
+<p>会产生输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h2><p>一个表达式是值，变量，运算符的组合。如果你在命令行中输入一个表达式，解释器会计算并且把表达式的结果显示出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> + <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>表达式的求值会产生一个值，这也是为什么表达式可以放在赋值语句的右边。单独的一个值本身也是一个简单的表达式，一个变量也是一个表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">17</span></span><br><span class="line"><span class="number">17</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>但是计算一个表达式和打印一个值并不是同样的事情，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">&quot;What&#x27;s up, Doc?&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message</span><br><span class="line"><span class="string">&quot;What&#x27;s up, Doc?&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> message</span><br><span class="line">What<span class="string">&#x27;s up, Doc?</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="操作数和操作符"><a href="#操作数和操作符" class="headerlink" title="操作数和操作符"></a>操作数和操作符</h2><p><strong>操作符</strong>是特别的符号，用来代表计算类型，比如加号和乘号。被<strong>操作符</strong>使用到的值，称为<strong>操作数</strong>。</p>
+<p>以下是一些合法的Python表达式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">20</span>+<span class="number">32</span>   hour-<span class="number">1</span>   hour*<span class="number">60</span>+minute   minute/<span class="number">60</span>   <span class="number">5</span>**<span class="number">2</span>   (<span class="number">5</span>+<span class="number">9</span>)*(<span class="number">15</span>-<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<p>符号<code>+</code>,<code>-</code>和<code>*</code>，以及用来进行优先级分组的小括号，在Python中和数学中有着相同的用法。<code>*</code>是乘法的符号，<code>**</code>是幂次运算的符号：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> ** <span class="number">3</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span> ** <span class="number">2</span></span><br><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
+<p>在Python3中，除法符号<code>/</code>总是会按照浮点数的除法运算方法进行计算（在Python2.7中是整除的意思）。当我们想要使用整除的时候，可以使用<code>//</code>，也被叫做<strong>向下取整除法</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">7</span> / <span class="number">4</span></span><br><span class="line"><span class="number">1.75</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">7</span> // <span class="number">4</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>minutes = <span class="number">645</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hours = minutes // <span class="number">60</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hours</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/guojiex/leetcodeThing/tree/master/pythonExercise">My Github</a></li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><a target="_blank" rel="noopener" href="http://openbookproject.net/thinkcs/python/english2e/ch02.html">How to Think Like a Computer Scientist: Learning with Python 2nd Edition</a></li>
+<li><a target="_blank" rel="noopener" href="http://openbookproject.net/thinkcs/python/english3e/variables_expressions_statements.html">How to Think Like a Computer Scientist: Learning with Python 3</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/05/28/old_school/google%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/" rel="prev" title="2016谷歌软件工程师面经">
+                  <i class="fa fa-angle-left"></i> 2016谷歌软件工程师面经
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/06/03/coding/c-11%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" rel="next" title="C++11的新特性">
+                  C++11的新特性 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2022007474号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

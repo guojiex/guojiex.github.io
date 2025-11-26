@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="WLOb_rW9OMZrR5YqGG9DEpQ9Jix2ZUGg1N44neW47ts">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="/lib/anime.css/4.1.1/anime.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"guojiex.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"default","show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="对Vue页面，一些前端自动化测试的小技巧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="selenium小贴士">
+<meta property="og:url" content="http://guojiex.github.io/2022/01/12/testing/selenium%E5%B0%8F%E8%B4%B4%E5%A3%AB/index.html">
+<meta property="og:site_name" content="节瓜的生活经验">
+<meta property="og:description" content="对Vue页面，一些前端自动化测试的小技巧。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-12T15:14:44.000Z">
+<meta property="article:modified_time" content="2025-06-22T14:02:41.402Z">
+<meta property="article:author" content="Jiexin Guo">
+<meta property="article:tag" content="Testing">
+<meta property="article:tag" content="Selenium">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://guojiex.github.io/2022/01/12/testing/selenium%E5%B0%8F%E8%B4%B4%E5%A3%AB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://guojiex.github.io/2022/01/12/testing/selenium%E5%B0%8F%E8%B4%B4%E5%A3%AB/","path":"2022/01/12/testing/selenium小贴士/","title":"selenium小贴士"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>selenium小贴士 | 节瓜的生活经验</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">节瓜的生活经验</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue"><span class="nav-number">1.</span> <span class="nav-text">Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E9%9D%9E%E9%9A%90%E8%97%8F%E5%85%83%E7%B4%A0"><span class="nav-number">1.1.</span> <span class="nav-text">定位非隐藏元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E5%8C%85%E5%90%AB%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.</span> <span class="nav-text">定位包含字符串的元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96text-%E6%8B%BF%E4%B8%8D%E5%88%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.</span> <span class="nav-text">取text()拿不到字符串的元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%96%87%E6%9C%AC%E5%8C%85%E5%90%AB%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E6%8D%A2%E8%A1%8C%E7%AC%A6%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.4.</span> <span class="nav-text">元素文本包含乱七八糟换行符的元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selenium%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87FAQ"><span class="nav-number">2.</span> <span class="nav-text">Selenium疑难杂症FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Invalid-Session-Id"><span class="nav-number">2.1.</span> <span class="nav-text">Invalid Session Id</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.1.1.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%BE%91config-toml%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">编辑config.toml配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9shm-size"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">修改shm_size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%90%AFrunner"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">重启runner</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
+  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener me" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener me" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener me" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2022/01/12/testing/selenium%E5%B0%8F%E8%B4%B4%E5%A3%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jiexin Guo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的生活经验">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="selenium小贴士 | 节瓜的生活经验">
+      <meta itemprop="description" content="对Vue页面，一些前端自动化测试的小技巧。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          selenium小贴士
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-12 10:14:44" itemprop="dateCreated datePublished" datetime="2022-01-12T10:14:44-05:00">2022-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/" itemprop="url" rel="index"><span itemprop="name">测试之道</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">对Vue页面，一些前端自动化测试的小技巧。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><p>Vue写的应用，页面上经常会有“伪元素”（有好几个几乎一模一样的页面元素,但是只有实际显示的那一个才是我们需要定位的），那么我们要如何定位我们需要的那一个元素呢？</p>
+<h2 id="定位非隐藏元素"><a href="#定位非隐藏元素" class="headerlink" title="定位非隐藏元素"></a>定位非隐藏元素</h2><figure class="highlight xpath"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">not<span class="built_in">(contains</span>(@style,<span class="string">&quot;display: none&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="定位包含字符串的元素"><a href="#定位包含字符串的元素" class="headerlink" title="定位包含字符串的元素"></a>定位包含字符串的元素</h2><figure class="highlight xpath"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">contains(<span class="type">text</span>(), <span class="string">&quot;你想要定位的元素包含的文本&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="取text-拿不到字符串的元素"><a href="#取text-拿不到字符串的元素" class="headerlink" title="取text()拿不到字符串的元素"></a>取text()拿不到字符串的元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web_element.get_attribute(<span class="string">&#x27;value&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="元素文本包含乱七八糟换行符的元素"><a href="#元素文本包含乱七八糟换行符的元素" class="headerlink" title="元素文本包含乱七八糟换行符的元素"></a>元素文本包含乱七八糟换行符的元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web_element.get_attribute(<span class="string">&#x27;textContent&#x27;</span>).strip().replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Selenium疑难杂症FAQ"><a href="#Selenium疑难杂症FAQ" class="headerlink" title="Selenium疑难杂症FAQ"></a>Selenium疑难杂症FAQ</h1><h2 id="Invalid-Session-Id"><a href="#Invalid-Session-Id" class="headerlink" title="Invalid Session Id"></a>Invalid Session Id</h2><p>有段时间我们在gitlab-ci上面的使用selenium chrome docker 镜像的流水线一直报Invalid Session Id错误。</p>
+<p>日志中有一句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unknown error: session deleted because of page crash</span><br></pre></td></tr></table></figure>
+
+<p>然后才明白是因为浏览器崩溃了，导致的invalid session</p>
+<p>回想起selenium docker image文档里面提到要适当配置shm_size=2g,也就是共享内存大小，我怀疑是因为内存不足导致的程序崩溃。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="编辑config-toml配置"><a href="#编辑config-toml配置" class="headerlink" title="编辑config.toml配置"></a>编辑config.toml配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/gitlab-runner/config.toml</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改shm-size"><a href="#修改shm-size" class="headerlink" title="修改shm_size"></a>修改shm_size</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[runners.docker]</span><br><span class="line">    shm_size = 2000000000</span><br></pre></td></tr></table></figure>
+
+<h4 id="重启runner"><a href="#重启runner" class="headerlink" title="重启runner"></a>重启runner</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-runner restart</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Testing/" rel="tag"># Testing</a>
+              <a href="/tags/Selenium/" rel="tag"># Selenium</a>
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/02/life/2021%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" rel="prev" title="2021年度总结">
+                  <i class="fa fa-angle-left"></i> 2021年度总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/21/mit6-824-lab/mit6-824-lab1/" rel="next" title="史上最简单的 mit 6.824 分布式系统 Lab 1 MapReduce Part 1/2">
+                  史上最简单的 mit 6.824 分布式系统 Lab 1 MapReduce Part 1/2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2022007474号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
