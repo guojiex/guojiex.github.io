@@ -55,6 +55,17 @@
                 "reveal": "always",
                 "panel": "new"
             }
+        },
+        {
+            "label": "Hexo: 快速部署 (d -g)",
+            "type": "shell",
+            "command": "hexo d -g",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
         }
     ],
     "inputs": [
