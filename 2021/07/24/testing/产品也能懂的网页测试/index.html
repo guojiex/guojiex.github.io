@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -14,13 +14,14 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<link rel="stylesheet" href="/lib/font-awesome/5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/anime.css/4.1.1/anime.min.css">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"guojiex.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"default","show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="产品也要写网页测试。">
+  <meta name="description" content="产品也要写网页测试。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="产品也能懂的网页测试">
 <meta property="og:url" content="http://guojiex.github.io/2021/07/24/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/index.html">
@@ -36,26 +37,29 @@
 <meta property="article:published_time" content="2021-07-24T13:32:06.000Z">
 <meta property="article:modified_time" content="2025-06-22T14:02:41.403Z">
 <meta property="article:author" content="Jiexin Guo">
-<meta property="article:tag" content="Testing">
 <meta property="article:tag" content="Selenium">
+<meta property="article:tag" content="Testing">
+<meta property="article:tag" content="Webdriver">
 <meta property="article:tag" content="产品经理">
 <meta property="article:tag" content="网页测试">
-<meta property="article:tag" content="Webdriver">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://guojiex.github.io/media/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/baidu_input_box.png">
-
 
 <link rel="canonical" href="http://guojiex.github.io/2021/07/24/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://guojiex.github.io/2021/07/24/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/","path":"2021/07/24/testing/产品也能懂的网页测试/","title":"产品也能懂的网页测试"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>产品也能懂的网页测试 | 节瓜的生活经验</title>
+  <title>产品也能懂的网页测试 | 节瓜的生活经验</title>
   
-
-
 
 
 
@@ -63,169 +67,320 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
+</head>
 
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
 
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">节瓜的生活经验</p>
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">节瓜的生活经验</h1>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
   </ul>
 </nav>
 
 
 
 
-</header>
-        
-  
-  <aside class="sidebar">
+</div>
+    </header>
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/guojiex" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2021/07/24/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+      <meta itemprop="name" content="Jiexin Guo">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的生活经验">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          产品也能懂的网页测试
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-24 09:32:06" itemprop="dateCreated datePublished" datetime="2021-07-24T09:32:06-04:00">2021-07-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/" itemprop="url" rel="index"><span itemprop="name">测试之道</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">产品也要写网页测试。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文的代码可以在<a target="_blank" rel="noopener" href="https://gitee.com/guoskyhero/baidu_webdriver/tree/master/demo">这里</a>找到</p>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h3><p>选择: VS code（安装python插件）或者 pycharm</p>
+<h3 id="chromedriver"><a href="#chromedriver" class="headerlink" title="chromedriver"></a>chromedriver</h3><p>看<a href="https://guojiex.github.io/2021/07/17/testing/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%20webdriver">这里</a></p>
+<h3 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
+<p>测试安装成功与否：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br></pre></td></tr></table></figure>
+<p>输入后会显示(注意要是python3 python2 不行)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Python 3.9.2 (default, Mar 26 2021, 15:28:17)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> or <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>再输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br></pre></td></tr></table></figure>
+<p>没有报错就是成功了</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>你既可以在上一步验证安装打开的python命令行里面执行，也可以单独写个脚本demo.py跑（我会推荐后一种）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 demo.py</span><br></pre></td></tr></table></figure>
+<h3 id="本地打开浏览器"><a href="#本地打开浏览器" class="headerlink" title="本地打开浏览器"></a>本地打开浏览器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="查找控件"><a href="#查找控件" class="headerlink" title="查找控件"></a>查找控件</h3><p>在chrome里面，在你想要定位的控件上面按<em>右键</em>，弹出的菜单中选择<em>检查</em>或者<em>检查元素</em></p>
+<h4 id="id-or-name"><a href="#id-or-name" class="headerlink" title="id or name"></a>id or name</h4><p>在弹出的chrome工具栏里面会有对应的html空间元素的所有信息。如果有id或者name值，就可以通过这两个值定位选择这个控件。</p>
+<p>PS：id或者name尽量在同一个页面上不要重复。</p>
+<p><img src="/media/testing/产品也能懂的网页测试/baidu_input_box.png" alt="baidu 输入框示例"></p>
+<p>也可以通过xpath来定位控件</p>
+<h4 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h4><p><img src="/media/testing/产品也能懂的网页测试/find_xpath.png" alt="xpath复制"></p>
+<p><img src="/media/testing/产品也能懂的网页测试/test_use_xpath.png" alt="xpath 测试"></p>
+<h4 id="find-element-by-id"><a href="#find-element-by-id" class="headerlink" title="find_element_by_id"></a>find_element_by_id</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_id(<span class="string">&#x27;kw&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="find-element-by-xpath"><a href="#find-element-by-xpath" class="headerlink" title="find_element_by_xpath"></a>find_element_by_xpath</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="点击控件"><a href="#点击控件" class="headerlink" title="点击控件"></a>点击控件</h3><h4 id="click"><a href="#click" class="headerlink" title="click"></a>click</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br><span class="line"></span><br><span class="line">search_submit_button = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;su&quot;]&#x27;</span>)</span><br><span class="line">search_submit_button.click()</span><br></pre></td></tr></table></figure>
+<h4 id="javascript-点击控件"><a href="#javascript-点击控件" class="headerlink" title="javascript 点击控件"></a>javascript 点击控件</h4><p>有的时候直接调用webelement的click函数，会出现错误。大概是两个控件叠在了一起，在你指定的位置按点击，别的控件会接收到。这个时候可以试试用javascript来点击：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search_submit_button = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;su&quot;]&#x27;</span>)</span><br><span class="line"><span class="comment"># 这里的arguments[0]就是指search_submit_button</span></span><br><span class="line">driver.execute_script(<span class="string">&quot;arguments[0].click();&quot;</span>, search_submit_button)</span><br></pre></td></tr></table></figure>
+<h4 id="输入回车"><a href="#输入回车" class="headerlink" title="输入回车"></a>输入回车</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(Keys.ENTER)</span><br></pre></td></tr></table></figure>
+<h3 id="控件属性"><a href="#控件属性" class="headerlink" title="控件属性"></a>控件属性</h3><p>可以通过 get_attribute(‘value’) 方法，获得html input控件的值，例如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>))</span><br><span class="line"></span><br><span class="line">search_submit_button = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;su&quot;]&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(search_submit_button.get_attribute(<span class="string">&#x27;value&#x27;</span>))</span><br><span class="line"></span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+<p>执行结果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">什么值得买</span><br><span class="line">百度一下</span><br></pre></td></tr></table></figure></p>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><h4 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h4><p>python里面的assert关键字就是断言。意即我们认为接下来的这个语句必须为True，不然程序直接崩溃。</p>
+<p>assert是测试中十分基础，但也是十分有效的技术</p>
+<h4 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_word = <span class="string">&#x27;什么值得买&#x27;</span></span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(search_word)</span><br><span class="line">search_input_box.send_keys(Keys.ENTER)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>))</span><br><span class="line"><span class="keyword">assert</span> search_word == search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="额外信息"><a href="#额外信息" class="headerlink" title="额外信息"></a>额外信息</h4><p>assert接受第二个参数，可以在出现断言错误的时候打印更多信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_word = <span class="string">&#x27;什么值得买&#x27;</span></span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(search_word)</span><br><span class="line">search_input_box.send_keys(Keys.ENTER)</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> <span class="string">&#x27;这是错的&#x27;</span> == search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>), <span class="string">f&#x27;实际结果 &#x27;</span> \</span><br><span class="line">    <span class="string">f&#x27;<span class="subst">&#123;search_input_box.get_attribute(<span class="string">&quot;value&quot;</span>)&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&quot;</span>, line 19, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    assert <span class="string">&#x27;这是错的&#x27;</span> == search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>), f<span class="string">&#x27;实际结果 &#x27;</span> \</span><br><span class="line">AssertionError: 实际结果 什么值得买</span><br></pre></td></tr></table></figure>
+<h2 id="进阶实战"><a href="#进阶实战" class="headerlink" title="进阶实战"></a>进阶实战</h2><h3 id="相对路径xpath"><a href="#相对路径xpath" class="headerlink" title="相对路径xpath"></a>相对路径xpath</h3><p>通过driver.find_element_by_xpath或者别的find方法，返回的是web element类对象。而在web element类对象中也有find_element_by_xpath方法，但这时候这个方法输入的xpath，实际上是对应着这个web element内部的html控件，也就是相对xpath。</p>
+<h4 id="登录百度"><a href="#登录百度" class="headerlink" title="登录百度"></a>登录百度</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">login_button = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;s-top-loginbtn&quot;]&#x27;</span>)</span><br><span class="line">login_button.click()</span><br></pre></td></tr></table></figure>
+<p><img src="/media/testing/产品也能懂的网页测试/baidu_login_form.png" alt="baidu 登录框"></p>
+<h4 id="获得登录框webelement"><a href="#获得登录框webelement" class="headerlink" title="获得登录框webelement"></a>获得登录框webelement</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">login_form = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;passport-login-pop-dialog&quot;]/div/div/div&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="用相对xpath-点击-“用户名登录”"><a href="#用相对xpath-点击-“用户名登录”" class="headerlink" title="用相对xpath 点击 “用户名登录”"></a>用相对xpath 点击 “用户名登录”</h4><p>用户名登录 按钮，是在登录框webelement下的 div[3]/p[2]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username_login_entry = login_form.find_element_by_xpath(<span class="string">&#x27;div[3]/p[2]&#x27;</span>)</span><br><span class="line">username_login_entry.click()</span><br></pre></td></tr></table></figure>
+<p><img src="/media/testing/产品也能懂的网页测试/baidu_username_login.png" alt="baidu 用户名登录框"></p>
+<h4 id="相对xpath定位-输入用户名"><a href="#相对xpath定位-输入用户名" class="headerlink" title="相对xpath定位 输入用户名"></a>相对xpath定位 输入用户名</h4><p>用户名输入框，是基于登录框webelement下的 div/form/p[5]/input[2]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username_input_box = login_form.find_element_by_xpath(<span class="string">&#x27;div/form/p[5]/input[2]&#x27;</span>)</span><br><span class="line">username_input_box.send_keys(<span class="string">&#x27;测试&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/media/testing/产品也能懂的网页测试/baidu_username_input_test.png" alt="baidu 用户名登录框输入测试"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Testing/" rel="tag"># Testing</a>
+              <a href="/tags/Selenium/" rel="tag"># Selenium</a>
+              <a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" rel="tag"># 产品经理</a>
+              <a href="/tags/%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/" rel="tag"># 网页测试</a>
+              <a href="/tags/Webdriver/" rel="tag"># Webdriver</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/17/testing/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="prev" title="从零开始的自动化测试">
+      <i class="fa fa-chevron-left"></i> 从零开始的自动化测试
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/13/leetcode/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="next" title="快速排序">
+      快速排序 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -234,24 +389,24 @@ mjx-container[display="true"] + br {
         </li>
       </ul>
 
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IDE"><span class="nav-number">1.1.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chromedriver"><span class="nav-number">1.2.</span> <span class="nav-text">chromedriver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%BA%93"><span class="nav-number">1.3.</span> <span class="nav-text">安装依赖库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">本地打开浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%8E%A7%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">查找控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#id-or-name"><span class="nav-number">2.2.1.</span> <span class="nav-text">id or name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xpath"><span class="nav-number">2.2.2.</span> <span class="nav-text">xpath</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-element-by-id"><span class="nav-number">2.2.3.</span> <span class="nav-text">find_element_by_id</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-element-by-xpath"><span class="nav-number">2.2.4.</span> <span class="nav-text">find_element_by_xpath</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E6%8E%A7%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">点击控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#click"><span class="nav-number">2.3.1.</span> <span class="nav-text">click</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javascript-%E7%82%B9%E5%87%BB%E6%8E%A7%E4%BB%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">javascript 点击控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%9B%9E%E8%BD%A6"><span class="nav-number">2.3.3.</span> <span class="nav-text">输入回车</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="nav-number">2.4.</span> <span class="nav-text">控件属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%AD%E8%A8%80"><span class="nav-number">2.5.</span> <span class="nav-text">断言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#assert"><span class="nav-number">2.5.1.</span> <span class="nav-text">assert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-number">2.5.2.</span> <span class="nav-text">基础用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E4%BF%A1%E6%81%AF"><span class="nav-number">2.5.3.</span> <span class="nav-text">额外信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">进阶实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84xpath"><span class="nav-number">3.1.</span> <span class="nav-text">相对路径xpath</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E7%99%BE%E5%BA%A6"><span class="nav-number">3.1.1.</span> <span class="nav-text">登录百度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%99%BB%E5%BD%95%E6%A1%86webelement"><span class="nav-number">3.1.2.</span> <span class="nav-text">获得登录框webelement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E7%9B%B8%E5%AF%B9xpath-%E7%82%B9%E5%87%BB-%E2%80%9C%E7%94%A8%E6%88%B7%E5%90%8D%E7%99%BB%E5%BD%95%E2%80%9D"><span class="nav-number">3.1.3.</span> <span class="nav-text">用相对xpath 点击 “用户名登录”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9xpath%E5%AE%9A%E4%BD%8D-%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D"><span class="nav-number">3.1.4.</span> <span class="nav-text">相对xpath定位 输入用户名</span></a></li></ol></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IDE"><span class="nav-number">1.1.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chromedriver"><span class="nav-number">1.2.</span> <span class="nav-text">chromedriver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%BA%93"><span class="nav-number">1.3.</span> <span class="nav-text">安装依赖库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">本地打开浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%8E%A7%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">查找控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#id-or-name"><span class="nav-number">2.2.1.</span> <span class="nav-text">id or name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xpath"><span class="nav-number">2.2.2.</span> <span class="nav-text">xpath</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-element-by-id"><span class="nav-number">2.2.3.</span> <span class="nav-text">find_element_by_id</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-element-by-xpath"><span class="nav-number">2.2.4.</span> <span class="nav-text">find_element_by_xpath</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E6%8E%A7%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">点击控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#click"><span class="nav-number">2.3.1.</span> <span class="nav-text">click</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javascript-%E7%82%B9%E5%87%BB%E6%8E%A7%E4%BB%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">javascript 点击控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%9B%9E%E8%BD%A6"><span class="nav-number">2.3.3.</span> <span class="nav-text">输入回车</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="nav-number">2.4.</span> <span class="nav-text">控件属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%AD%E8%A8%80"><span class="nav-number">2.5.</span> <span class="nav-text">断言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#assert"><span class="nav-number">2.5.1.</span> <span class="nav-text">assert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-number">2.5.2.</span> <span class="nav-text">基础用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E4%BF%A1%E6%81%AF"><span class="nav-number">2.5.3.</span> <span class="nav-text">额外信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">进阶实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84xpath"><span class="nav-number">3.1.</span> <span class="nav-text">相对路径xpath</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E7%99%BE%E5%BA%A6"><span class="nav-number">3.1.1.</span> <span class="nav-text">登录百度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%99%BB%E5%BD%95%E6%A1%86webelement"><span class="nav-number">3.1.2.</span> <span class="nav-text">获得登录框webelement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E7%9B%B8%E5%AF%B9xpath-%E7%82%B9%E5%87%BB-%E2%80%9C%E7%94%A8%E6%88%B7%E5%90%8D%E7%99%BB%E5%BD%95%E2%80%9D"><span class="nav-number">3.1.3.</span> <span class="nav-text">用相对xpath 点击 “用户名登录”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9xpath%E5%AE%9A%E4%BD%8D-%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D"><span class="nav-number">3.1.4.</span> <span class="nav-text">相对xpath定位 输入用户名</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
 
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
-      src="/images/avatar.jpeg">
+      src="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
   <p class="site-author-name" itemprop="name">Jiexin Guo</p>
   <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
 </div>
-<div class="site-state-wrap animated">
+<div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+          <a href="/archives/">
+        
           <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
@@ -266,265 +421,79 @@ mjx-container[display="true"] + br {
       </div>
   </nav>
 </div>
-  <div class="links-of-author animated">
+  <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener me" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener me" target="_blank"><i class="github fa-fw"></i>Github</a>
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
       </span>
       <span class="links-of-author-item">
-        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener me" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
       </span>
   </div>
 
-        </div>
-      </div>
-    </div>
 
-    
+
+      </div>
+
+    </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2021/07/24/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jiexin Guo">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="节瓜的生活经验">
-      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="产品也能懂的网页测试 | 节瓜的生活经验">
-      <meta itemprop="description" content="产品也要写网页测试。">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          产品也能懂的网页测试
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-07-24 09:32:06" itemprop="dateCreated datePublished" datetime="2021-07-24T09:32:06-04:00">2021-07-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/" itemprop="url" rel="index"><span itemprop="name">测试之道</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-            <div class="post-description">产品也要写网页测试。</div>
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><p>本文的代码可以在<a target="_blank" rel="noopener" href="https://gitee.com/guoskyhero/baidu_webdriver/tree/master/demo">这里</a>找到</p>
-<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h3><p>选择: VS code（安装python插件）或者 pycharm</p>
-<h3 id="chromedriver"><a href="#chromedriver" class="headerlink" title="chromedriver"></a>chromedriver</h3><p>看<a href="https://guojiex.github.io/2021/07/17/testing/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%20webdriver">这里</a></p>
-<h3 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
-
-<p>测试安装成功与否：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br></pre></td></tr></table></figure>
-
-<p>输入后会显示(注意要是python3 python2 不行)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Python 3.9.2 (default, Mar 26 2021, 15:28:17)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> or <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>再输入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br></pre></td></tr></table></figure>
-
-<p>没有报错就是成功了</p>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>你既可以在上一步验证安装打开的python命令行里面执行，也可以单独写个脚本demo.py跑（我会推荐后一种）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 demo.py</span><br></pre></td></tr></table></figure>
-
-<h3 id="本地打开浏览器"><a href="#本地打开浏览器" class="headerlink" title="本地打开浏览器"></a>本地打开浏览器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="查找控件"><a href="#查找控件" class="headerlink" title="查找控件"></a>查找控件</h3><p>在chrome里面，在你想要定位的控件上面按<em>右键</em>，弹出的菜单中选择<em>检查</em>或者<em>检查元素</em></p>
-<h4 id="id-or-name"><a href="#id-or-name" class="headerlink" title="id or name"></a>id or name</h4><p>在弹出的chrome工具栏里面会有对应的html空间元素的所有信息。如果有id或者name值，就可以通过这两个值定位选择这个控件。</p>
-<p>PS：id或者name尽量在同一个页面上不要重复。</p>
-<p><img src="/media/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/baidu_input_box.png" alt="baidu 输入框示例"></p>
-<p>也可以通过xpath来定位控件</p>
-<h4 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h4><p><img src="/media/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/find_xpath.png" alt="xpath复制"></p>
-<p><img src="/media/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/test_use_xpath.png" alt="xpath 测试"></p>
-<h4 id="find-element-by-id"><a href="#find-element-by-id" class="headerlink" title="find_element_by_id"></a>find_element_by_id</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_id(<span class="string">&#x27;kw&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="find-element-by-xpath"><a href="#find-element-by-xpath" class="headerlink" title="find_element_by_xpath"></a>find_element_by_xpath</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="点击控件"><a href="#点击控件" class="headerlink" title="点击控件"></a>点击控件</h3><h4 id="click"><a href="#click" class="headerlink" title="click"></a>click</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br><span class="line"></span><br><span class="line">search_submit_button = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;su&quot;]&#x27;</span>)</span><br><span class="line">search_submit_button.click()</span><br></pre></td></tr></table></figure>
-
-<h4 id="javascript-点击控件"><a href="#javascript-点击控件" class="headerlink" title="javascript 点击控件"></a>javascript 点击控件</h4><p>有的时候直接调用webelement的click函数，会出现错误。大概是两个控件叠在了一起，在你指定的位置按点击，别的控件会接收到。这个时候可以试试用javascript来点击：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search_submit_button = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;su&quot;]&#x27;</span>)</span><br><span class="line"><span class="comment"># 这里的arguments[0]就是指search_submit_button</span></span><br><span class="line">driver.execute_script(<span class="string">&quot;arguments[0].click();&quot;</span>, search_submit_button)</span><br></pre></td></tr></table></figure>
-
-<h4 id="输入回车"><a href="#输入回车" class="headerlink" title="输入回车"></a>输入回车</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(Keys.ENTER)</span><br></pre></td></tr></table></figure>
-
-<h3 id="控件属性"><a href="#控件属性" class="headerlink" title="控件属性"></a>控件属性</h3><p>可以通过 get_attribute(‘value’) 方法，获得html input控件的值，例如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(<span class="string">&#x27;什么值得买&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>))</span><br><span class="line"></span><br><span class="line">search_submit_button = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;su&quot;]&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(search_submit_button.get_attribute(<span class="string">&#x27;value&#x27;</span>))</span><br><span class="line"></span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
-
-<p>执行结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">什么值得买</span><br><span class="line">百度一下</span><br></pre></td></tr></table></figure>
-
-<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><h4 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h4><p>python里面的assert关键字就是断言。意即我们认为接下来的这个语句必须为True，不然程序直接崩溃。</p>
-<p>assert是测试中十分基础，但也是十分有效的技术</p>
-<h4 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_word = <span class="string">&#x27;什么值得买&#x27;</span></span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(search_word)</span><br><span class="line">search_input_box.send_keys(Keys.ENTER)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>))</span><br><span class="line"><span class="keyword">assert</span> search_word == search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="额外信息"><a href="#额外信息" class="headerlink" title="额外信息"></a>额外信息</h4><p>assert接受第二个参数，可以在出现断言错误的时候打印更多信息。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">search_word = <span class="string">&#x27;什么值得买&#x27;</span></span><br><span class="line"></span><br><span class="line">search_input_box = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;kw&quot;]&#x27;</span>)</span><br><span class="line">search_input_box.send_keys(search_word)</span><br><span class="line">search_input_box.send_keys(Keys.ENTER)</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> <span class="string">&#x27;这是错的&#x27;</span> == search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>), <span class="string">f&#x27;实际结果 &#x27;</span> \</span><br><span class="line">    <span class="string">f&#x27;<span class="subst">&#123;search_input_box.get_attribute(<span class="string">&quot;value&quot;</span>)&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&quot;</span>, line 19, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    assert <span class="string">&#x27;这是错的&#x27;</span> == search_input_box.get_attribute(<span class="string">&#x27;value&#x27;</span>), f<span class="string">&#x27;实际结果 &#x27;</span> \</span><br><span class="line">AssertionError: 实际结果 什么值得买</span><br></pre></td></tr></table></figure>
-
-<h2 id="进阶实战"><a href="#进阶实战" class="headerlink" title="进阶实战"></a>进阶实战</h2><h3 id="相对路径xpath"><a href="#相对路径xpath" class="headerlink" title="相对路径xpath"></a>相对路径xpath</h3><p>通过driver.find_element_by_xpath或者别的find方法，返回的是web element类对象。而在web element类对象中也有find_element_by_xpath方法，但这时候这个方法输入的xpath，实际上是对应着这个web element内部的html控件，也就是相对xpath。</p>
-<h4 id="登录百度"><a href="#登录百度" class="headerlink" title="登录百度"></a>登录百度</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"> </span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">driver = webdriver.Chrome(</span><br><span class="line">    options=chrome_options</span><br><span class="line">)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.baidu.com/&quot;</span>)</span><br><span class="line"></span><br><span class="line">login_button = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;s-top-loginbtn&quot;]&#x27;</span>)</span><br><span class="line">login_button.click()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/media/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/baidu_login_form.png" alt="baidu 登录框"></p>
-<h4 id="获得登录框webelement"><a href="#获得登录框webelement" class="headerlink" title="获得登录框webelement"></a>获得登录框webelement</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">login_form = driver.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;passport-login-pop-dialog&quot;]/div/div/div&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="用相对xpath-点击-“用户名登录”"><a href="#用相对xpath-点击-“用户名登录”" class="headerlink" title="用相对xpath 点击 “用户名登录”"></a>用相对xpath 点击 “用户名登录”</h4><p>用户名登录 按钮，是在登录框webelement下的 div[3]/p[2]</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username_login_entry = login_form.find_element_by_xpath(<span class="string">&#x27;div[3]/p[2]&#x27;</span>)</span><br><span class="line">username_login_entry.click()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/media/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/baidu_username_login.png" alt="baidu 用户名登录框"></p>
-<h4 id="相对xpath定位-输入用户名"><a href="#相对xpath定位-输入用户名" class="headerlink" title="相对xpath定位 输入用户名"></a>相对xpath定位 输入用户名</h4><p>用户名输入框，是基于登录框webelement下的 div/form/p[5]/input[2]</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username_input_box = login_form.find_element_by_xpath(<span class="string">&#x27;div/form/p[5]/input[2]&#x27;</span>)</span><br><span class="line">username_input_box.send_keys(<span class="string">&#x27;测试&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/media/testing/%E4%BA%A7%E5%93%81%E4%B9%9F%E8%83%BD%E6%87%82%E7%9A%84%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/baidu_username_input_test.png" alt="baidu 用户名登录框输入测试"></p>
-
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>请我一杯咖啡吧！</div>
-  <button>
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
-        <span>支付宝</span>
       </div>
+    </main>
 
-  </div>
-</div>
-
-          <div class="post-tags">
-              <a href="/tags/Testing/" rel="tag"># Testing</a>
-              <a href="/tags/Selenium/" rel="tag"># Selenium</a>
-              <a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" rel="tag"># 产品经理</a>
-              <a href="/tags/%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95/" rel="tag"># 网页测试</a>
-              <a href="/tags/Webdriver/" rel="tag"># Webdriver</a>
-          </div>
+    <footer class="footer">
+      <div class="footer-inner">
+        
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2021/07/17/testing/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="prev" title="从零开始的自动化测试">
-                  <i class="fa fa-angle-left"></i> 从零开始的自动化测试
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2021/12/13/leetcode/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="next" title="快速排序">
-                  快速排序 <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
     </footer>
-  </article>
-</div>
-
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2022007474号 </a>
   </div>
-  <div class="copyright">
-    &copy; 2016 – 
-    <span itemprop="copyrightYear">2025</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
-  </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
 
   
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
+  <script src="/lib/anime.min.js"></script>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+<script src="/js/utils.js"></script>
 
 
-  
-  <script src="/lib/animejs/3.2.1/anime.min.js"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-
-  
+<script src="/js/schemes/pisces.js"></script>
 
 
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
 
 
 
@@ -534,6 +503,22 @@ mjx-container[display="true"] + br {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
 
 </body>
 </html>

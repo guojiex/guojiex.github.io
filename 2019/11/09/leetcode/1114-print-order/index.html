@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -14,13 +14,14 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<link rel="stylesheet" href="/lib/font-awesome/5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/anime.css/4.1.1/anime.min.css">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"guojiex.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"default","show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="Print three function result in order, while runnning concurrently.">
+  <meta name="description" content="Print three function result in order, while runnning concurrently.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1114. Print In Order">
 <meta property="og:url" content="http://guojiex.github.io/2019/11/09/leetcode/1114-print-order/index.html">
@@ -30,23 +31,26 @@
 <meta property="article:published_time" content="2019-11-09T15:11:59.000Z">
 <meta property="article:modified_time" content="2025-06-22T14:02:41.396Z">
 <meta property="article:author" content="Jiexin Guo">
-<meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="algorithm">
 <meta property="article:tag" content="concurrency">
+<meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
-
 
 <link rel="canonical" href="http://guojiex.github.io/2019/11/09/leetcode/1114-print-order/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://guojiex.github.io/2019/11/09/leetcode/1114-print-order/","path":"2019/11/09/leetcode/1114-print-order/","title":"1114. Print In Order"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>1114. Print In Order | 节瓜的生活经验</title>
+  <title>1114. Print In Order | 节瓜的生活经验</title>
   
-
-
 
 
 
@@ -54,169 +58,282 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
+</head>
 
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
 
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">节瓜的生活经验</p>
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">节瓜的生活经验</h1>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
   </ul>
 </nav>
 
 
 
 
-</header>
-        
-  
-  <aside class="sidebar">
+</div>
+    </header>
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/guojiex" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2019/11/09/leetcode/1114-print-order/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+      <meta itemprop="name" content="Jiexin Guo">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的生活经验">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1114. Print In Order
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-09 10:11:59" itemprop="dateCreated datePublished" datetime="2019-11-09T10:11:59-05:00">2019-11-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">Print three function result in order, while runnning concurrently.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/print-in-order/">Print in Order</a></p>
+</blockquote>
+<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Suppose we have a class:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">first</span><span class="params">()</span> </span>&#123; <span class="built_in">print</span>(<span class="string">&quot;first&quot;</span>); &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">second</span><span class="params">()</span> </span>&#123; <span class="built_in">print</span>(<span class="string">&quot;second&quot;</span>); &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">third</span><span class="params">()</span> </span>&#123; <span class="built_in">print</span>(<span class="string">&quot;third&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The same instance of Foo will be passed to three different threads. Thread A will call first(), thread B will call second(), and thread C will call third(). Design a mechanism and modify the program to ensure that second() is executed after first(), and third() is executed after second().</p>
+<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><p>Input: [1,2,3]<br>Output: “firstsecondthird”<br>Explanation: There are three threads being fired asynchronously. The input [1,2,3] means thread A calls first(), thread B calls second(), and thread C calls third(). “firstsecondthird” is the correct output.</p>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><p>Input: [1,3,2]<br>Output: “firstsecondthird”<br>Explanation: The input [1,3,2] means thread A calls first(), thread B calls third(), and thread C calls second(). “firstsecondthird” is the correct output.</p>
+<p>Note:</p>
+<p>We do not know how the threads will be scheduled in the operating system, even though the numbers in the input seems to imply the ordering. The input format you see is mainly to ensure our tests’ comprehensiveness.</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>题目的意思是，有三个线程同时执行，保证输出的顺序。只需要用连续的锁，保证锁之间的顺序就好了。也可以用c++的promise，future来实现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Foo</span>() &#123;</span><br><span class="line">        std::<span class="built_in">lock</span>(second_mutex, third_mutex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">first</span><span class="params">(function&lt;<span class="type">void</span>()&gt; printFirst)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// printFirst() outputs &quot;first&quot;. Do not change or remove this line.</span></span><br><span class="line">        <span class="built_in">printFirst</span>();</span><br><span class="line">        second_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">second</span><span class="params">(function&lt;<span class="type">void</span>()&gt; printSecond)</span> </span>&#123;</span><br><span class="line">        second_mutex.<span class="built_in">lock</span>();</span><br><span class="line">        <span class="comment">// printSecond() outputs &quot;second&quot;. Do not change or remove this line.</span></span><br><span class="line">        <span class="built_in">printSecond</span>();</span><br><span class="line">        second_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">        third_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">third</span><span class="params">(function&lt;<span class="type">void</span>()&gt; printThird)</span> </span>&#123;</span><br><span class="line">        third_mutex.<span class="built_in">lock</span>();</span><br><span class="line">        <span class="comment">// printThird() outputs &quot;third&quot;. Do not change or remove this line.</span></span><br><span class="line">        <span class="built_in">printThird</span>();</span><br><span class="line">        third_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::mutex second_mutex;</span><br><span class="line">    std::mutex third_mutex;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+              <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+              <a href="/tags/concurrency/" rel="tag"># concurrency</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/30/leetcode/twosum/" rel="prev" title="1. Two Sum">
+      <i class="fa fa-chevron-left"></i> 1. Two Sum
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/17/essay/theGoogleFileSystem/" rel="next" title="The Google File System 谷歌文件系统 笔记">
+      The Google File System 谷歌文件系统 笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -225,24 +342,24 @@ mjx-container[display="true"] + br {
         </li>
       </ul>
 
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-1"><span class="nav-number">1.1.</span> <span class="nav-text">Example 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-2"><span class="nav-number">1.2.</span> <span class="nav-text">Example 2:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-1"><span class="nav-number">1.1.</span> <span class="nav-text">Example 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-2"><span class="nav-number">1.2.</span> <span class="nav-text">Example 2:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
 
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
-      src="/images/avatar.jpeg">
+      src="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
   <p class="site-author-name" itemprop="name">Jiexin Guo</p>
   <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
 </div>
-<div class="site-state-wrap animated">
+<div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+          <a href="/archives/">
+        
           <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
@@ -257,207 +374,79 @@ mjx-container[display="true"] + br {
       </div>
   </nav>
 </div>
-  <div class="links-of-author animated">
+  <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener me" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener me" target="_blank"><i class="github fa-fw"></i>Github</a>
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
       </span>
       <span class="links-of-author-item">
-        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener me" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
       </span>
   </div>
 
-        </div>
-      </div>
-    </div>
 
-    
+
+      </div>
+
+    </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2019/11/09/leetcode/1114-print-order/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jiexin Guo">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="节瓜的生活经验">
-      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="1114. Print In Order | 节瓜的生活经验">
-      <meta itemprop="description" content="Print three function result in order, while runnning concurrently.">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          1114. Print In Order
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-11-09 10:11:59" itemprop="dateCreated datePublished" datetime="2019-11-09T10:11:59-05:00">2019-11-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-            <div class="post-description">Print three function result in order, while runnning concurrently.</div>
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/print-in-order/">Print in Order</a></p>
-</blockquote>
-<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Suppose we have a class:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">first</span><span class="params">()</span> </span>&#123; <span class="built_in">print</span>(<span class="string">&quot;first&quot;</span>); &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">second</span><span class="params">()</span> </span>&#123; <span class="built_in">print</span>(<span class="string">&quot;second&quot;</span>); &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">third</span><span class="params">()</span> </span>&#123; <span class="built_in">print</span>(<span class="string">&quot;third&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The same instance of Foo will be passed to three different threads. Thread A will call first(), thread B will call second(), and thread C will call third(). Design a mechanism and modify the program to ensure that second() is executed after first(), and third() is executed after second().</p>
-<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><p>Input: [1,2,3]<br>Output: “firstsecondthird”<br>Explanation: There are three threads being fired asynchronously. The input [1,2,3] means thread A calls first(), thread B calls second(), and thread C calls third(). “firstsecondthird” is the correct output.</p>
-<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><p>Input: [1,3,2]<br>Output: “firstsecondthird”<br>Explanation: The input [1,3,2] means thread A calls first(), thread B calls third(), and thread C calls second(). “firstsecondthird” is the correct output.</p>
-<p>Note:</p>
-<p>We do not know how the threads will be scheduled in the operating system, even though the numbers in the input seems to imply the ordering. The input format you see is mainly to ensure our tests’ comprehensiveness.</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>题目的意思是，有三个线程同时执行，保证输出的顺序。只需要用连续的锁，保证锁之间的顺序就好了。也可以用c++的promise，future来实现。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Foo</span>() &#123;</span><br><span class="line">        std::<span class="built_in">lock</span>(second_mutex, third_mutex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">first</span><span class="params">(function&lt;<span class="type">void</span>()&gt; printFirst)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// printFirst() outputs &quot;first&quot;. Do not change or remove this line.</span></span><br><span class="line">        <span class="built_in">printFirst</span>();</span><br><span class="line">        second_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">second</span><span class="params">(function&lt;<span class="type">void</span>()&gt; printSecond)</span> </span>&#123;</span><br><span class="line">        second_mutex.<span class="built_in">lock</span>();</span><br><span class="line">        <span class="comment">// printSecond() outputs &quot;second&quot;. Do not change or remove this line.</span></span><br><span class="line">        <span class="built_in">printSecond</span>();</span><br><span class="line">        second_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">        third_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">third</span><span class="params">(function&lt;<span class="type">void</span>()&gt; printThird)</span> </span>&#123;</span><br><span class="line">        third_mutex.<span class="built_in">lock</span>();</span><br><span class="line">        <span class="comment">// printThird() outputs &quot;third&quot;. Do not change or remove this line.</span></span><br><span class="line">        <span class="built_in">printThird</span>();</span><br><span class="line">        third_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::mutex second_mutex;</span><br><span class="line">    std::mutex third_mutex;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>请我一杯咖啡吧！</div>
-  <button>
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
-        <span>支付宝</span>
       </div>
+    </main>
 
-  </div>
-</div>
-
-          <div class="post-tags">
-              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
-              <a href="/tags/algorithm/" rel="tag"># algorithm</a>
-              <a href="/tags/concurrency/" rel="tag"># concurrency</a>
-          </div>
+    <footer class="footer">
+      <div class="footer-inner">
+        
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2019/10/30/leetcode/twosum/" rel="prev" title="1. Two Sum">
-                  <i class="fa fa-angle-left"></i> 1. Two Sum
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2020/01/17/essay/theGoogleFileSystem/" rel="next" title="The Google File System 谷歌文件系统 笔记">
-                  The Google File System 谷歌文件系统 笔记 <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
     </footer>
-  </article>
-</div>
-
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2022007474号 </a>
   </div>
-  <div class="copyright">
-    &copy; 2016 – 
-    <span itemprop="copyrightYear">2025</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
-  </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
 
   
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
+  <script src="/lib/anime.min.js"></script>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+<script src="/js/utils.js"></script>
 
 
-  
-  <script src="/lib/animejs/3.2.1/anime.min.js"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-
-  
+<script src="/js/schemes/pisces.js"></script>
 
 
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
 
 
 
@@ -467,6 +456,22 @@ mjx-container[display="true"] + br {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
 
 </body>
 </html>

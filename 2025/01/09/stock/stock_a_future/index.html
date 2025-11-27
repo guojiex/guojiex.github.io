@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -14,13 +14,14 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<link rel="stylesheet" href="/lib/font-awesome/5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/anime.css/4.1.1/anime.min.css">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"guojiex.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"default","show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="基于Go语言开发的A股股票买卖点预测系统，支持多种数据源，提供技术指标计算和智能预测功能">
+  <meta name="description" content="基于Go语言开发的A股股票买卖点预测系统，支持多种数据源，提供技术指标计算和智能预测功能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stock-A-Future - A股股票买卖点预测系统">
 <meta property="og:url" content="http://guojiex.github.io/2025/01/09/stock/stock_a_future/index.html">
@@ -36,30 +37,33 @@
 <meta property="article:published_time" content="2025-01-09T03:34:37.000Z">
 <meta property="article:modified_time" content="2025-11-26T15:28:20.147Z">
 <meta property="article:author" content="Jiexin Guo">
-<meta property="article:tag" content="golang">
-<meta property="article:tag" content="stock">
 <meta property="article:tag" content="api">
-<meta property="article:tag" content="prediction">
-<meta property="article:tag" content="technical-analysis">
 <meta property="article:tag" content="echarts">
+<meta property="article:tag" content="golang">
 <meta property="article:tag" content="k-line">
 <meta property="article:tag" content="macd">
+<meta property="article:tag" content="prediction">
 <meta property="article:tag" content="rsi">
+<meta property="article:tag" content="stock">
+<meta property="article:tag" content="technical-analysis">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://guojiex.github.io/images/stock-a-future/%E8%82%A1%E7%A5%A8%E6%9F%A5%E8%AF%A2.png">
-
 
 <link rel="canonical" href="http://guojiex.github.io/2025/01/09/stock/stock_a_future/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://guojiex.github.io/2025/01/09/stock/stock_a_future/","path":"2025/01/09/stock/stock_a_future/","title":"Stock-A-Future - A股股票买卖点预测系统"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Stock-A-Future - A股股票买卖点预测系统 | 节瓜的生活经验</title>
+  <title>Stock-A-Future - A股股票买卖点预测系统 | 节瓜的生活经验</title>
   
-
-
 
 
 
@@ -67,310 +71,185 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
+</head>
 
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
 
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">节瓜的生活经验</p>
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">节瓜的生活经验</h1>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
   </ul>
 </nav>
 
 
 
 
-</header>
-        
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stock-A-Future-%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Stock-A-Future 项目介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">项目特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8A-%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">📊 数据获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%88-%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">📈 技术指标计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8E%AF-%E6%99%BA%E8%83%BD%E9%A2%84%E6%B5%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">🎯 智能预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-RESTful-API"><span class="nav-number">1.1.4.</span> <span class="nav-text">🚀 RESTful API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8C%90-Web%E7%95%8C%E9%9D%A2"><span class="nav-number">1.1.5.</span> <span class="nav-text">🌐 Web界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.6.</span> <span class="nav-text">🛠️ 开发工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">技术架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.2.1.</span> <span class="nav-text">后端技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.2.2.</span> <span class="nav-text">前端技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.3.</span> <span class="nav-text">项目结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">数据源对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">1.4.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="nav-number">1.4.1.</span> <span class="nav-text">环境要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-AKTools%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E6%8C%87%E5%8D%97"><span class="nav-number">1.4.3.</span> <span class="nav-text">🚀 AKTools快速启动指南</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%80%E9%94%AE%E5%90%AF%E5%8A%A8AKTools%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">1. 一键启动AKTools服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%90%AF%E5%8A%A8Stock-A-Future-API"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">2. 启动Stock-A-Future API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">3. 验证服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%AE%BF%E9%97%AEWeb%E7%95%8C%E9%9D%A2"><span class="nav-number">1.4.3.4.</span> <span class="nav-text">4. 访问Web界面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%A7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.4.</span> <span class="nav-text">🔧 服务器管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%B1%95%E7%A4%BA"><span class="nav-number">1.5.</span> <span class="nav-text">功能展示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%96%A5%EF%B8%8F-Web%E7%95%8C%E9%9D%A2%E7%89%B9%E6%80%A7"><span class="nav-number">1.5.1.</span> <span class="nav-text">🖥️ Web界面特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#K%E7%BA%BF%E5%9B%BE%E5%8D%87%E7%BA%A7"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">K线图升级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">智能搜索功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%82%A1%E7%A5%A8%E6%94%B6%E8%97%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">股票收藏功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E4%BD%93%E9%AA%8C"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">交互体验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.6.</span> <span class="nav-text">核心功能详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%97%8F%E8%82%A1%E7%A5%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">1.6.1.</span> <span class="nav-text">收藏股票功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.6.2.</span> <span class="nav-text">API接口设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.3.</span> <span class="nav-text">技术指标算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.7.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E6%8A%95%E8%B5%84%E8%80%85"><span class="nav-number">1.7.1.</span> <span class="nav-text">个人投资者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6"><span class="nav-number">1.7.2.</span> <span class="nav-text">量化研究</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6"><span class="nav-number">1.7.3.</span> <span class="nav-text">学习研究</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8A%BF"><span class="nav-number">1.8.</span> <span class="nav-text">项目优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E8%A7%84%E5%88%92"><span class="nav-number">1.9.</span> <span class="nav-text">未来规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97"><span class="nav-number">1.10.</span> <span class="nav-text">贡献指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="nav-number">1.11.</span> <span class="nav-text">许可证</span></a></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
-      src="/images/avatar.jpeg">
-  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
-  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
 </div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">42</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">分类</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">77</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-      <span class="links-of-author-item">
-        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener me" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener me" target="_blank"><i class="github fa-fw"></i>Github</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener me" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
-      </span>
-  </div>
-
-        </div>
-      </div>
-    </div>
+    </header>
 
     
-  </aside>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/guojiex" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
-    </div>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    <div class="main-inner post posts-expand">
+          <div class="content post posts-expand">
+            
 
-
+    
   
-
-
-<div class="post-block">
   
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2025/01/09/stock/stock_a_future/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
       <meta itemprop="name" content="Jiexin Guo">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="节瓜的生活经验">
-      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Stock-A-Future - A股股票买卖点预测系统 | 节瓜的生活经验">
-      <meta itemprop="description" content="基于Go语言开发的A股股票买卖点预测系统，支持多种数据源，提供技术指标计算和智能预测功能">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           Stock-A-Future - A股股票买卖点预测系统
         </h1>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2025-01-08 22:34:37" itemprop="dateCreated datePublished" datetime="2025-01-08T22:34:37-05:00">2025-01-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-11-26 10:28:20" itemprop="dateModified" datetime="2025-11-26T10:28:20-05:00">2025-11-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/stock/" itemprop="url" rel="index"><span itemprop="name">stock</span></a>
-        </span>
-    </span>
+              <time title="创建时间：2025-01-08 22:34:37" itemprop="dateCreated datePublished" datetime="2025-01-08T22:34:37-05:00">2025-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-11-26 10:28:20" itemprop="dateModified" datetime="2025-11-26T10:28:20-05:00">2025-11-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/stock/" itemprop="url" rel="index"><span itemprop="name">stock</span></a>
+                </span>
+            </span>
 
-  
-</div>
-
+          
             <div class="post-description">基于Go语言开发的A股股票买卖点预测系统，支持多种数据源，提供技术指标计算和智能预测功能</div>
+
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody"><blockquote>
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/guojiex/stock-a-future">Stock-A-Future GitHub Repository</a></p>
 </blockquote>
-<h1 id="Stock-A-Future-项目介绍"><a href="#Stock-A-Future-项目介绍" class="headerlink" title="Stock-A-Future 项目介绍"></a>Stock-A-Future 项目介绍</h1><p><img src="/images/stock-a-future/%E8%82%A1%E7%A5%A8%E6%9F%A5%E8%AF%A2.png" alt="股票查询"></p>
+<h1 id="Stock-A-Future-项目介绍"><a href="#Stock-A-Future-项目介绍" class="headerlink" title="Stock-A-Future 项目介绍"></a>Stock-A-Future 项目介绍</h1><p><img src="/images/stock-a-future/股票查询.png" alt="股票查询"></p>
 <p>Stock-A-Future 是一个基于Go语言开发的A股股票买卖点预测系统，支持多种数据源（Tushare、AKTools），提供技术指标计算和买卖点预测功能。该项目采用现代化的技术栈，提供专业的K线图显示、智能搜索、股票收藏等丰富功能。</p>
 <h2 id="项目特性"><a href="#项目特性" class="headerlink" title="项目特性"></a>项目特性</h2><h3 id="📊-数据获取"><a href="#📊-数据获取" class="headerlink" title="📊 数据获取"></a>📊 数据获取</h3><ul>
 <li><strong>多数据源支持</strong>：集成Tushare API和AKTools（基于AKShare的免费开源数据源）</li>
@@ -379,7 +258,7 @@ mjx-container[display="true"] + br {
 <li><strong>股票列表工具</strong>：支持从上交所在线获取最新股票列表</li>
 <li><strong>深交所数据</strong>：使用本地Excel文件（<code>data/A股列表.xlsx</code>）提供完整深交所股票数据</li>
 </ul>
-<h3 id="📈-技术指标计算"><a href="#📈-技术指标计算" class="headerlink" title="📈 技术指标计算"></a>📈 技术指标计算</h3><p><img src="/images/stock-a-future/%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87.png" alt="技术指标"></p>
+<h3 id="📈-技术指标计算"><a href="#📈-技术指标计算" class="headerlink" title="📈 技术指标计算"></a>📈 技术指标计算</h3><p><img src="/images/stock-a-future/技术指标.png" alt="技术指标"></p>
 <ul>
 <li><strong>MACD</strong> - 指数平滑异同平均线，识别趋势转折</li>
 <li><strong>RSI</strong> - 相对强弱指数，判断超买超卖</li>
@@ -399,7 +278,7 @@ mjx-container[display="true"] + br {
 <li>CORS支持，便于前端集成</li>
 <li>详细的错误处理和日志记录</li>
 </ul>
-<h3 id="🌐-Web界面"><a href="#🌐-Web界面" class="headerlink" title="🌐 Web界面"></a>🌐 Web界面</h3><p><img src="/images/stock-a-future/%E6%97%A5k%E7%BA%BF%E4%BF%A1%E6%81%AF.png" alt="日K线信息"></p>
+<h3 id="🌐-Web界面"><a href="#🌐-Web界面" class="headerlink" title="🌐 Web界面"></a>🌐 Web界面</h3><p><img src="/images/stock-a-future/日k线信息.png" alt="日K线信息"></p>
 <ul>
 <li><strong>专业K线图</strong>: 使用ECharts显示完整的OHLC数据</li>
 <li><strong>技术指标叠加</strong>: MA5/MA10/MA20移动平均线</li>
@@ -428,8 +307,8 @@ mjx-container[display="true"] + br {
 <li><strong>模块化设计</strong>: 清晰的代码组织结构</li>
 </ul>
 <h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">stock-a-future/</span><br><span class="line">├── cmd/                    # 命令行工具</span><br><span class="line">│   ├── server/            # 主应用程序入口</span><br><span class="line">│   ├── curl/              # 内置curl工具</span><br><span class="line">│   ├── stocklist/         # 股票列表获取工具</span><br><span class="line">│   └── aktools-test/      # AKTools测试工具</span><br><span class="line">├── internal/               # 内部包</span><br><span class="line">│   ├── client/            # API客户端（Tushare + 交易所）</span><br><span class="line">│   ├── handler/           # HTTP处理器</span><br><span class="line">│   ├── indicators/        # 技术指标计算</span><br><span class="line">│   ├── models/            # 数据模型</span><br><span class="line">│   └── service/           # 业务逻辑服务</span><br><span class="line">├── web/                   # Web资源</span><br><span class="line">│   └── static/            # 静态文件（HTML、CSS、JS）</span><br><span class="line">├── config/                # 配置管理</span><br><span class="line">├── data/                  # 数据文件</span><br><span class="line">│   └── A股列表.xlsx        # 深交所股票列表（Excel格式）</span><br><span class="line">├── docs/                  # 项目文档</span><br><span class="line">├── scripts/               # 构建和启动脚本</span><br><span class="line">├── Makefile              # 构建脚本</span><br><span class="line">└── README.md             # 项目文档</span><br></pre></td></tr></table></figure>
-
-<h2 id="数据源对比"><a href="#数据源对比" class="headerlink" title="数据源对比"></a>数据源对比</h2><table>
+<h2 id="数据源对比"><a href="#数据源对比" class="headerlink" title="数据源对比"></a>数据源对比</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>特性</th>
@@ -437,7 +316,8 @@ mjx-container[display="true"] + br {
 <th>AKTools</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>费用</strong></td>
 <td>免费账号有限制，Pro版收费</td>
 <td>完全免费，无调用限制</td>
@@ -467,7 +347,9 @@ mjx-container[display="true"] + br {
 <td>生产环境，商业应用</td>
 <td>学习研究，个人项目</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p><strong>推荐</strong>: 如果您是初学者或用于学习研究，建议使用AKTools数据源；如果是商业应用或对数据质量要求极高，建议使用Tushare。</p>
 </blockquote>
@@ -485,23 +367,25 @@ mjx-container[display="true"] + br {
 </ul>
 <h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
 <li><p><strong>克隆项目</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/guojiex/stock-a-future.git</span><br><span class="line"><span class="built_in">cd</span> stock-a-future</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/guojiex/stock-a-future.git</span><br><span class="line"><span class="built_in">cd</span> stock-a-future</span><br></pre></td></tr></table></figure>
+</li>
 <li><p><strong>安装依赖</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make deps</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make deps</span><br></pre></td></tr></table></figure>
+</li>
 <li><p><strong>配置环境变量</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">make <span class="built_in">env</span></span><br><span class="line"><span class="comment"># 编辑.env文件，选择数据源并配置相应参数</span></span><br><span class="line">vim .<span class="built_in">env</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Tushare数据源</span></span><br><span class="line">DATA_SOURCE_TYPE=tushare</span><br><span class="line">TUSHARE_TOKEN=your_tushare_token_here</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用AKTools数据源（免费）</span></span><br><span class="line">DATA_SOURCE_TYPE=aktools</span><br><span class="line">AKTOOLS_BASE_URL=http://127.0.0.1:8080</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">make <span class="built_in">env</span></span><br><span class="line"><span class="comment"># 编辑.env文件，选择数据源并配置相应参数</span></span><br><span class="line">vim .<span class="built_in">env</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Tushare数据源</span></span><br><span class="line">DATA_SOURCE_TYPE=tushare</span><br><span class="line">TUSHARE_TOKEN=your_tushare_token_here</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用AKTools数据源（免费）</span></span><br><span class="line">DATA_SOURCE_TYPE=aktools</span><br><span class="line">AKTOOLS_BASE_URL=http://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
+</li>
 <li><p><strong>获取股票列表（可选）</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取上交所股票列表</span></span><br><span class="line">make fetch-sse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取所有股票列表（上交所在线获取 + 深交所Excel文件）</span></span><br><span class="line">make fetch-stocks</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p><strong>注意</strong>：深交所股票数据已包含在 <code>data/A股列表.xlsx</code> 文件中，无需在线获取。</p>
 </blockquote>
 </li>
 <li><p><strong>启动服务</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发模式</span></span><br><span class="line">make dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者构建后运行</span></span><br><span class="line">make build</span><br><span class="line">make run</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发模式</span></span><br><span class="line">make dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者构建后运行</span></span><br><span class="line">make build</span><br><span class="line">make run</span><br></pre></td></tr></table></figure>
+</li>
 <li><p><strong>编译Curl工具（可选）</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用批处理文件（推荐Windows用户）</span></span><br><span class="line">build-curl.bat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用PowerShell脚本</span></span><br><span class="line">.\build-curl.ps1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或手动编译</span></span><br><span class="line">go build -o curl.exe ./cmd/curl</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p><strong>注意</strong>：curl工具特别适合在Windows环境下调试API接口，无需安装额外的curl工具。</p>
 </blockquote>
@@ -510,26 +394,22 @@ mjx-container[display="true"] + br {
 <p>服务将在 <code>http://localhost:8081</code> 启动。</p>
 <h3 id="🚀-AKTools快速启动指南"><a href="#🚀-AKTools快速启动指南" class="headerlink" title="🚀 AKTools快速启动指南"></a>🚀 AKTools快速启动指南</h3><p>如果您想快速体验系统功能，推荐使用AKTools数据源（完全免费）：</p>
 <h4 id="1-一键启动AKTools服务"><a href="#1-一键启动AKTools服务" class="headerlink" title="1. 一键启动AKTools服务"></a>1. 一键启动AKTools服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows用户（推荐）</span></span><br><span class="line">start-aktools-server.bat</span><br><span class="line"></span><br><span class="line"><span class="comment"># PowerShell用户</span></span><br><span class="line">.\start-aktools-server.ps1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动启动</span></span><br><span class="line">python -m aktools</span><br></pre></td></tr></table></figure>
-
 <h4 id="2-启动Stock-A-Future-API"><a href="#2-启动Stock-A-Future-API" class="headerlink" title="2. 启动Stock-A-Future API"></a>2. 启动Stock-A-Future API</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用启动脚本</span></span><br><span class="line">start-aktools-server.bat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或手动启动</span></span><br><span class="line">go run cmd/server/main.go</span><br></pre></td></tr></table></figure>
-
 <h4 id="3-验证服务"><a href="#3-验证服务" class="headerlink" title="3. 验证服务"></a>3. 验证服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试AKTools连接</span></span><br><span class="line">curl http://127.0.0.1:8080/api/public/stock_zh_a_info?symbol=000001</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试Stock-A-Future API</span></span><br><span class="line">curl http://localhost:8081/api/v1/health</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-访问Web界面"><a href="#4-访问Web界面" class="headerlink" title="4. 访问Web界面"></a>4. 访问Web界面</h4><p>在浏览器中打开：<a target="_blank" rel="noopener" href="http://localhost:8081/">http://localhost:8081</a></p>
+<h4 id="4-访问Web界面"><a href="#4-访问Web界面" class="headerlink" title="4. 访问Web界面"></a>4. 访问Web界面</h4><p>在浏览器中打开：<a target="_blank" rel="noopener" href="http://localhost:8081">http://localhost:8081</a></p>
 <blockquote>
 <p><strong>提示</strong>: 使用项目提供的启动脚本可以自动处理端口配置和依赖检查，推荐新手使用。</p>
 </blockquote>
 <h3 id="🔧-服务器管理"><a href="#🔧-服务器管理" class="headerlink" title="🔧 服务器管理"></a>🔧 服务器管理</h3><p>新增的Make命令让服务器管理更加便捷：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查服务器状态（显示进程和端口占用）</span></span><br><span class="line">make status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 优雅停止服务器</span></span><br><span class="line">make stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制停止（包括端口清理）</span></span><br><span class="line">make <span class="built_in">kill</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一键重启</span></span><br><span class="line">make restart</span><br></pre></td></tr></table></figure>
-
-<h2 id="功能展示"><a href="#功能展示" class="headerlink" title="功能展示"></a>功能展示</h2><h3 id="🖥️-Web界面特性"><a href="#🖥️-Web界面特性" class="headerlink" title="🖥️ Web界面特性"></a>🖥️ Web界面特性</h3><h4 id="K线图升级"><a href="#K线图升级" class="headerlink" title="K线图升级"></a>K线图升级</h4><p><img src="/images/stock-a-future/%E6%97%A5k%E7%BA%BF%E4%BF%A1%E6%81%AF.png" alt="日K线信息"></p>
+<h2 id="功能展示"><a href="#功能展示" class="headerlink" title="功能展示"></a>功能展示</h2><h3 id="🖥️-Web界面特性"><a href="#🖥️-Web界面特性" class="headerlink" title="🖥️ Web界面特性"></a>🖥️ Web界面特性</h3><h4 id="K线图升级"><a href="#K线图升级" class="headerlink" title="K线图升级"></a>K线图升级</h4><p><img src="/images/stock-a-future/日k线信息.png" alt="日K线信息"></p>
 <ul>
 <li><strong>从简单折线图到专业K线图</strong>: 显示完整的开盘、最高、最低、收盘价</li>
 <li><strong>红绿涨跌色彩</strong>: 红色阳线表示上涨，绿色阴线表示下跌</li>
 <li><strong>成交量联动</strong>: 底部成交量柱状图，颜色与K线保持一致</li>
 <li><strong>技术指标叠加</strong>: 自动计算并显示MA5、MA10、MA20移动平均线</li>
 </ul>
-<h4 id="智能搜索功能"><a href="#智能搜索功能" class="headerlink" title="智能搜索功能"></a>智能搜索功能</h4><p><img src="/images/stock-a-future/%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E8%A7%86%E5%9B%BE.png" alt="搜索功能视图"></p>
+<h4 id="智能搜索功能"><a href="#智能搜索功能" class="headerlink" title="智能搜索功能"></a>智能搜索功能</h4><p><img src="/images/stock-a-future/搜索功能视图.png" alt="搜索功能视图"></p>
 <ul>
 <li><strong>实时搜索</strong>: 输入股票名称或代码，300ms防抖搜索</li>
 <li><strong>模糊匹配</strong>: 支持部分匹配，如输入”平安”可找到”平安银行”、”中国平安”</li>
@@ -537,7 +417,7 @@ mjx-container[display="true"] + br {
 <li><strong>自动填充</strong>: 选择搜索结果后自动填入股票代码框</li>
 <li><strong>股票代码缓存</strong>: 自动保存用户选择的股票，下次访问时自动恢复，提升用户体验</li>
 </ul>
-<h4 id="股票收藏功能"><a href="#股票收藏功能" class="headerlink" title="股票收藏功能"></a>股票收藏功能</h4><p><img src="/images/stock-a-future/%E8%82%A1%E7%A5%A8%E6%94%B6%E8%97%8F.png" alt="股票收藏"></p>
+<h4 id="股票收藏功能"><a href="#股票收藏功能" class="headerlink" title="股票收藏功能"></a>股票收藏功能</h4><p><img src="/images/stock-a-future/股票收藏.png" alt="股票收藏"></p>
 <ul>
 <li><strong>收藏管理</strong>: 支持添加和删除股票收藏，便于快速访问常关注的股票</li>
 <li><strong>分组管理</strong>: 支持将收藏的股票按不同分组进行管理</li>
@@ -597,17 +477,17 @@ mjx-container[display="true"] + br {
 <li><strong>跨平台</strong>: 支持Windows、Linux、macOS等平台</li>
 </ol>
 <h2 id="未来规划"><a href="#未来规划" class="headerlink" title="未来规划"></a>未来规划</h2><ul>
-<li><input disabled="" type="checkbox"> 增加更多技术指标</li>
-<li><input disabled="" type="checkbox"> 支持更多数据源</li>
-<li><input disabled="" type="checkbox"> 添加机器学习预测模型</li>
-<li><input disabled="" type="checkbox"> 开发移动端应用</li>
-<li><input disabled="" type="checkbox"> 增加回测功能</li>
-<li><input disabled="" type="checkbox"> 支持期货和期权数据</li>
+<li>[ ] 增加更多技术指标</li>
+<li>[ ] 支持更多数据源</li>
+<li>[ ] 添加机器学习预测模型</li>
+<li>[ ] 开发移动端应用</li>
+<li>[ ] 增加回测功能</li>
+<li>[ ] 支持期货和期权数据</li>
 </ul>
 <h2 id="贡献指南"><a href="#贡献指南" class="headerlink" title="贡献指南"></a>贡献指南</h2><ol>
 <li>Fork 本项目</li>
 <li>创建功能分支 (<code>git checkout -b feature/AmazingFeature</code>)</li>
-<li>提交更改 (<code>git commit -m 'Add some AmazingFeature'</code>)</li>
+<li>提交更改 (<code>git commit -m &#39;Add some AmazingFeature&#39;</code>)</li>
 <li>推送到分支 (<code>git push origin feature/AmazingFeature</code>)</li>
 <li>开启 Pull Request</li>
 </ol>
@@ -621,22 +501,23 @@ mjx-container[display="true"] + br {
     
     
     
-
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>请我一杯咖啡吧！</div>
-  <button>
-    赞赏
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
   </button>
-  <div class="post-reward">
-      <div>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
         <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
-        <span>支付宝</span>
+        <p>支付宝</p>
       </div>
 
   </div>
 </div>
 
+
+      <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/golang/" rel="tag"># golang</a>
               <a href="/tags/stock/" rel="tag"># stock</a>
@@ -651,77 +532,203 @@ mjx-container[display="true"] + br {
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2024/11/17/testing/appium/" rel="prev" title="appium初识">
-                  <i class="fa fa-angle-left"></i> appium初识
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2025/11/27/stock/%E5%81%A5%E6%B0%91%E9%9B%86%E5%9B%A2%E8%82%A1%E7%A5%A8%E5%88%86%E6%9E%9020251126/" rel="next" title="健民集团股票分析 - 2025年11月基本面深度解析">
-                  健民集团股票分析 - 2025年11月基本面深度解析 <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/11/17/testing/appium/" rel="prev" title="appium初识">
+      <i class="fa fa-chevron-left"></i> appium初识
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/11/27/stock/%E5%81%A5%E6%B0%91%E9%9B%86%E5%9B%A2%E8%82%A1%E7%A5%A8%E5%88%86%E6%9E%9020251126/" rel="next" title="健民集团股票分析 - 2025年11月基本面深度解析">
+      健民集团股票分析 - 2025年11月基本面深度解析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stock-A-Future-%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Stock-A-Future 项目介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">项目特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8A-%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">📊 数据获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%88-%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">📈 技术指标计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8E%AF-%E6%99%BA%E8%83%BD%E9%A2%84%E6%B5%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">🎯 智能预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-RESTful-API"><span class="nav-number">1.1.4.</span> <span class="nav-text">🚀 RESTful API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8C%90-Web%E7%95%8C%E9%9D%A2"><span class="nav-number">1.1.5.</span> <span class="nav-text">🌐 Web界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.6.</span> <span class="nav-text">🛠️ 开发工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">技术架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.2.1.</span> <span class="nav-text">后端技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.2.2.</span> <span class="nav-text">前端技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.3.</span> <span class="nav-text">项目结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">数据源对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">1.4.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="nav-number">1.4.1.</span> <span class="nav-text">环境要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-AKTools%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E6%8C%87%E5%8D%97"><span class="nav-number">1.4.3.</span> <span class="nav-text">🚀 AKTools快速启动指南</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%80%E9%94%AE%E5%90%AF%E5%8A%A8AKTools%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">1. 一键启动AKTools服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%90%AF%E5%8A%A8Stock-A-Future-API"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">2. 启动Stock-A-Future API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">3. 验证服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%AE%BF%E9%97%AEWeb%E7%95%8C%E9%9D%A2"><span class="nav-number">1.4.3.4.</span> <span class="nav-text">4. 访问Web界面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%A7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.4.</span> <span class="nav-text">🔧 服务器管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%B1%95%E7%A4%BA"><span class="nav-number">1.5.</span> <span class="nav-text">功能展示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%96%A5%EF%B8%8F-Web%E7%95%8C%E9%9D%A2%E7%89%B9%E6%80%A7"><span class="nav-number">1.5.1.</span> <span class="nav-text">🖥️ Web界面特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#K%E7%BA%BF%E5%9B%BE%E5%8D%87%E7%BA%A7"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">K线图升级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">智能搜索功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%82%A1%E7%A5%A8%E6%94%B6%E8%97%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">股票收藏功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E4%BD%93%E9%AA%8C"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">交互体验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.6.</span> <span class="nav-text">核心功能详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%97%8F%E8%82%A1%E7%A5%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">1.6.1.</span> <span class="nav-text">收藏股票功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.6.2.</span> <span class="nav-text">API接口设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.3.</span> <span class="nav-text">技术指标算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.7.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E6%8A%95%E8%B5%84%E8%80%85"><span class="nav-number">1.7.1.</span> <span class="nav-text">个人投资者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6"><span class="nav-number">1.7.2.</span> <span class="nav-text">量化研究</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6"><span class="nav-number">1.7.3.</span> <span class="nav-text">学习研究</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8A%BF"><span class="nav-number">1.8.</span> <span class="nav-text">项目优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E8%A7%84%E5%88%92"><span class="nav-number">1.9.</span> <span class="nav-text">未来规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97"><span class="nav-number">1.10.</span> <span class="nav-text">贡献指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="nav-number">1.11.</span> <span class="nav-text">许可证</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
+      src="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
+  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
 </div>
-
-
-
-
-
-
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
 </div>
-  </main>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
 
-  <footer class="footer">
-    <div class="footer-inner">
 
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2022007474号 </a>
-  </div>
-  <div class="copyright">
-    &copy; 2016 – 
-    <span itemprop="copyrightYear">2025</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
-  </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
+
+      </div>
 
     </div>
-  </footer>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
   
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
-  <div class="reading-progress-bar"></div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
 
 
   
-  <script src="/lib/animejs/3.2.1/anime.min.js"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
-
-
-
-
-
   
 
-
-
-
+  
 
 </body>
 </html>

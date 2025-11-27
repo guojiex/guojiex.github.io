@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -14,13 +14,14 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<link rel="stylesheet" href="/lib/font-awesome/5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/anime.css/4.1.1/anime.min.css">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"guojiex.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":"default","show_result":true},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="从零开始学习appium控制手机自动化。">
+  <meta name="description" content="从零开始学习appium控制手机自动化。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="appium初识">
 <meta property="og:url" content="http://guojiex.github.io/2024/11/17/testing/appium/index.html">
@@ -33,24 +34,27 @@
 <meta property="article:published_time" content="2024-11-17T01:24:44.000Z">
 <meta property="article:modified_time" content="2025-06-22T14:02:41.401Z">
 <meta property="article:author" content="Jiexin Guo">
-<meta property="article:tag" content="Testing">
 <meta property="article:tag" content="Selenium">
+<meta property="article:tag" content="Testing">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://guojiex.github.io/2024/11/17/testing/appium/UiAutomator2_install.png">
 
-
 <link rel="canonical" href="http://guojiex.github.io/2024/11/17/testing/appium/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://guojiex.github.io/2024/11/17/testing/appium/","path":"2024/11/17/testing/appium/","title":"appium初识"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>appium初识 | 节瓜的生活经验</title>
+  <title>appium初识 | 节瓜的生活经验</title>
   
-
-
 
 
 
@@ -58,169 +62,300 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
+</head>
 
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
 
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">节瓜的生活经验</p>
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">节瓜的生活经验</h1>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
   </ul>
 </nav>
 
 
 
 
-</header>
-        
-  
-  <aside class="sidebar">
+</div>
+    </header>
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/guojiex" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2024/11/17/testing/appium/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+      <meta itemprop="name" content="Jiexin Guo">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的生活经验">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          appium初识
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-11-16 20:24:44" itemprop="dateCreated datePublished" datetime="2024-11-16T20:24:44-05:00">2024-11-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/" itemprop="url" rel="index"><span itemprop="name">测试之道</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">从零开始学习appium控制手机自动化。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="appium"><a href="#appium" class="headerlink" title="appium"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/">appium</a></h1><p>Appium是一个开源项目和相关软件生态系统，旨在促进许多应用程序平台的UI自动化，包括移动端（iOS、Android、Tizen）、浏览器端（Chrome、Firefox、Safari）、桌面端（macOS、Windows）、电视端（Roku、tvOS、Android TV、三星）等！</p>
+<h1 id="quick-start"><a href="#quick-start" class="headerlink" title="quick start!"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/quickstart/">quick start!</a></h1><h2 id="安装-Appium"><a href="#安装-Appium" class="headerlink" title="安装 Appium"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/quickstart/install/">安装 Appium</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g appium</span><br></pre></td></tr></table></figure>
+<p>安装完成后，您应该可以从命令行运行 Appium：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appium</span><br></pre></td></tr></table></figure>
+<h2 id="安装-UiAutomator2-驱动"><a href="#安装-UiAutomator2-驱动" class="headerlink" title="安装 UiAutomator2 驱动"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/quickstart/uiauto2-driver/">安装 UiAutomator2 驱动</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appium driver install uiautomator2</span><br></pre></td></tr></table></figure>
+<p><img src="UiAutomator2_install.png" alt="UiAutomator2 install success"></p>
+<h2 id="链接安卓手机"><a href="#链接安卓手机" class="headerlink" title="链接安卓手机"></a>链接安卓手机</h2><p>直接安装<a target="_blank" rel="noopener" href="https://developer.android.com/studio?hl=zh-cn">android studio</a></p>
+<p>之后需要在android studio内部安装<a target="_blank" rel="noopener" href="https://developer.android.com/tools/releases/platform-tools?hl=zh-cn">Android SDK 平台工具</a></p>
+<p>或者直接使用homebrew</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask android-platform-tools</span><br></pre></td></tr></table></figure>
+<h3 id="链接模拟器"><a href="#链接模拟器" class="headerlink" title="链接模拟器"></a>链接模拟器</h3><p>直接使用android studio的 AVD 创建向导创建即可。</p>
+<h3 id="链接真机"><a href="#链接真机" class="headerlink" title="链接真机"></a>链接真机</h3><p>用usb链接手机并且设置usb调试打开之后</p>
+<h3 id="验证链接成功"><a href="#验证链接成功" class="headerlink" title="验证链接成功"></a>验证链接成功</h3><p>在命令行中执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+<p>看到有手机显示就代表连接成功</p>
+<p><img src="adb_success.png" alt="adb success"></p>
+<h2 id="Python-start"><a href="#Python-start" class="headerlink" title="Python start!"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/quickstart/test-py/">Python start!</a></h2><p>先安装appium python client</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Appium-Python-Client</span><br></pre></td></tr></table></figure>
+<h3 id="Battery-test"><a href="#Battery-test" class="headerlink" title="Battery test!"></a>Battery test!</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> appium.options.android <span class="keyword">import</span> UiAutomator2Options</span><br><span class="line"><span class="keyword">from</span> appium.webdriver.common.appiumby <span class="keyword">import</span> AppiumBy</span><br><span class="line"></span><br><span class="line">capabilities = <span class="built_in">dict</span>(</span><br><span class="line">    platformName=<span class="string">&#x27;Android&#x27;</span>,</span><br><span class="line">    automationName=<span class="string">&#x27;uiautomator2&#x27;</span>,</span><br><span class="line">    deviceName=<span class="string">&#x27;Android&#x27;</span>,</span><br><span class="line">    <span class="comment"># appPackage=&#x27;com.android.settings&#x27;,</span></span><br><span class="line">    <span class="comment"># appActivity=&#x27;.Settings&#x27;,</span></span><br><span class="line">    language=<span class="string">&#x27;en&#x27;</span>,</span><br><span class="line">    locale=<span class="string">&#x27;US&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">appium_server_url = <span class="string">&#x27;http://localhost:4723&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestAppium</span>(unittest.TestCase):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setUp</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self.driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(capabilities))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tearDown</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">if</span> self.driver:</span><br><span class="line">            self.driver.quit()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_install_app</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># self.driver.remove_app(&#x27;com.instagram.android&#x27;)</span></span><br><span class="line">        <span class="comment"># self.driver.install_app(&#x27;/Users/guo/dev/appium/instagram-357-1-0-52-100.apk&#x27;)</span></span><br><span class="line">        self.driver.install_app(<span class="string">&#x27;/Users/guo/dev/appium/instagram-356-0-0-41-101.apk&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+<h4 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h4><p>然后直接执行battery测试报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred <span class="keyword">while</span> processing the <span class="built_in">command</span>. Original error: Neither ANDROID_HOME nor ANDROID_SDK_ROOT environment variable was exported. Read https://developer.android.com/studio/command-line/variables <span class="keyword">for</span> more details</span><br></pre></td></tr></table></figure>
+<p>点击对应链接，查看解决方案将对应环境变量设置进你的系统</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ANDROID_HOME=~/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/tools:<span class="variable">$ANDROID_HOME</span>/tools/bin:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br></pre></td></tr></table></figure>
+<p>然后重新启动appium服务器，重新执行测试</p>
+<h3 id="install-app"><a href="#install-app" class="headerlink" title="install app"></a>install app</h3><p>可以执行install_app方法安装apk</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.driver.install_app(&#x27;/绝对路径或者相对路径&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="remove-app"><a href="#remove-app" class="headerlink" title="remove app"></a>remove app</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.driver.remove_app(&#x27;com.instagram.android&#x27;)</span><br></pre></td></tr></table></figure>
+<h1 id="appium-inspector-可视化页面分析器"><a href="#appium-inspector-可视化页面分析器" class="headerlink" title="appium-inspector 可视化页面分析器"></a>appium-inspector 可视化页面分析器</h1><p><a target="_blank" rel="noopener" href="https://github.com/appium/appium-inspector/releases">appium-inspector</a></p>
+<p><img src="appium_inspector.png" alt="appium-inspector"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Testing/" rel="tag"># Testing</a>
+              <a href="/tags/Selenium/" rel="tag"># Selenium</a>
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/08/life/%E5%BE%AE%E4%BF%A1%E5%8F%8C%E5%BC%80/" rel="prev" title="微信双开">
+      <i class="fa fa-chevron-left"></i> 微信双开
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/01/09/stock/stock_a_future/" rel="next" title="Stock-A-Future - A股股票买卖点预测系统">
+      Stock-A-Future - A股股票买卖点预测系统 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -229,24 +364,24 @@ mjx-container[display="true"] + br {
         </li>
       </ul>
 
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#appium"><span class="nav-number">1.</span> <span class="nav-text">appium</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#quick-start"><span class="nav-number">2.</span> <span class="nav-text">quick start!</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Appium"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-UiAutomator2-%E9%A9%B1%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">安装 UiAutomator2 驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA"><span class="nav-number">2.3.</span> <span class="nav-text">链接安卓手机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="nav-number">2.3.1.</span> <span class="nav-text">链接模拟器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E7%9C%9F%E6%9C%BA"><span class="nav-number">2.3.2.</span> <span class="nav-text">链接真机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E9%93%BE%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-number">2.3.3.</span> <span class="nav-text">验证链接成功</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-start"><span class="nav-number">2.4.</span> <span class="nav-text">Python start!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Battery-test"><span class="nav-number">2.4.1.</span> <span class="nav-text">Battery test!</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">环境变量设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-app"><span class="nav-number">2.4.2.</span> <span class="nav-text">install app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-app"><span class="nav-number">2.4.3.</span> <span class="nav-text">remove app</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#appium-inspector-%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">appium-inspector 可视化页面分析器</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#appium"><span class="nav-number">1.</span> <span class="nav-text">appium</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#quick-start"><span class="nav-number">2.</span> <span class="nav-text">quick start!</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Appium"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-UiAutomator2-%E9%A9%B1%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">安装 UiAutomator2 驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA"><span class="nav-number">2.3.</span> <span class="nav-text">链接安卓手机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="nav-number">2.3.1.</span> <span class="nav-text">链接模拟器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E7%9C%9F%E6%9C%BA"><span class="nav-number">2.3.2.</span> <span class="nav-text">链接真机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E9%93%BE%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-number">2.3.3.</span> <span class="nav-text">验证链接成功</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-start"><span class="nav-number">2.4.</span> <span class="nav-text">Python start!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Battery-test"><span class="nav-number">2.4.1.</span> <span class="nav-text">Battery test!</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">环境变量设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-app"><span class="nav-number">2.4.2.</span> <span class="nav-text">install app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-app"><span class="nav-number">2.4.3.</span> <span class="nav-text">remove app</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#appium-inspector-%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">appium-inspector 可视化页面分析器</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
 
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
-      src="/images/avatar.jpeg">
+      src="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
   <p class="site-author-name" itemprop="name">Jiexin Guo</p>
   <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
 </div>
-<div class="site-state-wrap animated">
+<div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+          <a href="/archives/">
+        
           <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
@@ -261,235 +396,79 @@ mjx-container[display="true"] + br {
       </div>
   </nav>
 </div>
-  <div class="links-of-author animated">
+  <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener me" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener me" target="_blank"><i class="github fa-fw"></i>Github</a>
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
       </span>
       <span class="links-of-author-item">
-        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener me" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
       </span>
   </div>
 
-        </div>
-      </div>
-    </div>
 
-    
+
+      </div>
+
+    </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2024/11/17/testing/appium/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jiexin Guo">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="节瓜的生活经验">
-      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="appium初识 | 节瓜的生活经验">
-      <meta itemprop="description" content="从零开始学习appium控制手机自动化。">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          appium初识
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-11-16 20:24:44" itemprop="dateCreated datePublished" datetime="2024-11-16T20:24:44-05:00">2024-11-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-06-22 10:02:41" itemprop="dateModified" datetime="2025-06-22T10:02:41-04:00">2025-06-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/" itemprop="url" rel="index"><span itemprop="name">测试之道</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-            <div class="post-description">从零开始学习appium控制手机自动化。</div>
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="appium"><a href="#appium" class="headerlink" title="appium"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/">appium</a></h1><p>Appium是一个开源项目和相关软件生态系统，旨在促进许多应用程序平台的UI自动化，包括移动端（iOS、Android、Tizen）、浏览器端（Chrome、Firefox、Safari）、桌面端（macOS、Windows）、电视端（Roku、tvOS、Android TV、三星）等！</p>
-<h1 id="quick-start"><a href="#quick-start" class="headerlink" title="quick start!"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/quickstart/">quick start!</a></h1><h2 id="安装-Appium"><a href="#安装-Appium" class="headerlink" title="安装 Appium"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/quickstart/install/">安装 Appium</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g appium</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，您应该可以从命令行运行 Appium：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appium</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装-UiAutomator2-驱动"><a href="#安装-UiAutomator2-驱动" class="headerlink" title="安装 UiAutomator2 驱动"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/quickstart/uiauto2-driver/">安装 UiAutomator2 驱动</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appium driver install uiautomator2</span><br></pre></td></tr></table></figure>
-
-<p><img src="UiAutomator2_install.png" alt="UiAutomator2 install success"></p>
-<h2 id="链接安卓手机"><a href="#链接安卓手机" class="headerlink" title="链接安卓手机"></a>链接安卓手机</h2><p>直接安装<a target="_blank" rel="noopener" href="https://developer.android.com/studio?hl=zh-cn">android studio</a></p>
-<p>之后需要在android studio内部安装<a target="_blank" rel="noopener" href="https://developer.android.com/tools/releases/platform-tools?hl=zh-cn">Android SDK 平台工具</a></p>
-<p>或者直接使用homebrew</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask android-platform-tools</span><br></pre></td></tr></table></figure>
-
-<h3 id="链接模拟器"><a href="#链接模拟器" class="headerlink" title="链接模拟器"></a>链接模拟器</h3><p>直接使用android studio的 AVD 创建向导创建即可。</p>
-<h3 id="链接真机"><a href="#链接真机" class="headerlink" title="链接真机"></a>链接真机</h3><p>用usb链接手机并且设置usb调试打开之后</p>
-<h3 id="验证链接成功"><a href="#验证链接成功" class="headerlink" title="验证链接成功"></a>验证链接成功</h3><p>在命令行中执行以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
-
-<p>看到有手机显示就代表连接成功</p>
-<p><img src="adb_success.png" alt="adb success"></p>
-<h2 id="Python-start"><a href="#Python-start" class="headerlink" title="Python start!"></a><a target="_blank" rel="noopener" href="https://appium.io/docs/zh/latest/quickstart/test-py/">Python start!</a></h2><p>先安装appium python client</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Appium-Python-Client</span><br></pre></td></tr></table></figure>
-
-<h3 id="Battery-test"><a href="#Battery-test" class="headerlink" title="Battery test!"></a>Battery test!</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> appium.options.android <span class="keyword">import</span> UiAutomator2Options</span><br><span class="line"><span class="keyword">from</span> appium.webdriver.common.appiumby <span class="keyword">import</span> AppiumBy</span><br><span class="line"></span><br><span class="line">capabilities = <span class="built_in">dict</span>(</span><br><span class="line">    platformName=<span class="string">&#x27;Android&#x27;</span>,</span><br><span class="line">    automationName=<span class="string">&#x27;uiautomator2&#x27;</span>,</span><br><span class="line">    deviceName=<span class="string">&#x27;Android&#x27;</span>,</span><br><span class="line">    <span class="comment"># appPackage=&#x27;com.android.settings&#x27;,</span></span><br><span class="line">    <span class="comment"># appActivity=&#x27;.Settings&#x27;,</span></span><br><span class="line">    language=<span class="string">&#x27;en&#x27;</span>,</span><br><span class="line">    locale=<span class="string">&#x27;US&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">appium_server_url = <span class="string">&#x27;http://localhost:4723&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestAppium</span>(unittest.TestCase):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setUp</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self.driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(capabilities))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tearDown</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">if</span> self.driver:</span><br><span class="line">            self.driver.quit()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_install_app</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># self.driver.remove_app(&#x27;com.instagram.android&#x27;)</span></span><br><span class="line">        <span class="comment"># self.driver.install_app(&#x27;/Users/guo/dev/appium/instagram-357-1-0-52-100.apk&#x27;)</span></span><br><span class="line">        self.driver.install_app(<span class="string">&#x27;/Users/guo/dev/appium/instagram-356-0-0-41-101.apk&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
-
-<h4 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h4><p>然后直接执行battery测试报错</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred <span class="keyword">while</span> processing the <span class="built_in">command</span>. Original error: Neither ANDROID_HOME nor ANDROID_SDK_ROOT environment variable was exported. Read https://developer.android.com/studio/command-line/variables <span class="keyword">for</span> more details</span><br></pre></td></tr></table></figure>
-
-<p>点击对应链接，查看解决方案将对应环境变量设置进你的系统</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ANDROID_HOME=~/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/tools:<span class="variable">$ANDROID_HOME</span>/tools/bin:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br></pre></td></tr></table></figure>
-
-<p>然后重新启动appium服务器，重新执行测试</p>
-<h3 id="install-app"><a href="#install-app" class="headerlink" title="install app"></a>install app</h3><p>可以执行install_app方法安装apk</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.driver.install_app(&#x27;/绝对路径或者相对路径&#x27;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="remove-app"><a href="#remove-app" class="headerlink" title="remove app"></a>remove app</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.driver.remove_app(&#x27;com.instagram.android&#x27;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="appium-inspector-可视化页面分析器"><a href="#appium-inspector-可视化页面分析器" class="headerlink" title="appium-inspector 可视化页面分析器"></a>appium-inspector 可视化页面分析器</h1><p><a target="_blank" rel="noopener" href="https://github.com/appium/appium-inspector/releases">appium-inspector</a></p>
-<p><img src="appium_inspector.png" alt="appium-inspector"></p>
-
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>请我一杯咖啡吧！</div>
-  <button>
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
-        <span>支付宝</span>
       </div>
+    </main>
 
-  </div>
-</div>
-
-          <div class="post-tags">
-              <a href="/tags/Testing/" rel="tag"># Testing</a>
-              <a href="/tags/Selenium/" rel="tag"># Selenium</a>
-              <a href="/tags/Vue/" rel="tag"># Vue</a>
-          </div>
+    <footer class="footer">
+      <div class="footer-inner">
+        
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2024/10/08/life/%E5%BE%AE%E4%BF%A1%E5%8F%8C%E5%BC%80/" rel="prev" title="微信双开">
-                  <i class="fa fa-angle-left"></i> 微信双开
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2025/01/09/stock/stock_a_future/" rel="next" title="Stock-A-Future - A股股票买卖点预测系统">
-                  Stock-A-Future - A股股票买卖点预测系统 <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
     </footer>
-  </article>
-</div>
-
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2022007474号 </a>
   </div>
-  <div class="copyright">
-    &copy; 2016 – 
-    <span itemprop="copyrightYear">2025</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
-  </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
 
   
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
+  <script src="/lib/anime.min.js"></script>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+<script src="/js/utils.js"></script>
 
 
-  
-  <script src="/lib/animejs/3.2.1/anime.min.js"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-
-  
+<script src="/js/schemes/pisces.js"></script>
 
 
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
 
 
 
@@ -499,6 +478,22 @@ mjx-container[display="true"] + br {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
 
 </body>
 </html>
