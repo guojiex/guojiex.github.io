@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="WLOb_rW9OMZrR5YqGG9DEpQ9Jix2ZUGg1N44neW47ts">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="开源 AI 助手框架 OpenClaw 的部署、配置与实战经验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenClaw 部署与配置全指南：从零开始搭建你的 AI 助手">
+<meta property="og:url" content="http://guojiex.github.io/2026/03/08/llm/openclaw/index.html">
+<meta property="og:site_name" content="节瓜的生活经验">
+<meta property="og:description" content="开源 AI 助手框架 OpenClaw 的部署、配置与实战经验">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-08T05:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-23T03:39:54.479Z">
+<meta property="article:author" content="Jiexin Guo">
+<meta property="article:tag" content="2026">
+<meta property="article:tag" content="AI助手">
+<meta property="article:tag" content="NVIDIA">
+<meta property="article:tag" content="OpenClaw">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="自动化">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://guojiex.github.io/2026/03/08/llm/openclaw/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>OpenClaw 部署与配置全指南：从零开始搭建你的 AI 助手 | 节瓜的生活经验</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">节瓜的生活经验</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/guojiex" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2026/03/08/llm/openclaw/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+      <meta itemprop="name" content="Jiexin Guo">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的生活经验">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenClaw 部署与配置全指南：从零开始搭建你的 AI 助手
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-03-08 00:00:00" itemprop="dateCreated datePublished" datetime="2026-03-08T00:00:00-05:00">2026-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-04-22 23:39:54" itemprop="dateModified" datetime="2026-04-22T23:39:54-04:00">2026-04-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">大模型</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">开源 AI 助手框架 OpenClaw 的部署、配置与实战经验</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="什么是-OpenClaw"><a href="#什么是-OpenClaw" class="headerlink" title="什么是 OpenClaw"></a>什么是 OpenClaw</h1><p>核心特点：</p>
+<ul>
+<li>本地运行，数据隐私安全</li>
+<li>高度可定制，支持自定义技能（Skills）</li>
+<li>支持多种大模型（Qwen、Kimi 等）</li>
+<li>丰富的工具生态</li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><ul>
+<li><strong>操作系统</strong>：macOS（已验证 Darwin 24.6.0 arm64）</li>
+<li><strong>Node.js</strong>：v25.6.1 或更高版本</li>
+<li><strong>Shell</strong>：zsh（推荐）</li>
+<li><strong>内存</strong>：建议 8GB+</li>
+<li><strong>磁盘空间</strong>：至少 5GB 可用空间</li>
+</ul>
+<h2 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 Homebrew（如果还没有）</span></span><br><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 Node.js（OpenClaw 运行时依赖）</span></span><br><span class="line">brew install node</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">node --version</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><h2 id="1-安装-OpenClaw"><a href="#1-安装-OpenClaw" class="headerlink" title="1. 安装 OpenClaw"></a>1. 安装 OpenClaw</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://openclaw.ai/install.sh | bash</span><br><span class="line"></span><br><span class="line">openclaw --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-初始化工作空间"><a href="#2-初始化工作空间" class="headerlink" title="2. 初始化工作空间"></a>2. 初始化工作空间</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/.openclaw/workspace</span><br><span class="line"><span class="built_in">cd</span> ~/.openclaw/workspace</span><br><span class="line"></span><br><span class="line">openclaw onboard</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-启动-Gateway-服务"><a href="#3-启动-Gateway-服务" class="headerlink" title="3. 启动 Gateway 服务"></a>3. 启动 Gateway 服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw gateway status</span><br><span class="line">openclaw gateway start</span><br><span class="line">openclaw gateway logs</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置详解"><a href="#配置详解" class="headerlink" title="配置详解"></a>配置详解</h1><h2 id="核心配置文件结构"><a href="#核心配置文件结构" class="headerlink" title="核心配置文件结构"></a>核心配置文件结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">~/.openclaw/workspace/</span><br><span class="line">├── AGENTS.md          # 助手行为准则和工作流程</span><br><span class="line">├── SOUL.md            # 助手的人格设定</span><br><span class="line">├── USER.md            # 用户信息配置</span><br><span class="line">├── IDENTITY.md        # 助手身份信息</span><br><span class="line">├── TOOLS.md           # 本地工具和配置备注</span><br><span class="line">├── MEMORY.md          # 长期记忆（主会话专用）</span><br><span class="line">├── memory/            # 每日记忆文件</span><br><span class="line">│   └── YYYY-MM-DD.md</span><br><span class="line">├── HEARTBEAT.md       # 定时任务配置</span><br><span class="line">└── skills/            # 自定义技能目录</span><br></pre></td></tr></table></figure>
+
+<h2 id="关键配置文件说明"><a href="#关键配置文件说明" class="headerlink" title="关键配置文件说明"></a>关键配置文件说明</h2><h3 id="AGENTS-md-行为准则"><a href="#AGENTS-md-行为准则" class="headerlink" title="AGENTS.md - 行为准则"></a>AGENTS.md - 行为准则</h3><p>定义助手的工作流程、记忆管理策略、安全边界和群聊参与规则。</p>
+<p>核心原则：</p>
+<ul>
+<li>先读文件再行动，不盲目询问</li>
+<li>重要信息必须写入文件，”文字 &gt; 大脑”</li>
+<li>外部操作（发邮件、发推文）需要确认</li>
+<li>群聊中保持适度参与，不刷屏</li>
+</ul>
+<h3 id="SOUL-md-人格设定"><a href="#SOUL-md-人格设定" class="headerlink" title="SOUL.md - 人格设定"></a>SOUL.md - 人格设定</h3><p>定义助手的核心特质（真诚、有意见、资源导向）、边界意识和沟通风格。</p>
+<h3 id="TOOLS-md-本地配置"><a href="#TOOLS-md-本地配置" class="headerlink" title="TOOLS.md - 本地配置"></a>TOOLS.md - 本地配置</h3><p>存放环境特定的配置，比如搜索策略优先级、设备名称、TTS 语音偏好等。</p>
+<p>示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## Search Strategy</span></span><br><span class="line"><span class="bullet">1.</span> Tavily Search (优先)</span><br><span class="line"><span class="bullet">2.</span> Brave Search (备用)</span><br><span class="line"><span class="bullet">3.</span> Multi Search Engine (兜底)</span><br></pre></td></tr></table></figure>
+
+<h3 id="HEARTBEAT-md-定时任务"><a href="#HEARTBEAT-md-定时任务" class="headerlink" title="HEARTBEAT.md - 定时任务"></a>HEARTBEAT.md - 定时任务</h3><p>配置轻量级定时任务，零 Token 消耗：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;0 8 * * * /path/to/script.sh &gt;&gt; /path/to/log.log 2&gt;&amp;1&#x27;</span> | crontab -</span><br></pre></td></tr></table></figure>
+
+<p>适合每日信息抓取、定时检查更新、批量任务处理等场景。</p>
+<h1 id="可用-Skills-介绍"><a href="#可用-Skills-介绍" class="headerlink" title="可用 Skills 介绍"></a>可用 Skills 介绍</h1><p>OpenClaw 通过 Skills 系统扩展功能，以下是部分已有的 Skills：</p>
+<p><strong>搜索类</strong>：</p>
+<ul>
+<li><strong>tavily-search</strong>：AI 优化的搜索，返回干净内容，大多数场景首选</li>
+<li><strong>multi-search-engine</strong>：17 个引擎集成（8 国内 + 9 国际），适合复杂搜索和隐私需求</li>
+<li><strong>web_search</strong>：Brave Search 集成，备用方案</li>
+<li><strong>web_fetch</strong>：网页内容提取</li>
+</ul>
+<p><strong>多媒体类</strong>：</p>
+<ul>
+<li><strong>peekaboo</strong>：macOS UI 自动化（截图、UI 操作）</li>
+<li><strong>weather</strong>：天气查询</li>
+<li><strong>douyin-hot-trend</strong>：抖音热榜抓取</li>
+</ul>
+<p><strong>文档协作类</strong>：</p>
+<ul>
+<li><strong>feishu-doc / feishu-drive / feishu-wiki / feishu-bitable / feishu-chat</strong>：飞书全家桶，覆盖文档、云盘、知识库、多维表格和聊天</li>
+</ul>
+<p><strong>系统管理类</strong>：</p>
+<ul>
+<li><strong>healthcheck</strong>：安全审计和系统检查</li>
+<li><strong>skill-creator</strong>：技能创建和管理</li>
+<li><strong>clawhub</strong>：技能市场搜索安装</li>
+</ul>
+<p><strong>AI 模型类</strong>：</p>
+<ul>
+<li><strong>ollama-local</strong>：本地 Ollama 模型管理</li>
+</ul>
+<h2 id="安装新-Skills"><a href="#安装新-Skills" class="headerlink" title="安装新 Skills"></a>安装新 Skills</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clawhub search &lt;关键词&gt;</span><br><span class="line">clawhub install &lt;skill-name&gt;</span><br><span class="line">clawhub update</span><br><span class="line">clawhub list</span><br></pre></td></tr></table></figure>
+
+<h1 id="从-openclaw-cn-切换到原版-openclaw"><a href="#从-openclaw-cn-切换到原版-openclaw" class="headerlink" title="从 openclaw-cn 切换到原版 openclaw"></a>从 openclaw-cn 切换到原版 openclaw</h1><p>初次尝试时使用了国内社区维护的 <code>openclaw-cn</code> 版本，但遇到了严重问题：</p>
+<ul>
+<li>Kimi Coding Plan 无法使用，配置了 API Key 后模型始终调不通</li>
+<li>即使没有成功调用，也会消耗 Token</li>
+</ul>
+<p>解决方案很简单——切换到原版：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g openclaw-cn</span><br><span class="line">curl -fsSL https://openclaw.ai/install.sh | bash</span><br><span class="line">openclaw --version</span><br></pre></td></tr></table></figure>
+
+<p>切换后 Kimi 模型和其他功能恢复正常，Token 消耗也不再异常。</p>
+<p><strong>经验</strong>：除非有特殊的国内网络需求，建议直接使用原版 OpenClaw。安装后立即测试核心功能是否正常。</p>
+<h1 id="模型配置：使用-NVIDIA-免费-Token"><a href="#模型配置：使用-NVIDIA-免费-Token" class="headerlink" title="模型配置：使用 NVIDIA 免费 Token"></a>模型配置：使用 NVIDIA 免费 Token</h1><p>Kimi 的免费额度耗尽后，发现 NVIDIA 提供了免费的 Qwen 模型 Token，可以继续使用 OpenClaw。</p>
+<h2 id="获取-NVIDIA-免费-Token"><a href="#获取-NVIDIA-免费-Token" class="headerlink" title="获取 NVIDIA 免费 Token"></a>获取 NVIDIA 免费 Token</h2><ol>
+<li>注册 <a target="_blank" rel="noopener" href="https://ngc.nvidia.com/">NVIDIA NGC 平台</a>（免费）</li>
+<li>登录后进入 “API Keys” 页面，创建 API Key</li>
+<li>可用模型包括 Qwen 2.5 系列（Qwen2.5-72B、Qwen2.5-Coder 等），每月免费额度足够日常使用</li>
+</ol>
+<h2 id="配置-openclaw-json"><a href="#配置-openclaw-json" class="headerlink" title="配置 openclaw.json"></a>配置 openclaw.json</h2><p>OpenClaw 的主配置文件位于 <code>~/.openclaw/openclaw.json</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;models&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;merge&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;nvidia&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://integrate.api.nvidia.com/v1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;apiKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;nvapi-你的API-Key&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;api&quot;</span><span class="punctuation">:</span> <span class="string">&quot;openai-completions&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;models&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;qwen/qwen3.5-122b-a10b&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Qwen 3.5 122B A10B&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;api&quot;</span><span class="punctuation">:</span> <span class="string">&quot;openai-completions&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;reasoning&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;text&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cost&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;cacheRead&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;cacheWrite&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;contextWindow&quot;</span><span class="punctuation">:</span> <span class="number">262144</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;maxTokens&quot;</span><span class="punctuation">:</span> <span class="number">8192</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;agents&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaults&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;model&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;primary&quot;</span><span class="punctuation">:</span> <span class="string">&quot;nvidia/qwen/qwen3.5-122b-a10b&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置说明：</p>
+<ul>
+<li><code>baseUrl</code>：NVIDIA 集成 API 地址</li>
+<li><code>contextWindow</code>：262144（256K 上下文）</li>
+<li><code>maxTokens</code>：8192（单次响应最大 token 数）</li>
+<li><code>cost</code> 全部为 0，表示使用免费额度</li>
+</ul>
+<blockquote>
+<p>安全提示：不要将 API Key 提交到 Git，建议使用环境变量或 <code>.env</code> 文件管理。</p>
+</blockquote>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">openclaw status</span><br><span class="line"><span class="comment"># 应该看到类似：</span></span><br><span class="line"><span class="comment"># Model: nvidia/qwen/qwen3.5-122b-a10b</span></span><br><span class="line"><span class="comment"># Cost: $0.0000 (免费额度)</span></span><br><span class="line"><span class="comment"># Context: 131k/262k (50%)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>NVIDIA 免费额度有使用限制，合理控制频率</li>
+<li>Qwen 2.5 系列性能优秀，适合代码生成和文本分析</li>
+<li>使用 <code>.gitignore</code> 排除配置文件中的敏感信息</li>
+</ul>
+<h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="记忆管理"><a href="#记忆管理" class="headerlink" title="记忆管理"></a>记忆管理</h2><ul>
+<li><strong>即时记录</strong>：重要信息立刻写入 <code>memory/YYYY-MM-DD.md</code></li>
+<li><strong>定期整理</strong>：每周 review，更新 <code>MEMORY.md</code></li>
+<li><strong>分类清晰</strong>：决策、经验、教训分开记录</li>
+</ul>
+<h2 id="自动化任务：Heartbeat-vs-Cron"><a href="#自动化任务：Heartbeat-vs-Cron" class="headerlink" title="自动化任务：Heartbeat vs Cron"></a>自动化任务：Heartbeat vs Cron</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐方案</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多任务批量检查</td>
+<td>Heartbeat</td>
+<td>可结合对话上下文</td>
+</tr>
+<tr>
+<td>精确时间执行</td>
+<td>Cron</td>
+<td>时间准确，独立运行</td>
+</tr>
+<tr>
+<td>零 Token 需求</td>
+<td>Cron + 脚本</td>
+<td>完全不消耗 Token</td>
+</tr>
+<tr>
+<td>需要 AI 判断</td>
+<td>Heartbeat</td>
+<td>可调用大模型</td>
+</tr>
+</tbody></table>
+<h2 id="浏览器操作"><a href="#浏览器操作" class="headerlink" title="浏览器操作"></a>浏览器操作</h2><p>效率技巧：</p>
+<ol>
+<li>用 <code>snapshot</code> 检查页面状态后再操作</li>
+<li>批量获取 URL 后立即下载，避免签名过期</li>
+<li>文件上传前先复制到 <code>/tmp/openclaw/uploads/</code></li>
+<li>分步操作，避免超时</li>
+</ol>
+<p>重试机制示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">click</span>(ref);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i === <span class="number">2</span>) <span class="keyword">throw</span> e;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">snapshot</span>(&#123;<span class="attr">delayMs</span>: <span class="number">2000</span>&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="安全边界"><a href="#安全边界" class="headerlink" title="安全边界"></a>安全边界</h2><p><strong>需要确认</strong>：发送邮件、发布公开内容、删除重要数据、访问外部 API</p>
+<p><strong>可自由执行</strong>：读取本地文件、搜索网络、整理工作空间、更新记忆文件</p>
+<h1 id="资源链接"><a href="#资源链接" class="headerlink" title="资源链接"></a>资源链接</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.openclaw.ai/">OpenClaw 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/openclaw/openclaw">GitHub 仓库</a></li>
+<li><a target="_blank" rel="noopener" href="https://clawhub.com/">技能市场 ClawHub</a></li>
+<li><a target="_blank" rel="noopener" href="https://ngc.nvidia.com/">NVIDIA NGC</a></li>
+<li><a target="_blank" rel="noopener" href="https://discord.com/invite/clawd">社区 Discord</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
+              <a href="/tags/2026/" rel="tag"># 2026</a>
+              <a href="/tags/AI%E5%8A%A9%E6%89%8B/" rel="tag"># AI助手</a>
+              <a href="/tags/OpenClaw/" rel="tag"># OpenClaw</a>
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag"># 自动化</a>
+              <a href="/tags/NVIDIA/" rel="tag"># NVIDIA</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/11/27/stock/%E5%81%A5%E6%B0%91%E9%9B%86%E5%9B%A2%E8%82%A1%E7%A5%A8%E5%88%86%E6%9E%9020251126/" rel="prev" title="健民集团股票分析 - 2025年11月基本面深度解析">
+      <i class="fa fa-chevron-left"></i> 健民集团股票分析 - 2025年11月基本面深度解析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/04/24/llm/%E5%A6%82%E4%BD%95%E8%AE%B2%E6%B8%85%E6%A5%9A%20LoRA%20%E5%BE%AE%E8%B0%83/" rel="next" title="如何讲清楚 LoRA 微调">
+      如何讲清楚 LoRA 微调 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-OpenClaw"><span class="nav-number">1.</span> <span class="nav-text">什么是 OpenClaw</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">系统要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">依赖安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85-OpenClaw"><span class="nav-number">3.1.</span> <span class="nav-text">1. 安装 OpenClaw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4"><span class="nav-number">3.2.</span> <span class="nav-text">2. 初始化工作空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%90%AF%E5%8A%A8-Gateway-%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.3.</span> <span class="nav-text">3. 启动 Gateway 服务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">配置详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.</span> <span class="nav-text">核心配置文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E"><span class="nav-number">4.2.</span> <span class="nav-text">关键配置文件说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AGENTS-md-%E8%A1%8C%E4%B8%BA%E5%87%86%E5%88%99"><span class="nav-number">4.2.1.</span> <span class="nav-text">AGENTS.md - 行为准则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SOUL-md-%E4%BA%BA%E6%A0%BC%E8%AE%BE%E5%AE%9A"><span class="nav-number">4.2.2.</span> <span class="nav-text">SOUL.md - 人格设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TOOLS-md-%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.3.</span> <span class="nav-text">TOOLS.md - 本地配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEARTBEAT-md-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-number">4.2.4.</span> <span class="nav-text">HEARTBEAT.md - 定时任务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E7%94%A8-Skills-%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.</span> <span class="nav-text">可用 Skills 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%96%B0-Skills"><span class="nav-number">5.1.</span> <span class="nav-text">安装新 Skills</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E-openclaw-cn-%E5%88%87%E6%8D%A2%E5%88%B0%E5%8E%9F%E7%89%88-openclaw"><span class="nav-number">6.</span> <span class="nav-text">从 openclaw-cn 切换到原版 openclaw</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AE%EF%BC%9A%E4%BD%BF%E7%94%A8-NVIDIA-%E5%85%8D%E8%B4%B9-Token"><span class="nav-number">7.</span> <span class="nav-text">模型配置：使用 NVIDIA 免费 Token</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96-NVIDIA-%E5%85%8D%E8%B4%B9-Token"><span class="nav-number">7.1.</span> <span class="nav-text">获取 NVIDIA 免费 Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-openclaw-json"><span class="nav-number">7.2.</span> <span class="nav-text">配置 openclaw.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81"><span class="nav-number">7.3.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">7.4.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">8.</span> <span class="nav-text">最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BF%86%E7%AE%A1%E7%90%86"><span class="nav-number">8.1.</span> <span class="nav-text">记忆管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BB%BB%E5%8A%A1%EF%BC%9AHeartbeat-vs-Cron"><span class="nav-number">8.2.</span> <span class="nav-text">自动化任务：Heartbeat vs Cron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">8.3.</span> <span class="nav-text">浏览器操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E8%BE%B9%E7%95%8C"><span class="nav-number">8.4.</span> <span class="nav-text">安全边界</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E9%93%BE%E6%8E%A5"><span class="nav-number">9.</span> <span class="nav-text">资源链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
+      src="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
+  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
