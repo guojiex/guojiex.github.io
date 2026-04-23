@@ -2,6 +2,13 @@
   "name": "hexo-site",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "server": "hexo server --drafts --debug -p 4096",
+    "new": "hexo new",
+    "clean": "hexo clean",
+    "build": "hexo generate",
+    "deploy": "hexo deploy -g"
+  },
   "hexo": {
     "version": "8.1.1"
   },
@@ -16,7 +23,7 @@
     "hexo-generator-sitemap": "^2.2.0",
     "hexo-generator-tag": "^1.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-kramed": "^0.1.4",
+    "hexo-renderer-marked": "^4.1.0",
     "hexo-renderer-stylus": "^2.0.1",
     "hexo-server": "^3.0.0",
     "hexo-theme-next": "^8.14.1",

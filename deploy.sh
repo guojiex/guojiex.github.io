@@ -1,1 +1,1 @@
-hexo d -g
+npx hexo d -g

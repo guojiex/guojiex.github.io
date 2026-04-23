@@ -1,2 +1,2 @@
-hexo clean
-hexo d -g
+npx hexo clean
+npx hexo d -g
