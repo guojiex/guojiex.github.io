@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="WLOb_rW9OMZrR5YqGG9DEpQ9Jix2ZUGg1N44neW47ts">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guojiex.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="如果你有一点编程基础，但还不懂训练、推理、Transformer 和微调的关系，这篇文章给你一条够用的大模型入门主线。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大模型训练应该怎么入门">
+<meta property="og:url" content="http://guojiex.github.io/2026/04/24/llm/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="节瓜的生活经验">
+<meta property="og:description" content="如果你有一点编程基础，但还不懂训练、推理、Transformer 和微调的关系，这篇文章给你一条够用的大模型入门主线。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-23T20:20:00.000Z">
+<meta property="article:modified_time" content="2026-04-23T07:28:26.097Z">
+<meta property="article:author" content="Jiexin Guo">
+<meta property="article:tag" content="2026">
+<meta property="article:tag" content="Transformer">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="推理">
+<meta property="article:tag" content="训练">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://guojiex.github.io/2026/04/24/llm/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%85%A5%E9%97%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>大模型训练应该怎么入门 | 节瓜的生活经验</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">节瓜的生活经验</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果能重来，我要选李白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/guojiex" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://guojiex.github.io/2026/04/24/llm/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+      <meta itemprop="name" content="Jiexin Guo">
+      <meta itemprop="description" content="你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节瓜的生活经验">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大模型训练应该怎么入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-04-23 16:20:00 / 修改时间：03:28:26" itemprop="dateCreated datePublished" datetime="2026-04-23T16:20:00-04:00">2026-04-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">大模型</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">如果你有一点编程基础，但还不懂训练、推理、Transformer 和微调的关系，这篇文章给你一条够用的大模型入门主线。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>本文根据一篇飞书内部学习材料整理，并结合知识库中的结构化笔记重写。</strong></p>
+<h2 id="入门前先看什么"><a href="#入门前先看什么" class="headerlink" title="入门前先看什么"></a>入门前先看什么</h2><p>很多人一上来想学“大模型训练”，其实先该学的是“怎么理解这件事”。</p>
+<p>很多人第一次说自己想学大模型，脑子里其实装着好几个问题。</p>
+<p>一部分人想知道，大模型到底怎么训练出来的。<br>一部分人想知道，为什么别人总在说 Transformer、注意力机制、Tokenizer。<br>还有一部分人真正关心的是：我能不能在自己的电脑上先跑起来，再慢慢往训练走。</p>
+<p>这些问题放在一起时，最容易出现的结果就是越学越乱。因为你会发现每个名词都像入口，但每个入口后面又牵着另外五个名词。</p>
+<p>所以我现在更倾向于把“大模型入门”看成一条学习路径，而不是一份术语清单。<br>你要先知道整个系统在做什么，再决定先下手哪一块。</p>
+<h2 id="先分清训练和推理"><a href="#先分清训练和推理" class="headerlink" title="先分清训练和推理"></a>先分清训练和推理</h2><p>先分清训练和推理，很多事情就顺了。</p>
+<p>如果只记一个最重要的区分，我会建议先记住这两个词：</p>
+<ul>
+<li>训练</li>
+<li>推理</li>
+</ul>
+<p>训练是模型在海量数据上不断预测、不断纠错、不断调整参数的过程。<br>推理则是模型在已经学好的参数基础上，根据你当前输入的上下文，逐个生成下一个 token。</p>
+<p>这两个阶段像是同一个学生人生里的两段完全不同的状态。</p>
+<ul>
+<li>训练像“读书和学习”</li>
+<li>推理像“考试和工作”</li>
+</ul>
+<p>一旦这个区别立住，很多概念的位置就会清楚很多：</p>
+<ul>
+<li>权重文件是训练留下来的结果</li>
+<li>Tokenizer 是推理的入口</li>
+<li>Transformer 是训练和推理都在用的核心结构</li>
+<li>微调属于训练侧，但比从零预训练轻得多</li>
+</ul>
+<p>也正因为这样，大部分人的入门顺序都不该是“先想怎么训练一个大模型”，而应该是“先看一个大模型怎么跑起来”。</p>
+<h2 id="Transformer-如何理解上下文"><a href="#Transformer-如何理解上下文" class="headerlink" title="Transformer 如何理解上下文"></a>Transformer 如何理解上下文</h2><p>真正值得先理解的，是 Transformer 为什么能看懂上下文。</p>
+<p>很多人会被 Transformer 这个词吓到，以为背后一定是一堆复杂公式。<br>但如果先把它讲成人话，它其实是在解决一个非常朴素的问题：</p>
+<p><strong>当前这个词，应该重点参考前面的哪些词？</strong></p>
+<p>这就是注意力机制的意义。</p>
+<p>比如一句话里出现了很多词，但当模型要预测“冰水”时，它显然更该注意“天气”和“太热”，而不是“小明”或者“商店”。<br>注意力机制做的，就是给这些上下文线索打分，再决定该重点看谁。</p>
+<p>Tokenizer 则负责更早的一步。它先把文字切成 token，再映射成数字 ID。<br>所以整个过程其实是这样的：</p>
+<ol>
+<li>文本先变成 token 和 ID</li>
+<li>token 进入 Transformer</li>
+<li>模型通过注意力机制理解上下文</li>
+<li>最后输出下一个 token 的概率分布</li>
+</ol>
+<p>很多初学者一开始容易把这几步混在一起。<br>但如果你把它们拆开，大模型就没那么像黑箱了。</p>
+<h2 id="训练主线的三个阶段"><a href="#训练主线的三个阶段" class="headerlink" title="训练主线的三个阶段"></a>训练主线的三个阶段</h2><p>训练主线其实可以很简单地记成三段。</p>
+<p>当你再往训练那边走时，也不需要一开始就钻进实现细节。<br>先把主线记成三段，已经够用了：</p>
+<ol>
+<li>预训练</li>
+<li>指令微调（SFT）</li>
+<li>人类反馈对齐（RLHF）</li>
+</ol>
+<p>预训练解决的是“让模型学会语言规律和通用知识”。<br>这一步通常依赖海量文本，核心目标往往就是下一个 token 预测。</p>
+<p>但预训练出来的基座模型，通常更像一个很会续写的学生，不一定很会按你的要求回答问题。<br>所以才有第二步 SFT。它更像老师拿着高质量问答样本去教模型：遇到这种指令，应该这样答。</p>
+<p>再往后，模型还是可能答得不够礼貌、不够有帮助、不够符合人类偏好。<br>这时 RLHF 才会进来，利用人类对不同答案的偏好反馈，进一步把模型拉向“更好用”的方向。</p>
+<p>把这三段串起来，你就能理解为什么现在大家讨论大模型时，总会反复提到基座模型、微调、对齐这些词。</p>
+<h2 id="为什么要先跑通本地推理"><a href="#为什么要先跑通本地推理" class="headerlink" title="为什么要先跑通本地推理"></a>为什么要先跑通本地推理</h2><p>对大多数人来说，真正该先动手的是本地推理。</p>
+<p>如果你的目标是“以后能理解训练”，那最好的第一步往往不是训练，而是先把推理跑通。</p>
+<p>因为本地推理会逼你真正接触这些东西：</p>
+<ul>
+<li>模型文件到底是什么</li>
+<li>Tokenizer 怎么把文本变成 ID</li>
+<li><code>transformers</code> 这样的框架在帮你做什么</li>
+<li>GPU 为什么这么重要</li>
+</ul>
+<p>当你第一次把一个小模型下载下来，看见 <code>.safetensors</code> 这种大文件，再用几行 Python 代码把一句话送进模型，得到一串输出时，你对“大模型是什么”会立刻从抽象概念，变成工程直觉。</p>
+<p>这一步特别重要。<br>因为很多人学了很多训练术语，但从来没亲手跑过一次模型，最后对整个系统的理解仍然停留在名词层面。</p>
+<p>更实际的入门顺序通常是：</p>
+<ol>
+<li>先跑通一个小模型的本地推理</li>
+<li>再观察 Tokenizer、生成参数和显存占用</li>
+<li>再去理解微调</li>
+<li>最后再看从零预训练和更重的训练体系</li>
+</ol>
+<h2 id="更适合初学者的学习顺序"><a href="#更适合初学者的学习顺序" class="headerlink" title="更适合初学者的学习顺序"></a>更适合初学者的学习顺序</h2><p>真正适合初学者的，不是“数学优先”，而是“直觉优先，代码跟上”。</p>
+<p>很多人会担心自己数学不够好，所以不敢学大模型。<br>但现实是，对于有编程基础的工程同学来说，第一阶段最需要的往往不是数学推导能力，而是把系统拆开的能力。</p>
+<p>你要先知道：</p>
+<ul>
+<li>哪些概念在解决什么问题</li>
+<li>哪些阶段属于训练，哪些属于推理</li>
+<li>哪些东西是工程门槛，哪些东西是理论门槛</li>
+</ul>
+<p>等这些位置关系清楚了，你再往下补线性代数、概率论、优化方法，吸收速度反而更快。</p>
+<p>所以如果让我给“大模型训练怎么入门”下一句定义，我会这样说：</p>
+<p><strong>先把训练和推理讲明白，再把 Transformer 和注意力看懂，先跑通推理，最后再往训练走。</strong></p>
+<p>这条路看起来慢一点，但对大多数人来说，其实更快。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Jiexin Guo 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
+              <a href="/tags/2026/" rel="tag"># 2026</a>
+              <a href="/tags/%E8%AE%AD%E7%BB%83/" rel="tag"># 训练</a>
+              <a href="/tags/%E6%8E%A8%E7%90%86/" rel="tag"># 推理</a>
+              <a href="/tags/Transformer/" rel="tag"># Transformer</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/04/24/llm/%E5%A6%82%E4%BD%95%E6%8A%8A%20Obsidian%20%E7%94%A8%E6%88%90%E4%B8%80%E4%B8%AA%20LLM%20Wiki/" rel="prev" title="如何把 Obsidian 用成一个 LLM Wiki">
+      <i class="fa fa-chevron-left"></i> 如何把 Obsidian 用成一个 LLM Wiki
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E5%89%8D%E5%85%88%E7%9C%8B%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">入门前先看什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%88%86%E6%B8%85%E8%AE%AD%E7%BB%83%E5%92%8C%E6%8E%A8%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">先分清训练和推理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformer-%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-number">3.</span> <span class="nav-text">Transformer 如何理解上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E4%B8%BB%E7%BA%BF%E7%9A%84%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="nav-number">4.</span> <span class="nav-text">训练主线的三个阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%85%88%E8%B7%91%E9%80%9A%E6%9C%AC%E5%9C%B0%E6%8E%A8%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">为什么要先跑通本地推理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E9%80%82%E5%90%88%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">更适合初学者的学习顺序</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jiexin Guo"
+      src="https://en.gravatar.com/userimage/109257336/8230436ce0a0ee89b609c99ef9bf18fa.jpg">
+  <p class="site-author-name" itemprop="name">Jiexin Guo</p>
+  <div class="site-description" itemprop="description">你是要做一辈子的懦夫，还是要做英雄，哪怕只是几分钟</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/guojiex" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;guojiex" rel="noopener" target="_blank"><i class="linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/guojiex" title="Github → https:&#x2F;&#x2F;github.com&#x2F;guojiex" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/u/3094351151" title="Weibo → http:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3094351151" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1036479561@qq.com" title="E-Mail → mailto:1036479561@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCDZeZKfpdoOhAxDrfHteFIA/featured?view_as=subscriber" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCDZeZKfpdoOhAxDrfHteFIA&#x2F;featured?view_as&#x3D;subscriber" rel="noopener" target="_blank"><i class="youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiexin Guo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

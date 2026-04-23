@@ -29,7 +29,7 @@
 <meta property="og:description" content="如果你会写 Go，但还没真正理解 Agent 和聊天机器人的差别，这篇文章试着用工程视角把 Agent 骨架讲清楚。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-23T16:50:00.000Z">
-<meta property="article:modified_time" content="2026-04-23T03:51:32.862Z">
+<meta property="article:modified_time" content="2026-04-23T07:28:26.095Z">
 <meta property="article:author" content="Jiexin Guo">
 <meta property="article:tag" content="2026">
 <meta property="article:tag" content="Agent">
@@ -202,16 +202,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2026-04-23 12:50:00" itemprop="dateCreated datePublished" datetime="2026-04-23T12:50:00-04:00">2026-04-23</time>
+              <time title="创建时间：2026-04-23 12:50:00 / 修改时间：03:28:26" itemprop="dateCreated datePublished" datetime="2026-04-23T12:50:00-04:00">2026-04-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-04-22 23:51:32" itemprop="dateModified" datetime="2026-04-22T23:51:32-04:00">2026-04-22</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -235,7 +229,8 @@
 
       
         <p><strong>本文根据一篇面向 Go 开发者的 Agent 学习材料整理，并结合知识库中的结构化笔记重写。</strong></p>
-<h1 id="很多人写的其实不是-Agent，只是一个聊天壳"><a href="#很多人写的其实不是-Agent，只是一个聊天壳" class="headerlink" title="很多人写的其实不是 Agent，只是一个聊天壳"></a>很多人写的其实不是 Agent，只是一个聊天壳</h1><p>现在大家一说 Agent，往往容易直接想到“把用户输入发给模型，再把结果流式打印出来”。从体验上看，它已经挺像一个 AI 应用了，但从工程结构上讲，这通常还只是一个聊天壳，不是真正意义上的 Agent。</p>
+<h2 id="Agent-和聊天壳的区别"><a href="#Agent-和聊天壳的区别" class="headerlink" title="Agent 和聊天壳的区别"></a>Agent 和聊天壳的区别</h2><p>很多人写的其实不是 Agent，只是一个聊天壳。</p>
+<p>现在大家一说 Agent，往往容易直接想到“把用户输入发给模型，再把结果流式打印出来”。从体验上看，它已经挺像一个 AI 应用了，但从工程结构上讲，这通常还只是一个聊天壳，不是真正意义上的 Agent。</p>
 <p>真正的区别不在于模型多聪明，而在于系统有没有把模型组织成一个能持续推进任务的执行器。</p>
 <p>如果只是单轮问答，模型更像一个被动回答问题的接口。你问一句，它答一句，这一轮就结束了。可一旦任务变成“先查信息，再根据结果做判断，再决定下一步”，系统就需要多出几样东西：</p>
 <ul>
@@ -251,7 +246,8 @@
 <li>循环：让任务能多步推进，直到完成</li>
 </ul>
 <p>如果这四样里只剩第一样，那程序大概率还只是一个会聊天的模型外壳。</p>
-<h1 id="用-Go-接大模型-API，其实是在搭一层“协议”"><a href="#用-Go-接大模型-API，其实是在搭一层“协议”" class="headerlink" title="用 Go 接大模型 API，其实是在搭一层“协议”"></a>用 Go 接大模型 API，其实是在搭一层“协议”</h1><p>很多 Go 开发者第一次接 LLM API，会觉得这不就是个 HTTP POST 吗？从表面上看确实如此，但真正稳定可用的实现，重点不是“请求发出去了”，而是你有没有把这层通信整理成一个清晰的协议。</p>
+<h2 id="Go-接-LLM-API-的协议层"><a href="#Go-接-LLM-API-的协议层" class="headerlink" title="Go 接 LLM API 的协议层"></a>Go 接 LLM API 的协议层</h2><p>用 Go 接大模型 API，其实是在搭一层“协议”。</p>
+<p>很多 Go 开发者第一次接 LLM API，会觉得这不就是个 HTTP POST 吗？从表面上看确实如此，但真正稳定可用的实现，重点不是“请求发出去了”，而是你有没有把这层通信整理成一个清晰的协议。</p>
 <p>在 Go 里，这件事通常落在几个很具体的点上：</p>
 <ul>
 <li>用 <code>struct</code> 和 <code>json</code> tag 定义请求和响应</li>
@@ -262,7 +258,8 @@
 <p>这一步最容易被忽略的小坑，反而都是 Go 本身的基础问题。比如结构体字段如果首字母小写，<code>encoding/json</code> 就看不到它，最后你以为自己发了 <code>model</code> 字段，实际请求体里根本没有。再比如如果不设超时、不在响应成功后及时 <code>defer resp.Body.Close()</code>，程序就很容易在网络波动时表现得很不稳定。</p>
 <p>所以对 Go 开发者来说，接模型 API 不只是“会发请求”，而是在给大模型应用搭一层协议层。只有这层协议稳定了，后面的 Memory、Tool Calling 和 Agent Loop 才有地方可接。</p>
 <p>还有一个很现实的问题是流式输出。很多人第一次实现 SSE，会把注意力放在“怎么实现打字机效果”，但流式能力真正考验的是错误处理：如果中途断网了怎么办？如果某一行 JSON 解不出来怎么办？如果用户半路取消请求怎么办？<br>这些问题不解决，流式输出只是看起来酷，离好用还差得远。</p>
-<h1 id="Memory-不是锦上添花，而是-Agent-最低限度的状态管理"><a href="#Memory-不是锦上添花，而是-Agent-最低限度的状态管理" class="headerlink" title="Memory 不是锦上添花，而是 Agent 最低限度的状态管理"></a>Memory 不是锦上添花，而是 Agent 最低限度的状态管理</h1><p>大模型本身通常是无状态的。也就是说，如果你不把上一轮对话再发回去，它根本不知道你们刚才聊过什么。</p>
+<h2 id="Agent-的最小状态管理"><a href="#Agent-的最小状态管理" class="headerlink" title="Agent 的最小状态管理"></a>Agent 的最小状态管理</h2><p>Memory 不是锦上添花，而是 Agent 最低限度的状态管理。</p>
+<p>大模型本身通常是无状态的。也就是说，如果你不把上一轮对话再发回去，它根本不知道你们刚才聊过什么。</p>
 <p>这也是为什么很多人以为自己在做 Agent，结果程序一旦多聊两轮就开始“断片”。模型不是突然变笨了，而是系统根本没有帮它维护状态。</p>
 <p>最小可用的 Memory，其实并不复杂。对很多 Go 应用来说，一组 <code>[]Message</code> 就已经够作为起点：</p>
 <ul>
@@ -280,7 +277,8 @@
 </ul>
 <p>第三，滑动窗口不是可选项。<br>一旦对话变长，token 成本和模型上下文上限都会成为现实约束。通常更实际的做法，是保留最初的 system，再加最近若干轮关键消息，而不是把所有历史无脑全塞回去。</p>
 <p>换句话说，Memory 的本质不是“让模型记住一切”，而是“在成本有限的情况下，把完成当前任务最关键的状态交回给模型”。</p>
-<h1 id="Function-Calling-和-ReAct，才是-Agent-真正开始长出“手脚”的地方"><a href="#Function-Calling-和-ReAct，才是-Agent-真正开始长出“手脚”的地方" class="headerlink" title="Function Calling 和 ReAct，才是 Agent 真正开始长出“手脚”的地方"></a>Function Calling 和 ReAct，才是 Agent 真正开始长出“手脚”的地方</h1><p>如果说 Memory 解决的是“模型会不会忘”，那 Function Calling 解决的就是“模型会不会做”。</p>
+<h2 id="Function-Calling-与-ReAct-Loop"><a href="#Function-Calling-与-ReAct-Loop" class="headerlink" title="Function Calling 与 ReAct Loop"></a>Function Calling 与 ReAct Loop</h2><p>Function Calling 和 ReAct，才是 Agent 真正开始长出“手脚”的地方。</p>
+<p>如果说 Memory 解决的是“模型会不会忘”，那 Function Calling 解决的就是“模型会不会做”。</p>
 <p>LLM 最大的特点之一，是它很会解释事情，但不会真的去执行事情。你让它查天气、读文件、查数据库、算税，如果不给工具，它只能尽量模仿一个答案。<br>Function Calling 的价值就在于，它给了模型一种更诚实的表达方式：当它需要外部能力时，不是继续瞎答，而是明确告诉系统“我要调用这个工具，参数是这些”。</p>
 <p>对 Go 程序来说，这件事落地下来通常就是三步：</p>
 <ul>
@@ -306,7 +304,8 @@
 <li>设置 <code>maxSteps</code> 之类的上限，避免死循环</li>
 </ul>
 <p>所以从工程角度讲，Function Calling 让模型拥有“手”，ReAct Loop 则让它学会“手该什么时候伸出去，以及伸出去之后下一步做什么”。</p>
-<h1 id="如果你准备开始写一个-Go-Agent，先把骨架搭对"><a href="#如果你准备开始写一个-Go-Agent，先把骨架搭对" class="headerlink" title="如果你准备开始写一个 Go Agent，先把骨架搭对"></a>如果你准备开始写一个 Go Agent，先把骨架搭对</h1><p>我现在越来越觉得，Agent 入门最重要的不是一上来研究多智能体、长期记忆或者复杂规划，而是先把最小骨架搭对。</p>
+<h2 id="Go-Agent-的入门骨架"><a href="#Go-Agent-的入门骨架" class="headerlink" title="Go Agent 的入门骨架"></a>Go Agent 的入门骨架</h2><p>如果你准备开始写一个 Go Agent，先把骨架搭对。</p>
+<p>我现在越来越觉得，Agent 入门最重要的不是一上来研究多智能体、长期记忆或者复杂规划，而是先把最小骨架搭对。</p>
 <p>对一个 Go 开发者来说，一套足够好的起点通常是：</p>
 <ol>
 <li><p>先把 API 通信层写稳<br>结构体、鉴权、超时、错误处理、流式输出，先全部跑顺。</p>
@@ -422,7 +421,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%88%E5%A4%9A%E4%BA%BA%E5%86%99%E7%9A%84%E5%85%B6%E5%AE%9E%E4%B8%8D%E6%98%AF-Agent%EF%BC%8C%E5%8F%AA%E6%98%AF%E4%B8%80%E4%B8%AA%E8%81%8A%E5%A4%A9%E5%A3%B3"><span class="nav-number">1.</span> <span class="nav-text">很多人写的其实不是 Agent，只是一个聊天壳</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8-Go-%E6%8E%A5%E5%A4%A7%E6%A8%A1%E5%9E%8B-API%EF%BC%8C%E5%85%B6%E5%AE%9E%E6%98%AF%E5%9C%A8%E6%90%AD%E4%B8%80%E5%B1%82%E2%80%9C%E5%8D%8F%E8%AE%AE%E2%80%9D"><span class="nav-number">2.</span> <span class="nav-text">用 Go 接大模型 API，其实是在搭一层“协议”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Memory-%E4%B8%8D%E6%98%AF%E9%94%A6%E4%B8%8A%E6%B7%BB%E8%8A%B1%EF%BC%8C%E8%80%8C%E6%98%AF-Agent-%E6%9C%80%E4%BD%8E%E9%99%90%E5%BA%A6%E7%9A%84%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">Memory 不是锦上添花，而是 Agent 最低限度的状态管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Function-Calling-%E5%92%8C-ReAct%EF%BC%8C%E6%89%8D%E6%98%AF-Agent-%E7%9C%9F%E6%AD%A3%E5%BC%80%E5%A7%8B%E9%95%BF%E5%87%BA%E2%80%9C%E6%89%8B%E8%84%9A%E2%80%9D%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">4.</span> <span class="nav-text">Function Calling 和 ReAct，才是 Agent 真正开始长出“手脚”的地方</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B%E5%86%99%E4%B8%80%E4%B8%AA-Go-Agent%EF%BC%8C%E5%85%88%E6%8A%8A%E9%AA%A8%E6%9E%B6%E6%90%AD%E5%AF%B9"><span class="nav-number">5.</span> <span class="nav-text">如果你准备开始写一个 Go Agent，先把骨架搭对</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Agent-%E5%92%8C%E8%81%8A%E5%A4%A9%E5%A3%B3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">Agent 和聊天壳的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-%E6%8E%A5-LLM-API-%E7%9A%84%E5%8D%8F%E8%AE%AE%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">Go 接 LLM API 的协议层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Agent-%E7%9A%84%E6%9C%80%E5%B0%8F%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">Agent 的最小状态管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Calling-%E4%B8%8E-ReAct-Loop"><span class="nav-number">4.</span> <span class="nav-text">Function Calling 与 ReAct Loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-Agent-%E7%9A%84%E5%85%A5%E9%97%A8%E9%AA%A8%E6%9E%B6"><span class="nav-number">5.</span> <span class="nav-text">Go Agent 的入门骨架</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -438,7 +437,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -447,7 +446,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
