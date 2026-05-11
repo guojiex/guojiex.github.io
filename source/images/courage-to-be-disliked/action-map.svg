@@ -1,0 +1,39 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">被讨厌的勇气行动地图</title>
+  <desc id="desc">从旧解释转向自己的小课题：过去、评价、结果不再决定自我价值。</desc>
+  <rect width="1280" height="720" fill="#f7f4ed"/>
+  <rect x="54" y="54" width="1172" height="612" rx="28" fill="#fffdf8" stroke="#28251f" stroke-width="3"/>
+  <text x="96" y="118" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans CJK SC',sans-serif" font-size="44" font-weight="700" fill="#24211c">从宿命论退回自己的小课题</text>
+  <text x="98" y="162" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans CJK SC',sans-serif" font-size="22" fill="#6b6257">《被讨厌的勇气》读书笔记的行动地图</text>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans CJK SC',sans-serif">
+    <rect x="92" y="225" width="268" height="118" rx="18" fill="#f0e1d2" stroke="#8a5a44" stroke-width="2"/>
+    <text x="122" y="272" font-size="27" font-weight="700" fill="#4a2d21">旧解释</text>
+    <text x="122" y="312" font-size="21" fill="#4a2d21">过去决定我</text>
+
+    <rect x="396" y="225" width="268" height="118" rx="18" fill="#ddebd8" stroke="#597a55" stroke-width="2"/>
+    <text x="426" y="272" font-size="27" font-weight="700" fill="#2f4c2e">觉察</text>
+    <text x="426" y="312" font-size="21" fill="#2f4c2e">我在避免什么风险？</text>
+
+    <rect x="700" y="225" width="268" height="118" rx="18" fill="#dce8f1" stroke="#466f8a" stroke-width="2"/>
+    <text x="730" y="272" font-size="27" font-weight="700" fill="#29485d">课题分离</text>
+    <text x="730" y="312" font-size="21" fill="#29485d">哪些结果不归我控制？</text>
+
+    <rect x="1004" y="225" width="168" height="118" rx="18" fill="#eee6f4" stroke="#765a90" stroke-width="2"/>
+    <text x="1032" y="272" font-size="27" font-weight="700" fill="#503b64">小行动</text>
+    <text x="1032" y="312" font-size="21" fill="#503b64">低风险完成</text>
+
+    <path d="M364 284H390" stroke="#3d3932" stroke-width="4" stroke-linecap="round"/>
+    <path d="M386 274L400 284L386 294" fill="none" stroke="#3d3932" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M668 284H694" stroke="#3d3932" stroke-width="4" stroke-linecap="round"/>
+    <path d="M690 274L704 284L690 294" fill="none" stroke="#3d3932" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M972 284H998" stroke="#3d3932" stroke-width="4" stroke-linecap="round"/>
+    <path d="M994 274L1008 284L994 294" fill="none" stroke="#3d3932" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="92" y="398" width="1080" height="232" rx="22" fill="#26231e"/>
+    <text x="132" y="452" font-size="28" font-weight="700" fill="#fff8ed">下一次被评价、拒绝或卡住时，只复盘三件事</text>
+    <text x="132" y="506" font-size="25" fill="#fff8ed">1. 这件事里，真正属于我的课题是什么？</text>
+    <text x="132" y="552" font-size="25" fill="#fff8ed">2. 我正在用哪个旧解释保护自己？</text>
+    <text x="132" y="598" font-size="25" fill="#fff8ed">3. 下一步有没有一个低风险、可结束的小动作？</text>
+  </g>
+</svg>
